@@ -1,0 +1,19 @@
+How I customize the file <BASH-SUPPORT>
+
+(1) template
+    bash-support/templates/bash.comments.template
+    bash-support/templates/bash.statements.template
+
+(2) map shortcut
+    bash-support/modi/ftplugin/sh.vim
+    noremap  <buffer>  <silent>  <LocalLeader>sfi          :call
+    BASH_InsertTemplate("statements.for-in")<CR>
+
+    BASH_JumpCtrlJ
+
+(3) output format
+    bash-support/modi/plugin/bash-support.vim
+    let s:BASH_FormatDate                                                = '%F'
+    "let s:BASH_FormatDate                                                = '%b %d %Y'
+    "let s:BASH_FormatDate                                                = '%x' " moo
+

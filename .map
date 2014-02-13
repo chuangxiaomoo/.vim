@@ -1,0 +1,44 @@
+" adf
+" http://blog.163.com/lgh_2002/blog/static/440175262011723103054306/
+" http://man.lupaworld.com/content/manage/vi/doc/autocmd.html#FileChangedShell
+
++-----------------------------------------------------------------------+
+|                                                                       |
+|              Map                                                      |
++-------+---------------------------------------------------------------+
+|bash   |  ~/.vim/ftplugin/sh.vim|147|                                  |
+|       |  ~/.vim/bash-support/templates/bash.statements.template       |
+|       |                                                               |
+|ruby   |  ~/.vim/ftplugin/ruby.vim|540|                                |
+|       |  ~/.vim/ruby-support/templates/ruby.statements.template       |
+|       |                                                               |
+|perl   |  ~/.vim/perl-support/templates/statements.templates           |
+|       |  ~/.vim/perl-support/templates/idioms.templates               |
+|       |                                                               |
+|C      |  ~/.vim/ftplugin/c.vim                                        |
+|       |                                                               |
++-------+---------------------------------------------------------------+
+|arrow2 |  ~/.vim/plugin/arrow2.vim                                     |
+|       |                                                               |
+|boxdraw|  ~/.vim/doc/boxdraw.txt|25|                                   |
+|       |                                                               |
+|drawit |  when PuTty, export TERM=linux to enable Home and End         |
+|       |  ~/.vim/doc/DrawIt.txt|104|                                   |
+|       |  ~/.vim/doc/DrawIt.txt|45|                                    |
+|       |  ~/.vim/autoload/DrawIt.vim                                   |
+|       |  ~/.vim/plugin/DrawItPlugin.vim                               |
++-------+---------------------------------------------------------------+
+|                                                                       |
+|               Template of support                                     |
+|                                                                       |
++-----------------------------------------------------------------------+
++-----------------------------------------------------------------------+
+|C       ~/.vim/c-support/templates/c.idioms.template                   |
+|        ~/.vim/c-support/templates/c.statements.template               |
+|        ~/.vim/ftplugin/c.vim|139|                                     |
++-----------------------------------------------------------------------+
+|Syntax                                                                 |
+|                                                                       |
+|~/.vim/syntax/c.vim                                                    |
++-----------------------------------------------------------------------+
+

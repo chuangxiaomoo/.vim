@@ -1,0 +1,25 @@
+# migrate
+
+  此 ruby-support是完全从 bash-support移植过来，只是想利用其良好的
+  模板特性
+
+
+# 修改的文件列表
+
+  ftplugin/sh.vim           追加到  ftplugin/ruby.vim
+  bash-support              复制为  ruby-support
+  plugin/ruby-support.vim   复制为  plugin/ruby-support.vim  
+
+  ruby-support/wordlists/bash.list  ruby.list
+  
+
+  把以上所有 BASH 修改为 RUBY，bash 修改为 ruby
+
+# 所文件夹下所有ruby改为bash
+
+  rename 's/bash/ruby/' bash.*
+
+
+# 至此，再进行定制就可以了。
+
+

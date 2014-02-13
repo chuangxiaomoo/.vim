@@ -1,0 +1,452 @@
+" ~/.vim/.cscope.vimrc|84|
+" ~/.vim/.forgot_vim_skills.vimrc 
+"
+" :helptags $VIMRUNTIME/doc
+" :helptags $HOME/.vim/doc/
+" :help quickref
+" :help c_CTRL-R_=
+"
+" -------- __Forbind__ below, or disaster come along  --------------
+"
+"           set term=xterm 
+"           map <ESC>     
+"
+syntax on
+syntax enable
+syntax clear Search
+source ~/.vim/.cscope.vimrc
+
+filetype plugin on
+filetype plugin indent on 
+
+"
+" set nowrapscan
+" expandtab, smarttab, shiftwidth, tabstop, softtabstop
+" set fileformats ff, if line end with , please check with /[^]$
+"
+set diffopt=context:1
+set et sta sw=4 tabstop=4 sts=4   
+set hls
+set cursorline
+set wildmenu
+set wildmode=longest,full
+set wrap
+set ru
+set nu
+set is
+set noic
+set noeb vb t_vb=
+set noshowmatch             "when type (),the cursor jump
+set nocursorcolumn
+set tabpagemax=20
+set winwidth=96
+set fileencodings=ucs-bom,utf-8,cp936,gb18030
+set scrolloff=3
+set tw=999
+set fo=cqMmt                " cqMmtrol             
+set cinoptions=:0           " switch case
+"et scroll=10               " default is half screen when <C-D>;
+"et autochdir 	            " when open a file, cd `dirname file`
+set background=light
+set showcmd
+set encoding=utf-8
+set splitbelow nosplitright
+set matchpairs+=<:>
+
+"
+" ttf relative path, and ttF obsolute 
+" tty yank to xm, and ttY append --- Don't use V but v to visual mode
+"
+
+noremap ttx     :r!cat ~/bin/.warehouse/xert.sh<CR>
+noremap ttd     :r!date +\%Y-\%m-\%d<CR>E
+noremap ttD     :r!date +\%Y.\%m.\%d<CR>E
+noremap ttt     :r!date +\%T<CR>E
+noremap ttf     o<C-R>%<ESC>vB
+noremap ttF     :cd /<CR>O<C-R>%<ESC>:cd -<CR>v0
+noremap ttp     mA:r!cat /dev/shm/xm<CR>
+vmap    tty     "yy:!> /dev/shm/xm<CR><CR>:vs /dev/shm/xm<CR>"yp:wq!<CR>
+vmap    ttY     "yy:vs /dev/shm/xm<CR>G"ygp:wq!<CR>
+
+"
+" upper and lower case
+"
+vmap    ttc     :B !tr 'A-Z' 'a-z'<CR>
+vmap    ttC     :B !tr 'a-z' 'A-Z'<CR>
+vmap    tti     ttc:'<,'>B:s#/#_#g<CR>
+
+ map    tth     Vtth
+vmap    tth     :s#/#_#g<CR>V:s#^#int get_#g<CR>V:s#$#(void *data);#g<CR>Vttc/xkd<CR>
+
+noremap ffp     :set fileencoding=cp936<CR>:w<CR>:set fileencoding<CR>
+noremap ffu     :set fileencoding=utf-8<CR>:w<CR>:set fileencoding<CR>
+noremap ffx     :set tw=999<CR>ggVGd
+noremap ff3     :copen<CR>gg/\<error\>\c<CR>
+noremap ff4     :copen<CR>gg/.arning:<CR>
+noremap ff5     :copen<CR>gg/undefined reference<CR>
+
+let mapleader=','
+let maplocalleader='\'
+
+function! Source_comma_map()
+    " Don't use map <buffer>, it will be clear by mapclear or so command
+    " nore <silent> <LocalLeader>g :<CR>
+    "inore <silent> <LocalLeader>g
+
+    no <silent> <leader>`  :tabe /root/.maintaince.txt<CR>
+    no <silent> <leader>1  :tabfirst<CR>
+    no <silent> <leader>2  :tablast<CR>
+    no          <leader>3  :grep -r "" *<Left><Left><Left>
+    no <silent> <leader>4  :set et sta ts=8 sw=8 sts=8<CR>
+    no <silent> <leader>5  :e <C-r>%<CR>
+    no <silent> <leader>q  :q!<CR>
+    "oremap     <leader>a  Occupied by Align, though ffx, no <leader>a 
+    "o <silent> <leader>b  Occupied by Boxdraw
+    no <silent> <leader>c  :botright copen 11<CR>
+    no          <leader>d  :cex system('  ')<Left><Left><Left>
+    no <silent> <leader>e  :tabe ~/.vimrc<CR>
+    no <silent> <leader>f  :set winwidth=30<CR>:NERDTreeToggle<CR>
+    no <silent> <leader>g  <C-W>gF
+    no <silent> <leader>h  :sh<CR>
+    no          <leader>i  :set ic<CR>
+    no          <leader>m  :!Markdown.pl --html4tags <C-R>% > /winc/md.html<CR> 
+    no <silent> <leader>n  :cnewer<CR>
+    no <silent> <leader>o  :colder<CR>
+    no <silent> <leader>r  :cclose<CR>:make!<CR><CR>:bo copen 11<CR>G
+   "no          <leader>s  :mapclear <buffer><CR>:source ~/.vimrc<CR>:echo ". vimrc succ!"<CR>
+    no          <leader>s                        :source ~/.vimrc<CR>:echo ". vimrc succ!"<CR>
+    no          <leader>x  :tabonly<CR><C-W>o
+    im          <leader>x <Esc>v3hs
+    "o <silent> <leader>t  Occupied by Align
+    no          <leader>w  :w!<CR>
+
+    no <S-Up>    <Up>   
+    no <S-Down>  <Down> 
+    no <S-Left>  <Left> 
+    no <S-Right> <Right>
+    "
+    " Mouse keys
+    " noremap <C-LeftDrag>  <LeftDrag> don't work very well
+    "
+    set mousetime=700
+    nnoremap <RightMouse>  <4-LeftMouse>
+
+    nnoremap <F6>          :set term=xterm mouse=a<CR>
+    nnoremap <F7>          :set term=linux mouse=<CR>
+    nnoremap <silent> <F3> :set nu<CR>
+    nnoremap <silent> <F4> :set nonu<CR>
+    nnoremap          <F5> :make run<CR>:copen<CR><CR>
+
+    " draw keys, Box or Remove
+    vmap <silent> <C-B> :B !sed -e '1s/+-/┌─/g' -e '1s/-+/─┐/g' -e '$s/+-/└─/g' -e '$s/-+/─┘/g' -e 's/-/─/g' -e 's/\|/│/g'<CR>
+    vmap <silent> <C-R> :B !sed -e 's/[+-]/ /g' -e 's/\|/ /g'<CR>
+
+    " del
+    cnoremap <C-Y>    <BS>
+    cnoremap <C-O>    <Del>
+    inoremap <C-Y>    <BS>
+    inoremap <C-O>    <Del>
+endf
+
+call Source_comma_map()
+
+" goyo
+let g:goyo_width = 88
+let g:goyo_margin_top = 0
+let g:goyo_margin_bottom = 0
+let g:goyo_linenr = 1
+
+" vi means inner, and va menas all of the block;
+nnoremap <C-Z>  va{zf
+nnoremap <C-F>  18<C-E>
+nnoremap <C-B>  18<C-Y>
+nnoremap <C-D>  18j
+nnoremap <C-U>  18k
+nnoremap <C-T>  <C-O>
+nnoremap <C-H>  mB*`B
+
+"
+" PuTTY -> setting -> Terminal -> Keyboard -> The Backspace key -> Control-?
+" SqCRT -> Default Session -> Terminal -> simulat -> map key -> BS send delete
+"
+
+inoremap <C-K>    <Up>
+inoremap <C-J>    <Down>
+inoremap <C-H>    <Esc>i
+inoremap <C-L>    <Right>
+
+inoremap <C-A>    <Home>
+inoremap <C-E>    <End>
+inoremap <C-B>    <S-Left>
+inoremap <C-F>    <S-Right>
+inoremap <C-G>    <ESC>lEa
+
+"noremap <C-K>    <ESC>lC
+inoremap <C-U>    <ESC>v0c
+inoremap <C-D>    <ESC> ce
+inoremap <C-W>    <ESC>vbc
+
+cnoremap <C-K>    <Up>
+cnoremap <C-J>    <Down>
+cnoremap <C-H>    <Left>
+cnoremap <C-L>    <Right>
+cnoremap <C-A>    <Home>
+cnoremap <C-E>    <End>
+
+cnoremap <C-B>    <S-Left>
+cnoremap <C-F>    <S-Right>
+
+" <C-X> is all for plugins
+
+cnor    <C-X>r  '<,'>s/\<\>//g<Left><Left><Left><Left><Left>
+
+nmap    <C-X>c  :tabonly<CR><C-W>o:quit<CR>
+nmap    <C-X>g  :Goyo<CR>
+nmap    <C-X>h  :syn keyword Search <C-R><C-W><CR>
+
+" 删除行末尾的空格
+" 删除指定内容的行
+nmap    <C-X>d  :%s/^  *$//ge<CR>:s/xkmcdz//ge<CR>
+nmap    <C-X>D  :s/^.*.*\n//g<Left><Left><Left><Left><Left><Left><Left>
+nmap    <C-X>r  :cclose<CR>:make! -C .. server<CR><CR>:bo copen 11<CR>G
+nmap    <C-X>h  :cclose<CR>:make! -C .. http1<CR><CR>:bo copen 11<CR>G
+nmap    <C-X>s  :%s#\<\>##g<Left><Left><Left><Left><Left>
+nmap    <C-X>t  :%s#[ \t][ \t]*$##g<CR>:%s#\t# #g<CR>:%s#  *#\t#g<CR>/xkcdef<CR>,4
+nmap    <C-X>/  /\<\><Left><Left>
+
+vmap    <C-X>s  :s#\<\>##g<Left><Left><Left><Left><Left>
+
+" 注意不完全初始化时，末尾追加`,`
+nmap    <C-X>a  0[{jv0]}k<C-X>a
+vmap    <C-X>a  :<C-U>AlignCtrl p0P0 {<CR>:'<,'>Align {<CR>:AlignCtrl p0P1 ,<CR>:'<,'>Align ,<CR>:AlignCtrl p0P0 }<CR>:'<,'>Align }<CR> 
+vmap    <C-X>D  :s/^.*.*\n//g<Left><Left><Left><Left><Left><Left><Left>
+vmap    <C-X>m  :<C-U>AlignCtrl Wp1P0 \\<CR>:'<,'>Align \\<CR>
+
+" -ppi4 to format preprocess code
+nmap    <C-X>i  ggVG<C-x>i
+vmap    <C-X>i  :<C-U>e ++ff=unix %<CR>:%s/<C-V><C-M>//ge<CR>:'<,'>!indent -ppi4
+        \ -bad -bap -nbbo -nbc -br -brs -ncdb
+        \ -ce -ci4 -cli0 -cp33 -ncs -d0 -nfc1 -nfca -hnl -lp -npcs -nprs -npsl
+        \ -saf -sai -saw -nsc -nsob -nss -lps -l84
+        \ --no-tabs -ip0 -i4
+        \ --declaration-indentation 8<CR><CR>
+
+" markdown -> 
+imap    <C-X>>  `->` 
+
+nmap <C-P>  :cp<CR>
+nmap <C-N>  :cn<CR>
+nmap <C-j>  :tabp<CR>
+nmap <C-k>  :tabn<CR>
+
+" CTRL-R CTRL-F the Filename under the cursor
+" CTRL-R CTRL-P the Filename under the cursor, expanded with 'path' as in |gf|
+" CTRL-R CTRL-W the word under the cursor
+" CTRL-R CTRL-A the W-O-R-D under the cursor; see |WORD|
+vmap <C-H>  "hy
+vmap <C-J>  "jy
+vmap <C-K>  "ky
+vmap <C-L>  "ly
+
+" vi( is conveniet to copy if()
+" use <C-V> instead of <V> to switch to VisualMode
+" use <C-R>0 to paste yank via y on INSERT mode
+imap <C-V>h <Esc>"hgPko
+imap <C-V>j <Esc>"jgPko
+imap <C-V>k <Esc>"kgPko
+imap <C-V>l <Esc>"lgpko
+
+" :vertical diffsplit FILE_RIGHT
+" do        - Get changes from other window into the current window.
+" dp        - Put the changes from current window into the other window.
+" [c        Jump backwards to the previous start of a change.
+" ]c        Jump forwards to the next start of a change.
+" zo        un-fold
+" zc        re-fold
+
+" :syntax keyword {group} {keyword} ...
+" 语法组 {group} -> DiffChange DiffAdd Search 
+hi DiffChange                      ctermbg=0
+hi DiffDelete                      cterm=reverse
+hi DiffAdd                         ctermfg=0
+hi CursorColumn     term=underline cterm=underline  ctermbg=NONE ctermfg=NONE
+
+" if getline(1) =~ '^/\*' || getline(1) =~ '^//' 
+function! Filetype_check()
+  if getline(1) =~ '^/[\*\/]' 
+      setf cpp
+  elseif getline(1) =~ '::' 
+      setf dosbatch 
+  elseif getline(1) =~ '^# ' 
+      setf markdown
+  endif
+endf
+
+function! Word_mode(num)
+    autocmd BufNewFile,BufRead,BufEnter * call Filetype_check()
+
+    if a:num == 1
+        cd /root/bin/.m1doc/
+    elseif a:num == 2
+        cd /root/bin/.m2doc/
+    elseif a:num == 0
+        " http://man.lupaworld.com/content/manage/vi/doc/change.html#fo-table
+        " gqq format current line
+        set ft=
+        set tw=76
+        setlocal fo-=a   " auto format paragraph is dangerous
+        setlocal fo-=l   " Long lines are broken in insert mode
+        setlocal fo+=tc  " Auto-wrap text using textwidth
+        setlocal fo+=ro  " insert the current comment leader
+        setlocal fo+=wn  " w & n don't work well, always 2
+        setlocal fo+=Mm  " formatoptions Mm work for CJK
+
+        " setlocal complete+=k./*
+        " setlocal iskeyword+= " change motion of 'w' '*'
+    endif
+endf
+
+" if bufname("%") == "" 
+
+if has("autocmd")
+ augroup vimrcEx
+ au!
+ autocmd BufReadPost *
+   \ if line("'\"") > 1 && line("'\"") <= line("$") |
+   \   exe "normal! g`\"" |
+   \ endif
+ augroup END
+
+ autocmd! bufwritepost                 .vimrc source ~/.vimrc
+ autocmd  BufNewFile Makefile          0r ~/.vim/skeleton/Makefile
+ autocmd  BufNewFile Makefile.prj      0r ~/.vim/skeleton/Makefile.prj
+ autocmd  BufNewFile README            0r ~/.vim/skeleton/README
+ autocmd  BufNewFile *.py              0r ~/.vim/skeleton/skeleton.py
+
+ autocmd  BufEnter,BufNewFile,BufRead  *.pl  setlocal makeprg=perl\ %
+ autocmd  BufEnter,BufNewFile,BufRead  *.py  setlocal makeprg=python\ %
+ autocmd  BufEnter,BufNewFile,BufRead  *.sh  setlocal makeprg=/bin/bash\ %
+ autocmd  FileType ruby                      setlocal makeprg=ruby\ %
+ autocmd  FileType ruby                      setlocal iskeyword+=_,$,@,%,#,-
+ autocmd  FileType sh                        setlocal makeprg=bash\ %
+ autocmd  FileType text                      setlocal textwidth=80
+ autocmd  FileType mysql                     setlocal complete+=k~/.vim/wordlists/mysql.list
+ autocmd  FileType mysql                     nmap <C-L>a :grep "CREATE PROCEDURE" <C-R>%<CR><CR>
+ autocmd  BufEnter,BufNewFile,BufRead  *.rc  setlocal ft=sh
+ autocmd  BufEnter,BufNewFile,BufRead  *.sh  setlocal complete+=k~/.vim/bash-support/wordlists/bash.list
+ autocmd  BufEnter,BufRead             *.inc setlocal ft=sh
+ autocmd  BufEnter,BufRead             *sql* setlocal ft=mysql
+ autocmd  BufNew,BufLeave,BufEnter,BufRead * checktime
+ autocmd  BufEnter,BufNewFile,BufRead  *.bsp setlocal ft=make
+ autocmd  BufEnter,BufNewFile,BufRead  *     call Introduce_boxdraw()
+
+ " end
+ autocmd  BufEnter,BufNewFile,BufRead m[0-9] set path=,,
+ autocmd  BufEnter,BufNewFile,BufRead    m1  call Word_mode(1)
+ autocmd  BufEnter,BufNewFile,BufRead    m2  call Word_mode(2)
+ 
+ " FileType
+ autocmd  FileType c        setlocal   path=.,/usr/include,/usr/local/include,,
+ autocmd  FileType cpp      setlocal   path=.,/usr/include,/usr/local/include,,
+ autocmd  FileType c        setlocal   complete+=k~/.vim/c-support/wordlists/c-c++-keywords.list
+ autocmd  FileType cpp      setlocal   complete+=k~/.vim/c-support/wordlists/*
+ autocmd  FileType python   setlocal   complete+=k~/.vim/pydiction-1.2/pydiction.py
+ autocmd  FileType python   setlocal   et sta sw=4 sts=4 scrolloff=1
+ autocmd  FileType markdown setlocal   et sta ts=2 sw=2 sts=2
+endif
+
+
+" user register y
+" 
+    "o            <C-W>b  buff
+    "o            <C-W>c  org is close, overload to :tabonly
+    "o            <C-W>o  current window the only one
+    "o            <C-W>q  quit, so frequently, so a more convenient key
+    "o            <C-W>s  split window
+    "o            <C-W>v  vspli window
+    
+    no <silent>   <C-W>c  :tabonly<CR><C-W>o
+    no <silent>   <C-W>d  :50vs ~/bin/stk/dbank<CR>ggn$h
+    no            <C-W>e  :vs<CR>:e <C-R><C-F><CR>
+    no <silent>   <C-W>f  :cclose<CR>:tabedit <C-R>%<CR>
+    no            <C-W>t  :tabedit 
+    no            <C-W>m  :vs ~/bin/m
+    no            <C-W>p  :vs .cscope.files<CR>
+    no            <C-W>x  :vs /dev/shm/xm<CR>
+
+"
+" ---------------- <C-M> double for quickfix jump -----------------------
+"
+nnoremap          <C-M>b  :!man bash<CR>
+nnoremap          <C-M>B  :set ft=sh<CR>
+nnoremap          <C-M>c  mA[{0f_lvf(h"yy`A:r!~/bin/7Lite 0 <C-R><C-A> <C-R>y <C-R>%<CR>f{
+nnoremap          <C-M>d  ?fn_<C-R><C-F>(<CR>f{%bb
+nnoremap          <C-M>f  lbvey[[2kO<ESC>:r!~/bin/7Lite 0 <C-R>0<CR>
+" fn_<C-R>0
+
+nnoremap <silent> <C-M>k  mA*`A:sp +b /dev/shm/ma<CR>:bd! {/dev/shm/ma}<CR>`A:!MANWIDTH=88 ma <cword><CR>:cclose<CR>:25sp /dev/shm/ma<CR>:set ic nonu ft=c<CR>
+nnoremap          <C-M>sd :!svn di <C-R><C-F><CR>
+nnoremap          <C-M>sl :!svn log  <C-R><C-F><CR>
+
+nnoremap          <C-M>u  :e ++ff=unix %
+nnoremap          <C-M>w  :call Word_mode(0)<CR>
+nnoremap      <C-M><C-M>  <CR>
+
+"
+" <C-C> can also interrupt grep, register 'y' is used in below <C-C>
+" reg 0~9 are used for yank and del, do occupy them
+" x is the default register of motion d x p 
+" yp just yank, ygp will put a newline
+"
+imap <C-C><C-S> <Esc>:w<CR>
+nmap <C-C><C-S> <Esc>:w<CR>
+vmap <C-C><C-S> <Esc>:w<CR>
+
+imap <C-C><C-A> <Esc>ggVG
+nmap <C-C><C-A> <Esc>ggVG
+
+vmap <C-C><C-C> "yy
+vmap <C-C><C-X> "yx
+
+vmap <C-C><C-V> "xx"yP
+imap <C-C><C-V> <Esc>"ypa
+nmap <C-C><C-V> "yp
+
+function! Escape_char(orgstr)
+    " % not in the list
+    " can't search string include '
+    let b:tmpstr = a:orgstr
+    
+    let b:tmpstr = substitute(b:tmpstr, '', '', 'g')
+    let b:tmpstr = substitute(b:tmpstr, '\[', '\\&', 'g')
+    let b:tmpstr = substitute(b:tmpstr, '\]', '\\&', 'g')
+    let b:tmpstr = substitute(b:tmpstr, '[.*^/?~$]', '\\&', 'g')
+
+    return b:tmpstr
+endf
+
+" 缩写后面输入[Ctrl+V]取消替换
+function! Ab_c()
+    iab #i #include
+    iab #w while
+endf
+
+call Ab_c()
+
+" select a word, and gv goto last 'gs word'
+" Append current word to highlight list
+" highlight current path
+" highlight visual WORD
+"
+" viW 选中一个块WORD
+"
+nmap gA mG/<C-R>/\\|<C-R><C-W><CR>`G
+nmap gh /<C-R>=Escape_char('<C-R><C-F>')<CR><CR>
+vmap gh  "yy/<C-R>=Escape_char('<C-R>y')<CR><CR>
+
+" copy a CHAR 
+nmap X xP
+vmap X xP
+
+" ~/.vim/.vi_test_file
+" ~/.vim/.map

@@ -1,0 +1,19 @@
+
+§ =============================================================
+§ ========== USER MACROS ======================================
+§ =============================================================
+§
+|AUTHOR|       = chuangxiaomoo
+|AUTHORREF|    = God helps those who help themselves
+|EMAIL|        = 
+|ORGANIZATION| = 
+|COPYRIGHT|    = Copyright (c) |YEAR|, |AUTHOR|
+§
+§ =============================================================
+§ ========== FILE INCLUDES ====================================
+§ =============================================================
+§
+|includefile| = ruby.comments.template
+|includefile| = ruby.statements.template
+|includefile| = ruby.paramsub.template
+§

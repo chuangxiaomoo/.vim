@@ -1,0 +1,44 @@
+# export begin
+ROOT=/winc/DL/1__interface/rslinux_v5t_serv
+# export end
+
+CROSS_COMPILE=arm_v5t_le-
+CC := $(CROSS_COMPILE)gcc
+XX := $(CROSS_COMPILE)g++
+AR	= $(CROSS_COMPILE)ar
+
+SRCS := $(wildcard *.c)
+CPPSRCS := $(wildcard *.cpp)
+OBJS := $(SRCS:%.c=%.o)
+CPPOBJS := $(CPPSRCS:%.cpp=%.opp)
+
+INCLUDE := -I. -Iinclude/ -I$(ROOT)/common/include 
+CFLAGS 	:= -g
+CPPFLAGS:= -g
+ARFLAGS := rcsv
+LDFLAGS := -lrt -lpthread
+A		:= $${PWD\#\#*/}.a
+
+
+all: $(A)
+
+$(A): $(OBJS) $(CPPOBJS)
+	$(AR) $(ARFLAGS) $@ $^
+	@cp $(A) $(ROOT)
+
+run r:
+	echo $(A)
+
+clean c:
+	rm -f a.out $(OBJS) $(CPPOBJS)
+
+%.o:%.c
+	@echo "----------compile $@------"
+	$(CC) -o $@ -c $< $(CFLAGS) $(INCLUDE)
+
+%.opp:%.cpp
+	@echo "----------compile $@------"
+	$(XX) -o $@ -c $< $(CFLAGS) $(INCLUDE)
+
+.PHONY: all clean c run r
+

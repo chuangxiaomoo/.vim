@@ -1,0 +1,41 @@
+#CROSS_COMPILE=arm_v5t_le-
+# ~/.vim/skeleton/Makefile
+# include ~/bin/.m1doc/make_var_debug
+
+CC := $(CROSS_COMPILE)gcc
+XX := $(CROSS_COMPILE)g++
+
+SRCS := $(wildcard *.c)
+EXEC := $(SRCS:%.c=%)
+COBJS := $(SRCS:%.c=%.o)
+
+CPPSRCS := $(wildcard *.cpp)
+EXECPP := $(CPPSRCS:%.cpp=%)
+CPPOBJS := $(CPPSRCS:%.cpp=%.oo)
+
+INCLUDE := -I. -I/usr/local/include/
+CFLAGS 	:= -g -Wall $(INCLUDE)
+CPPFLAGS:= $(CFLAGS)
+LDFLAGS := -lrt -lpthread -ldl
+LDLIBS  :=
+
+#	@echo $^
+all: $(EXEC) $(EXECPP)
+
+run r:
+
+# $(COBJS) $(CPPOBJS)
+clean c:
+	rm -f a.out $(EXEC) $(EXECPP) 
+
+%.i:%.c
+	@echo "----------compile $@------"
+	$(CC) -o $@ -E $< $(CFLAGS)
+
+%.ii:%.cpp
+	@echo "----------compile $@------"
+	$(CC) -o $@ -E $< $(CFLAGS)
+
+
+.PHONY: all a clean c run r
+
