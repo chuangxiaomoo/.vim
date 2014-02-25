@@ -445,8 +445,8 @@ nmap gh /<C-R>=Escape_char('<C-R><C-F>')<CR><CR>
 vmap gh  "yy/<C-R>=Escape_char('<C-R>y')<CR><CR>
 
 " copy a CHAR 
-nmap X xP
-vmap X xP
+nmap X vy
+vmap X y
 
 " ~/.vim/.vi_test_file
 " ~/.vim/.map
