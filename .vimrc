@@ -434,12 +434,12 @@ endf
 
 call Ab_c()
 
-" select a word, and gv goto last 'gs word'
-" Append current word to highlight list
-" highlight current path
-" highlight visual WORD
 "
-" viW 选中一个块WORD
+"  gA    Append current word to highlight list
+"  gh    highlight current path or WORD
+" vgh    highlight selected
+"
+"        viW 选中一个块WORD
 "
 nmap gA mG/<C-R>/\\|<C-R><C-W><CR>`G
 nmap gh /<C-R>=Escape_char('<C-R><C-F>')<CR><CR>
