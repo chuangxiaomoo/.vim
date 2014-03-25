@@ -96,7 +96,7 @@ function! Source_comma_map()
     no <silent> <leader>`  :tabe /root/.maintaince.txt<CR>
     no <silent> <leader>1  :tabfirst<CR>
     no <silent> <leader>2  :tablast<CR>
-    no          <leader>3  :grep -r "" *<Left><Left><Left>
+    no          <leader>3  :grep -r "" * .[a-z]*<S-Left><S-Left><Left><Left>
     no <silent> <leader>4  :set et sta ts=8 sw=8 sts=8<CR>
     no <silent> <leader>5  :e <C-r>%<CR>
     no <silent> <leader>q  :q!<CR>
