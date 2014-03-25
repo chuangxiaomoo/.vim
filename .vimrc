@@ -215,7 +215,7 @@ nmap    <C-X>t  :%s#[ \t][ \t]*$##g<CR>:%s#\t# #g<CR>:%s#  *#\t#g<CR>/xkcdef<CR>
 nmap    <C-X>/  /\<\><Left><Left>
 
 vmap    <C-X>s  :s#\<\>##g<Left><Left><Left><Left><Left>
-vmap    <C-X>h  xa``<ESC>Pl
+vmap    <C-X>h  c``<ESC>Pl
 
 " 注意不完全初始化时，末尾追加`,`
 nmap    <C-X>a  0[{jv0]}k<C-X>a
@@ -294,7 +294,7 @@ function! Word_mode(num)
         " http://man.lupaworld.com/content/manage/vi/doc/change.html#fo-table
         " gqq format current line
         set ft=
-        set tw=76
+        set tw=74
         setlocal fo-=a   " auto format paragraph is dangerous
         setlocal fo-=l   " Long lines are broken in insert mode
         setlocal fo+=tc  " Auto-wrap text using textwidth
