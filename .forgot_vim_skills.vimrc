@@ -72,3 +72,11 @@
 "   使用vim的会话(session)及viminfo
 " http://easwy.com/blog/archives/advanced-vim-skills-session-file-and-viminfo/
 
+
+" ----------------------------------------------------------------------------
+"   不加载vimrc
+"   $ vim -u NONE
+"
+"   不加载vimrc及plugin
+"   $ vim -N -u NONE
+" [vimrc调试技巧](http://www.chawenti.com/articles/3285.html)

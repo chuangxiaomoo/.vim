@@ -96,7 +96,7 @@ function! Source_comma_map()
     no <silent> <leader>`  :tabe /root/.maintaince.txt<CR>
     no <silent> <leader>1  :tabfirst<CR>
     no <silent> <leader>2  :tablast<CR>
-    no          <leader>3  :grep -r "" *<Left><Left><Left>
+    no          <leader>3  :grep -r "" * .[a-z]*<S-Left><S-Left><Left><Left>
     no <silent> <leader>4  :set et sta ts=8 sw=8 sts=8<CR>
     no <silent> <leader>5  :e <C-r>%<CR>
     no <silent> <leader>q  :q!<CR>
@@ -434,12 +434,12 @@ endf
 
 call Ab_c()
 
-" select a word, and gv goto last 'gs word'
-" Append current word to highlight list
-" highlight current path
-" highlight visual WORD
 "
-" viW 选中一个块WORD
+"  gA    Append current word to highlight list
+"  gh    highlight current path or WORD
+" vgh    highlight selected
+"
+"        viW 选中一个块WORD
 "
 nmap gA mG/<C-R>/\\|<C-R><C-W><CR>`G
 nmap gh /<C-R>=Escape_char('<C-R><C-F>')<CR><CR>
