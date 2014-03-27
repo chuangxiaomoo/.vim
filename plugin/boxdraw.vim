@@ -110,7 +110,7 @@ fu! <SID>E()
     vu <Right>
   en
   nun <Leader>e
-  nm <buffer> <Leader>b :call <SID>S()<CR>
+  nm <buffer> <Leader>bb :call <SID>S()<CR>
   cuna <buffer> perl
   let &ve=s:ve
   unlet s:ve

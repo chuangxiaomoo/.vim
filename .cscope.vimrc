@@ -11,6 +11,7 @@ let g:clang_close_preview=0
 
 " ---------------------- BufExplorer ----------------------------------
 " http://zhouliang.pro/2012/06/28/vim-buffer/
+" # the alternate buffer for ":e #" and CTRL-^
 let g:bufExplorerDefaultHelp=0       " Do not show default help.
 let g:bufExplorerShowRelativePath=1  " Show relative paths.
 let g:bufExplorerSortBy='mru'        " Sort by most recently used.
