@@ -102,6 +102,7 @@ function! Source_comma_map()
     no <silent> <leader>q  :q!<CR>
     "oremap     <leader>a  Occupied by Align, though ffx, no <leader>a 
     "o <silent> <leader>b  Occupied by Boxdraw BufExplorer
+    no          <leader>ba :tabedit <C-R>%<C-W>h
     no <silent> <leader>c  :botright copen 11<CR>
     no          <leader>d  :cex system('  ')<Left><Left><Left>
     no <silent> <leader>e  :tabe ~/.vimrc<CR>
