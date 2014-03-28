@@ -9,6 +9,17 @@ let g:clang_complete_auto = 0
 let g:clang_complete_copen = 0
 let g:clang_close_preview=0
 
+" ---------------------- BufExplorer ----------------------------------
+" http://zhouliang.pro/2012/06/28/vim-buffer/
+" # the alternate buffer for ":e #" and CTRL-^
+let g:bufExplorerDefaultHelp=0       " Do not show default help.
+let g:bufExplorerShowRelativePath=1  " Show relative paths.
+let g:bufExplorerSortBy='mru'        " Sort by most recently used.
+let g:bufExplorerSplitRight=0        " Split left.
+let g:bufExplorerSplitVertical=1     " Split vertically.
+let g:bufExplorerSplitVertSize=36    " Split width
+let g:bufExplorerUseCurrentWindow=0  " Open in new window.
+
 " ---------------------- NERD Tree ------------------------------------
 "et NERDTreeIgnore=['\.o$', '\.a$', '\.out$', '^tags$', '\.sh$', '\~$']
 let NERDTreeIgnore=['\.o$', '\.a$', '\.out$', '^tags$', '\~$']
@@ -99,8 +110,8 @@ nmap <C-L>a  :cs find s
 nmap <C-L>e  :cs find e <C-R>=expand("<cword>")<CR>
 nmap <C-L>E  :grep -i '' `cat .cscope.files`<Home><S-Right><S-Right><Right><Right>
 nmap <C-L>m  :cclose<CR>:60vs Makefile<CR>:%s/run\ r://e<CR>u h
-nmap <C-L>p  <C-L>1:e .cscope.files<CR>
-nmap <C-L>P  :tabedit .cscope.files<CR>
+nmap <C-L>p  mF:e .cscope.files<CR>
+nmap <C-L>P  mF:tabedit .cscope.files<CR>
 
 " 1st time, run `csgen` on command; `csgen -f` convenient for customize .cscope.file 
 nmap <C-L>z  :cs kill .cscope.out<CR>:!csgen -f<CR>:cs add .cscope.out<CR>jk

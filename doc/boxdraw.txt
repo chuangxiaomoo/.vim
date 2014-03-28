@@ -30,7 +30,7 @@ specified direction.
 
     +--------------------------------------------------------------+
     |                                                              |
-    |       <leader>* only available after <leader>b               |
+    |       <leader>* only available after <leader>bb              |
     |                                                              |
     +--------------------------------------------------------------+
 
