@@ -131,9 +131,8 @@ nmap <C-L>r  :mksession! .vimsession<CR>:wviminfo! .viminfo<CR>
 nmap <C-L>R  :source .vimsession<CR>:rviminfo .viminfo<cR> 
 
 "
-" k for onlyone keyword
-" Kr for function
-" Kd for destruct
+" k for C/C++ keyword
+" ` for construction and destruction
 "
 nmap <silent> <C-L>k  :copen<CR>/>>[^,]*\(typedef\\|struct\\|enum\\|union\\|define\\|case\\|class\)<CR>
 nmap <silent> <C-L>`  :copen<CR>/>>[^,]*\(::\~<C-R>l\\|::<C-R>l\).*[^;]<CR>
