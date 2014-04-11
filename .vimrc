@@ -204,20 +204,23 @@ cnor    <C-X>r  '<,'>s/\<\>//g<Left><Left><Left><Left><Left>
 
 nmap    <C-X>c  :tabonly<CR><C-W>o:quit<CR>
 nmap    <C-X>g  :Goyo<CR>
-nmap    <C-X>h  :syn keyword Search <C-R><C-W><CR>
+
 
 " 删除行末尾的空格
 " 删除指定内容的行
 nmap    <C-X>d  :%s/^  *$//ge<CR>:s/xkmcdz//ge<CR>
 nmap    <C-X>D  :s/^.*.*\n//g<Left><Left><Left><Left><Left><Left><Left>
 nmap    <C-X>r  :cclose<CR>:make! -C .. server<CR><CR>:bo copen 11<CR>G
-nmap    <C-X>h  :cclose<CR>:make! -C .. http1<CR><CR>:bo copen 11<CR>G
 nmap    <C-X>s  :%s#\<\>##g<Left><Left><Left><Left><Left>
 nmap    <C-X>t  :%s#[ \t][ \t]*$##g<CR>:%s#\t# #g<CR>:%s#  *#\t#g<CR>/xkcdef<CR>,4
 nmap    <C-X>/  /\<\><Left><Left>
 
+" 高亮及替换
+"map    <C-X>h  :syn keyword Search <C-R><C-W><CR>
 vmap    <C-X>s  :s#\<\>##g<Left><Left><Left><Left><Left>
 vmap    <C-X>h  c``<ESC>Pl
+vmap         "  c""<ESC>Pl
+vmap         '  c''<ESC>Pl
 
 " 注意不完全初始化时，末尾追加`,`
 nmap    <C-X>a  0[{jv0]}k<C-X>a
