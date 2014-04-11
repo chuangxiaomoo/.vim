@@ -219,8 +219,8 @@ nmap    <C-X>/  /\<\><Left><Left>
 "map    <C-X>h  :syn keyword Search <C-R><C-W><CR>
 vmap    <C-X>s  :s#\<\>##g<Left><Left><Left><Left><Left>
 vmap    <C-X>h  c``<ESC>Pl
-vmap         "  c""<ESC>Pl
-vmap         '  c''<ESC>Pl
+vmap    <C-X>"  c""<ESC>Pl
+vmap    <C-X>'  c''<ESC>Pl
 
 " 注意不完全初始化时，末尾追加`,`
 nmap    <C-X>a  0[{jv0]}k<C-X>a
