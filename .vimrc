@@ -395,7 +395,7 @@ nnoremap          <C-M>sl :!svn log  <C-R><C-F><CR>
 
 nnoremap          <C-M>u  :e ++ff=unix %
 nnoremap          <C-M>w  :call Word_mode(0)<CR>
-nnoremap      <C-M><C-M>  <CR> 
+nnoremap      <C-M><C-M>  <CR>
 
 "
 " <C-C> can also interrupt grep, register 'y' is used in below <C-C>
