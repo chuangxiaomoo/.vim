@@ -100,7 +100,6 @@ function! Source_comma_map()
     no <silent> <leader>4  :set et sta ts=8 sw=8 sts=8<CR>
     no <silent> <leader>5  :e <C-r>%<CR>
     no <silent> <leader>q  :q!<CR>
-    inoremap    <leader>a  →
     "oremap     <leader>a  Occupied by Align, though ffx, no <leader>a 
     "o <silent> <leader>b  Occupied by Boxdraw BufExplorer
     no          <leader>ba :tabedit <C-R>%<C-W>h
