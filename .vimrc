@@ -297,8 +297,9 @@ function! Word_mode(num)
     elseif a:num == 0
         " http://man.lupaworld.com/content/manage/vi/doc/change.html#fo-table
         " gqq format current line
-        set ft=
-        set tw=74
+        setlocal ft=
+        setlocal tw=74
+        setlocal et sta ts=2 sw=2 sts=2
         setlocal fo-=a   " auto format paragraph is dangerous
         setlocal fo-=l   " Long lines are broken in insert mode
         setlocal fo+=tc  " Auto-wrap text using textwidth
