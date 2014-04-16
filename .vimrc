@@ -267,7 +267,7 @@ imap <C-V>l <Esc>"lgpko
 " [c        Jump backwards to the previous start of a change.
 " ]c        Jump forwards to the next start of a change.
 " zo        un-fold
-" zc        re-fold
+" zc        re-fold, __SELECT__ all and zc to re-diff
 
 " :syntax keyword {group} {keyword} ...
 " 语法组 {group} -> DiffChange DiffAdd Search 

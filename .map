@@ -4,7 +4,8 @@
 
 +-----------------------------------------------------------------------+
 |                                                                       |
-|              Map                                                      |
+|          Map and Template of support                                  |
+|                                                                       |
 +-------+---------------------------------------------------------------+
 |bash   |  ~/.vim/ftplugin/sh.vim|147|                                  |
 |       |  ~/.vim/bash-support/templates/bash.statements.template       |
@@ -15,8 +16,9 @@
 |perl   |  ~/.vim/perl-support/templates/statements.templates           |
 |       |  ~/.vim/perl-support/templates/idioms.templates               |
 |       |                                                               |
-|C      |  ~/.vim/ftplugin/c.vim                                        |
-|       |                                                               |
+|C      |  ~/.vim/c-support/templates/c.idioms.template                 |
+|       |  ~/.vim/c-support/templates/c.statements.template             |
+|       |  ~/.vim/ftplugin/c.vim|139|                                   |
 +-------+---------------------------------------------------------------+
 |arrow2 |  ~/.vim/plugin/arrow2.vim                                     |
 |       |                                                               |
@@ -32,11 +34,6 @@
 |                                                                       |
 |               Template of support                                     |
 |                                                                       |
-+-----------------------------------------------------------------------+
-+-----------------------------------------------------------------------+
-|C       ~/.vim/c-support/templates/c.idioms.template                   |
-|        ~/.vim/c-support/templates/c.statements.template               |
-|        ~/.vim/ftplugin/c.vim|139|                                     |
 +-----------------------------------------------------------------------+
 |Syntax                                                                 |
 |                                                                       |

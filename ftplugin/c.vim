@@ -151,8 +151,8 @@ inoremap  <buffer>  <silent>  <LocalLeader>sr      <Esc>:call C_InsertTemplate("
 inoremap  <buffer>  <silent>  <LocalLeader>sv      <Esc>:call C_InsertTemplate("statements.return_if_fail")<CR>
 " noremap <buffer>  <silent>  <LocalLeader>sv           :call C_InsertTemplate("statements.sy_ret")<CR>
 "inoremap <buffer>  <silent>  <LocalLeader>sv      <Esc>:call C_InsertTemplate("statements.sy_ret")<CR>
- noremap  <buffer>  <silent>  <LocalLeader>sg           :call C_InsertTemplate("statements.sy_goto")<CR>
-inoremap  <buffer>  <silent>  <LocalLeader>sg      <Esc>:call C_InsertTemplate("statements.sy_goto")<CR>
+ noremap  <buffer>  <silent>  <LocalLeader>sg           :call C_InsertTemplate("statements.goto_tag_if_fail")<CR>
+inoremap  <buffer>  <silent>  <LocalLeader>sg      <Esc>:call C_InsertTemplate("statements.goto_tag_if_fail")<CR>
 " above is self-def
  noremap    <buffer>  <silent>  <LocalLeader>sd         :call C_InsertTemplate("statements.do-while")<CR>
 vnoremap    <buffer>  <silent>  <LocalLeader>sd    <Esc>:call C_InsertTemplate("statements.do-while", "v")<CR>
