@@ -34,7 +34,7 @@ let NERDTreeShowFiles=1
 let NERDTreeShowHidden=0
 let NERDTreeShowLineNumbers=0
 let NERDTreeWinPos='right'
-let NERDTreeWinSize=28
+let NERDTreeWinSize=40
 
 " ---------------------- Taglist <F1> to show help --------------------
 let Tlist_Inc_Winwidth=0
