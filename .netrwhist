@@ -1,6 +1,7 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_cnt =5
 let g:netrw_dirhist_1='/home/q/filesys/app/vs/conf'
 let g:netrw_dirhist_2='/root/c/S/net/multibroad'
 let g:netrw_dirhist_3='/root/c/S/xml'
 let g:netrw_dirhist_4='/root/txt'
+let g:netrw_dirhist_5='/home/n/filesys'
