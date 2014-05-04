@@ -386,7 +386,7 @@ endif
 nnoremap          <C-M>b  :!man bash<CR>
 nnoremap          <C-M>B  :set ft=sh<CR>
 nnoremap          <C-M>c  mA[{0f_lvf(h"yy`A:r!~/bin/7Lite 0 <C-R><C-A> <C-R>y <C-R>%<CR>f{
-nnoremap          <C-M>d  ?fn_<C-R><C-F>(<CR>f{%bb
+nnoremap          <C-M>d  ?\<<C-R><C-F>(\\|fn_<C-R><C-F>(<CR>f{%bb
 nnoremap          <C-M>f  lbvey[[2kO<ESC>:r!~/bin/7Lite 0 <C-R>0<CR>
 " fn_<C-R>0
 
