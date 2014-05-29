@@ -63,6 +63,7 @@ while <CURSOR> ; do
 function |?FUNCTION_NAME|()
 {
 <CURSOR><SPLIT>
+<SPLIT>return $?
 }
 §%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 == statements.mfunction ==
