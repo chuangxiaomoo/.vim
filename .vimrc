@@ -24,6 +24,9 @@ filetype plugin indent on
 " expandtab, smarttab, shiftwidth, tabstop, softtabstop
 " set fileformats ff, if line end with , please check with /[^]$
 "
+" no beep or flash is wanted
+set vb t_vb=
+
 set diffopt=context:1
 set et sta sw=4 tabstop=4 sts=4   
 set hls
