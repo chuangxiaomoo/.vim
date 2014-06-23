@@ -217,6 +217,7 @@ nmap    <C-X>r  :cclose<CR>:make! -C .. server<CR><CR>:bo copen 11<CR>G
 nmap    <C-X>s  :%s#\<\>##g<Left><Left><Left><Left><Left>
 nmap    <C-X>t  :%s#[ \t][ \t]*$##g<CR>:%s#\t# #g<CR>:%s#  *#\t#g<CR>/xkcdef<CR>,4
 nmap    <C-X>/  /\<\><Left><Left>
+nmap    <C-X>?  ?\<\><Left><Left>
 
 " 高亮及替换
 "map    <C-X>h  :syn keyword Search <C-R><C-W><CR>
