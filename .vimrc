@@ -222,6 +222,8 @@ nmap    <C-X>?  ?\<\><Left><Left>
 " 高亮及替换
 "map    <C-X>h  :syn keyword Search <C-R><C-W><CR>
 vmap    <C-X>s  :s#\<\>##g<Left><Left><Left><Left><Left>
+vmap    <C-X>(  c()<ESC>Pl
+vmap    <C-X>[  c[]<ESC>Pl
 vmap    <C-X>h  c``<ESC>Pl
 vmap    <C-X>"  c""<ESC>Pl
 vmap    <C-X>'  c''<ESC>Pl
@@ -285,14 +287,15 @@ hi CursorColumn     term=underline cterm=underline  ctermbg=NONE ctermfg=NONE
 function! Filetype_check()
   if getline(1) =~ '^/[\*\/]' 
       setf cpp
-  elseif getline(1) =~ '::' 
+  elseif getline(1) =~ '::'
       setf dosbatch 
-  elseif getline(1) =~ '^# ' 
+  elseif getline(1) =~ '^# '
       setf markdown
   endif
 endf
 
 function! Word_mode(num)
+    " :call Filetype_check()
     autocmd BufNewFile,BufRead,BufEnter * call Filetype_check()
 
     if a:num == 1
@@ -401,6 +404,7 @@ nnoremap          <C-M>sl :!svn log  <C-R><C-F><CR>
 
 nnoremap          <C-M>u  :e ++ff=unix %
 nnoremap          <C-M>w  :call Word_mode(0)<CR>
+nnoremap          <C-M>W  :call Filetype_check()<CR>
 nnoremap      <C-M><C-M>  <CR>
 
 "
