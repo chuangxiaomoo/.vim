@@ -16,17 +16,22 @@ CPPOBJS := $(CPPSRCS:%.cpp=%.oo)
 INCLUDE := -I. -I/usr/local/include/
 CFLAGS 	:= -g -Wall $(INCLUDE)
 CPPFLAGS:= $(CFLAGS)
-LDFLAGS := -lrt -lpthread -ldl
-LDLIBS  :=
+LDFLAGS := -lrt -ldl -lmxml -lpthread 
+# LDLIBS  := /usr/local/lib/libmxml.a
 
-#	@echo $^
 all: $(EXEC) $(EXECPP)
+
+$(EXEC) $(EXECPP):
+	$(CC) -o $@ $@.o $(LDLIBS)  $(LDFLAGS)
 
 run r:
 
 # $(COBJS) $(CPPOBJS)
 clean c:
 	rm -f a.out $(EXEC) $(EXECPP) 
+
+%.o:%.c
+	$(CC) -o $@ -c $< $(CFLAGS)
 
 %.i:%.c
 	@echo "----------compile $@------"
@@ -38,4 +43,5 @@ clean c:
 
 
 .PHONY: all a clean c run r
+
 
