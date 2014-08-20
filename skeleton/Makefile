@@ -21,7 +21,7 @@ LDFLAGS := -lrt -ldl -lmxml -lpthread
 
 all: $(EXEC) $(EXECPP)
 
-$(EXEC) $(EXECPP):
+$(EXEC) $(EXECPP): %:%.o
 	$(CC) -o $@ $@.o $(LDLIBS)  $(LDFLAGS)
 
 run r:
