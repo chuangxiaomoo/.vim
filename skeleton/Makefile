@@ -16,7 +16,7 @@ CPPOBJS := $(CPPSRCS:%.cpp=%.oo)
 INCLUDE := -I. -I/usr/local/include/
 CFLAGS 	:= -g -Wall $(INCLUDE)
 CPPFLAGS:= $(CFLAGS)
-LDFLAGS := -lrt -ldl -lmxml -lpthread 
+LDFLAGS := -lrt -ldl -lmxml -pthread 
 # LDLIBS  := /usr/local/lib/libmxml.a
 
 all: $(EXEC) $(EXECPP)
