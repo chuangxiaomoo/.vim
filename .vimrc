@@ -84,6 +84,7 @@ vmap    tth     :s#/#_#g<CR>V:s#^#int get_#g<CR>V:s#$#(void *data);#g<CR>Vttc/xk
 noremap ffp     :set fileencoding=cp936<CR>:w<CR>:set fileencoding<CR>
 noremap ffu     :set fileencoding=utf-8<CR>:w<CR>:set fileencoding<CR>
 noremap ffx     :set tw=999<CR>ggVGd
+noremap ffv     ggVG
 noremap ff3     :copen<CR>gg/\<error\>\c<CR>
 noremap ff4     :copen<CR>gg/.arning:<CR>
 noremap ff5     :copen<CR>gg/undefined reference<CR>
@@ -227,6 +228,7 @@ vmap    <C-X>[  c[]<ESC>Pl
 vmap    <C-X>h  c``<ESC>Pl
 vmap    <C-X>"  c""<ESC>Pl
 vmap    <C-X>'  c''<ESC>Pl
+vmap    <C-X>*  c**<ESC>Pl
 
 " 注意不完全初始化时，末尾追加`,`
 nmap    <C-X>a  0[{jv0]}k<C-X>a
@@ -306,7 +308,7 @@ function! Word_mode(num)
         " http://man.lupaworld.com/content/manage/vi/doc/change.html#fo-table
         " gqq format current line
         setlocal ft=
-        setlocal tw=74
+        setlocal tw=76
         setlocal et sta ts=2 sw=2 sts=2
         setlocal fo-=a   " auto format paragraph is dangerous
         setlocal fo-=l   " Long lines are broken in insert mode
