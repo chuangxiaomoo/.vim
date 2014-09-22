@@ -348,6 +348,7 @@ if has("autocmd")
  autocmd  FileType text                      setlocal textwidth=80
  autocmd  FileType mysql                     setlocal complete+=k~/.vim/wordlists/mysql.list
  autocmd  FileType mysql                     nmap <C-L>a :grep "CREATE PROCEDURE" <C-R>%<CR><CR>
+ autocmd  FileType make                      imap <localleader>svv $()<left>
  autocmd  BufEnter,BufNewFile,BufRead  *.rc  setlocal ft=sh
  autocmd  BufEnter,BufNewFile,BufRead  *.sh  setlocal complete+=k~/.vim/bash-support/wordlists/bash.list
  autocmd  BufEnter,BufRead             *.inc setlocal ft=sh
