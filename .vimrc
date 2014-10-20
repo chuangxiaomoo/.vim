@@ -214,7 +214,7 @@ nmap    <C-X>g  :Goyo<CR>
 " 删除指定内容的行
 nmap    <C-X>d  :%s/^  *$//ge<CR>:s/xkmcdz//ge<CR>
 nmap    <C-X>D  :s/^.*.*\n//g<Left><Left><Left><Left><Left><Left><Left>
-nmap    <C-X>r  :cclose<CR>:make! -C .. server<CR><CR>:bo copen 11<CR>G
+nmap    <C-X>r  :cclose<CR>:make! -C .. hisi<CR><CR>:bo copen 11<CR>G
 nmap    <C-X>s  :%s#\<\>##g<Left><Left><Left><Left><Left>
 nmap    <C-X>t  :%s#[ \t][ \t]*$##g<CR>:%s#\t# #g<CR>:%s#  *#\t#g<CR>/xkcdef<CR>,4
 nmap    <C-X>/  /\<\><Left><Left>
@@ -307,7 +307,7 @@ function! Word_mode(num)
     elseif a:num == 0
         " http://man.lupaworld.com/content/manage/vi/doc/change.html#fo-table
         " gqq format current line
-        setlocal ft=
+        setlocal ft=markdown
         setlocal tw=76
         setlocal et sta ts=2 sw=2 sts=2
         setlocal fo-=a   " auto format paragraph is dangerous
