@@ -85,6 +85,8 @@ noremap ffp     :set fileencoding=cp936<CR>:w<CR>:set fileencoding<CR>
 noremap ffu     :set fileencoding=utf-8<CR>:w<CR>:set fileencoding<CR>
 noremap ffx     :set tw=999<CR>ggVGd
 noremap ffv     ggVG
+noremap ffs     :mksession! .session.vim<CR>
+noremap ffl     :source .session.vim<CR><CR>
 noremap ff3     :copen<CR>gg/\<error\>\c<CR>
 noremap ff4     :copen<CR>gg/.arning:<CR>
 noremap ff5     :copen<CR>gg/undefined reference<CR>
@@ -214,11 +216,12 @@ nmap    <C-X>g  :Goyo<CR>
 " 删除指定内容的行
 nmap    <C-X>d  :%s/^  *$//ge<CR>:s/xkmcdz//ge<CR>
 nmap    <C-X>D  :s/^.*.*\n//g<Left><Left><Left><Left><Left><Left><Left>
-nmap    <C-X>r  :cclose<CR>:make! -C .. hisi<CR><CR>:bo copen 11<CR>G
+nmap    <C-X>r  :cclose<CR>:make! -C .. main<CR><CR>:bo copen 11<CR>G
 nmap    <C-X>s  :%s#\<\>##g<Left><Left><Left><Left><Left>
 nmap    <C-X>t  :%s#[ \t][ \t]*$##g<CR>:%s#\t# #g<CR>:%s#  *#\t#g<CR>/xkcdef<CR>,4
 nmap    <C-X>/  /\<\><Left><Left>
 nmap    <C-X>?  ?\<\><Left><Left>
+vmap    <C-X>/  c/*  */<ESC><Left><Left>Pl
 
 " 高亮及替换
 "map    <C-X>h  :syn keyword Search <C-R><C-W><CR>
