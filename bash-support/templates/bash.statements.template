@@ -38,11 +38,11 @@ for (( i=0; i<<CURSOR>0; i+=1 )); do
 <SPLIT>done
 §%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 == statements.if ==
-if [ "${<CURSOR>}" ] ; then
+if [ "${<CURSOR>}" ]; then
 <SPLIT>fi
 §%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 == statements.if-else ==
-if [ "${<CURSOR>}" ] ; then
+if [ "${<CURSOR>}" ]; then
 <SPLIT>
 else
 fi
