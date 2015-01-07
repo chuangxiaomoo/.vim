@@ -24,6 +24,9 @@ filetype plugin indent on
 " expandtab, smarttab, shiftwidth, tabstop, softtabstop
 " set fileformats ff, if line end with , please check with /[^]$
 "
+" 无 折 返 查 找
+" set nowrapscan
+
 " no beep or flash is wanted
 set vb t_vb=
 
@@ -373,6 +376,7 @@ if has("autocmd")
  autocmd  FileType python   setlocal   complete+=k~/.vim/pydiction-1.2/pydiction.py
  autocmd  FileType python   setlocal   et sta sw=4 sts=4 scrolloff=1
  autocmd  FileType markdown setlocal   et sta ts=2 sw=2 sts=2
+ autocmd  FileType xml      setlocal   et sta ts=2 sw=2 sts=2
 endif
 
 
@@ -462,6 +466,7 @@ call Ab_c()
 "        viW 选中一个块WORD
 "
 nmap gA mG/<C-R>/\\|<C-R><C-W><CR>`G
+vmap gA <C-L>mG/<C-R>/\\|<C-R>l<CR>`G
 nmap gh /<C-R>=Escape_char('<C-R><C-F>')<CR><CR>
 vmap gh  "yy/<C-R>=Escape_char('<C-R>y')<CR><CR>
 
