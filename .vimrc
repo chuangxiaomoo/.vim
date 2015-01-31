@@ -231,6 +231,7 @@ vmap    <C-X>/  c/*  */<ESC><Left><Left>Pl
 vmap    <C-X>s  :s#\<\>##g<Left><Left><Left><Left><Left>
 vmap    <C-X>(  c()<ESC>Pl
 vmap    <C-X>[  c[]<ESC>Pl
+vmap    <C-X>{  c{}<ESC>Pl
 vmap    <C-X>h  c``<ESC>Pl
 vmap    <C-X>"  c""<ESC>Pl
 vmap    <C-X>'  c''<ESC>Pl
@@ -283,6 +284,7 @@ imap <C-V>l <Esc>"lgpko
 " ]c        Jump forwards to the next start of a change.
 " zo        un-fold
 " zc        re-fold, __SELECT__ all and zc to re-diff
+" zf        fold __SELECT__
 
 " :syntax keyword {group} {keyword} ...
 " 语法组 {group} -> DiffChange DiffAdd Search 
