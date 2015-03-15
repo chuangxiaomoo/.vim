@@ -45,7 +45,7 @@ set noeb vb t_vb=
 set noshowmatch             "when type (),the cursor jump
 set nocursorcolumn
 set tabpagemax=20
-set winwidth=96
+set winwidth=82
 set fileencodings=ucs-bom,utf-8,cp936,gb18030
 set scrolloff=3
 set tw=999
@@ -83,6 +83,8 @@ vmap    tti     ttc:'<,'>B:s#/#_#g<CR>
 
  map    tth     Vtth
 vmap    tth     :s#/#_#g<CR>V:s#^#int get_#g<CR>V:s#$#(void *data);#g<CR>Vttc/xkd<CR>
+
+vmap    fff     JV4<Vgq
 
 noremap ffp     :set fileencoding=cp936<CR>:w<CR>:set fileencoding<CR>
 noremap ffu     :set fileencoding=utf-8<CR>:w<CR>:set fileencoding<CR>
@@ -371,6 +373,7 @@ if has("autocmd")
  autocmd  BufEnter,BufNewFile,BufRead    m2  call Word_mode(2)
  
  " FileType
+ autocmd  FileType sh       setlocal   isk-=.
  autocmd  FileType c        setlocal   path=.,/usr/include,/usr/local/include,,
  autocmd  FileType cpp      setlocal   path=.,/usr/include,/usr/local/include,,
  autocmd  FileType c        setlocal   complete+=k~/.vim/c-support/wordlists/c-c++-keywords.list
