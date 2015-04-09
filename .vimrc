@@ -363,6 +363,7 @@ if has("autocmd")
  autocmd  BufEnter,BufNewFile,BufRead  *.sh  setlocal complete+=k~/.vim/bash-support/wordlists/bash.list
  autocmd  BufEnter,BufRead             *.inc setlocal ft=sh
  autocmd  BufEnter,BufRead             *sql* setlocal ft=mysql
+ autocmd  BufEnter,BufRead           chan.md cd ~/bin/stk/.chan/
  autocmd  BufNew,BufLeave,BufEnter,BufRead * checktime
  autocmd  BufEnter,BufNewFile,BufRead  *.bsp setlocal ft=make
  autocmd  BufEnter,BufNewFile,BufRead  *     call Introduce_boxdraw()
