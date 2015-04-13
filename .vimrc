@@ -239,6 +239,10 @@ vmap    <C-X>"  c""<ESC>Pl
 vmap    <C-X>'  c''<ESC>Pl
 vmap    <C-X>*  c**<ESC>Pl
 
+vmap    <C-X>u  c[]()<ESC>hhPl
+imap    <C-X>u  []()<ESC>hhi
+nmap    <C-X>u  a[]()<ESC>hhi
+
 " 注意不完全初始化时，末尾追加`,`
 nmap    <C-X>a  0[{jv0]}k<C-X>a
 vmap    <C-X>a  :<C-U>AlignCtrl p0P0 {<CR>:'<,'>Align {<CR>:AlignCtrl p0P1 ,<CR>:'<,'>Align ,<CR>:AlignCtrl p0P0 }<CR>:'<,'>Align }<CR> 
