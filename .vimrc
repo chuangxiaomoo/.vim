@@ -408,6 +408,7 @@ endif
     no            <C-W>m  :vs ~/bin/m
     no            <C-W>p  :vs .cscope.files<CR>
     no            <C-W>x  :vs /dev/shm/xm<CR>
+nnoremap          <C-W>.  0*:sp .codelist<CR>nyy:q<CR>pk
 
 "
 " ---------------- <C-M> double for quickfix jump -----------------------
