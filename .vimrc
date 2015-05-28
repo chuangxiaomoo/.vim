@@ -292,6 +292,7 @@ imap <C-V>l <Esc>"lgpko
 " zo        un-fold
 " zc        re-fold, __SELECT__ all and zc to re-diff
 " zf        fold __SELECT__
+set fdm=marker
 
 " :syntax keyword {group} {keyword} ...
 " 语法组 {group} -> DiffChange DiffAdd Search 
