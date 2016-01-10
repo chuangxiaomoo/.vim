@@ -85,6 +85,8 @@ vmap    tti     ttc:'<,'>B:s#/#_#g<CR>
 vmap    tth     :s#/#_#g<CR>V:s#^#int get_#g<CR>V:s#$#(void *data);#g<CR>Vttc/xkd<CR>
 
 vmap    fff     JV4<Vgq
+vmap    fft     :s/  */	/g<CR>
+noremap fft     :%s/  */	/g<CR>
 
 noremap ffp     :set fileencoding=cp936<CR>:w<CR>:set fileencoding<CR>
 noremap ffu     :set fileencoding=utf-8<CR>:w<CR>:set fileencoding<CR>
@@ -130,6 +132,8 @@ function! Source_comma_map()
     no          <leader>s                        :source ~/.vimrc<CR>:echo ". vimrc succ!"<CR>
     no          <leader>x  :tabonly<CR><C-W>o
     im          <leader>x <Esc>v3hs
+    im          <leader>> ＞
+    im          <leader>< ＜
     "o <silent> <leader>t  Occupied by Align
     no          <leader>w  :w!<CR>
 
@@ -231,6 +235,7 @@ vmap    <C-X>/  c/*  */<ESC><Left><Left>Pl
 " 高亮及替换
 "map    <C-X>h  :syn keyword Search <C-R><C-W><CR>
 vmap    <C-X>s  :s#\<\>##g<Left><Left><Left><Left><Left>
+vmap    <C-X>_  c__<ESC>Pl
 vmap    <C-X><  c<><ESC>Pl
 vmap    <C-X>(  c()<ESC>Pl
 vmap    <C-X>[  c[]<ESC>Pl
@@ -239,6 +244,8 @@ vmap    <C-X>h  c``<ESC>Pl
 vmap    <C-X>"  c""<ESC>Pl
 vmap    <C-X>'  c''<ESC>Pl
 vmap    <C-X>*  c**<ESC>Pl
+
+vmap    <C-X>f  c{{{<CR><C-R>"}}}<ESC>
 
 vmap    <C-X>u  c[]()<ESC>hhPl
 imap    <C-X>u  []()<ESC>i
@@ -290,7 +297,8 @@ imap <C-V>l <Esc>"lgpko
 " [c        Jump backwards to the previous start of a change.
 " ]c        Jump forwards to the next start of a change.
 " zo        un-fold
-" zc        re-fold, __SELECT__ all and zc to re-diff
+" zc        when normal, re-fold inside {}
+"           when visual, re-fold all {} inside __SELECTed__
 " zf        fold __SELECT__
 set fdm=marker
 
@@ -324,7 +332,7 @@ function! Word_mode(num)
         " http://man.lupaworld.com/content/manage/vi/doc/change.html#fo-table
         " gqq format current line
         setlocal ft=markdown
-        setlocal tw=76
+        setlocal tw=78
         setlocal et sta ts=2 sw=2 sts=2
         setlocal fo-=a   " auto format paragraph is dangerous
         setlocal fo-=l   " Long lines are broken in insert mode
@@ -355,6 +363,7 @@ if has("autocmd")
  autocmd  BufNewFile README            0r ~/.vim/skeleton/README
  autocmd  BufNewFile *.py              0r ~/.vim/skeleton/skeleton.py
 
+ autocmd  BufEnter,BufRead       .soptter.*  setlocal ft=markdown
  autocmd  BufEnter,BufNewFile,BufRead  *.pl  setlocal makeprg=perl\ %
  autocmd  BufEnter,BufNewFile,BufRead  *.py  setlocal makeprg=python\ %
  autocmd  BufEnter,BufNewFile,BufRead  *.sh  setlocal makeprg=/bin/bash\ %
@@ -410,7 +419,7 @@ endif
     no            <C-W>p  :vs .cscope.files<CR>
     no            <C-W>x  :vs /dev/shm/xm<CR>
 nnoremap          <C-W>.  0*:sp .codelist<CR>nyy:q<CR>pk
-nnoremap          <C-W>/  0*:sp .soptter.nb.md<CR>n
+nnoremap          <C-W>/  :only<CR>0*:sp .soptter.nb.md<CR>n
 
 "
 " ---------------- <C-M> double for quickfix jump -----------------------

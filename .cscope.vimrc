@@ -93,7 +93,8 @@ endfunct
 " GBK编码转UTF-8
 nmap <C-L>q :call QfMakeConv()<CR>
 " markdown标题列表
-nmap <C-L>l :cclose<CR>:vimgrep /^[\-.#0-9][\.#0-9]* /j <C-R>%<CR>:copen<CR>G<C-W>k
+nmap <C-L>l :cclose<CR>:vimgrep /^[\-.*#0-9][\.#0-9]* /j <C-R>%<CR>:copen<CR>G<C-W>k
+nmap <C-L>h :cclose<CR>:vimgrep /^##* /j <C-R>%<CR>:copen<CR>G<C-W>k
 
 "
 " L mean Location

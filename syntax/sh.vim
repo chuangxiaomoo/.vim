@@ -1,2 +1,2 @@
 
-syn keyword	shStatement	xt_ret fn_echo_succ fn_echo_fail fn_echo_warn
+syn keyword	shStatement	xt_ret fn_echo_succ fn_echo_fail fn_echo_warn fn_echo_blue fn_echo_line
