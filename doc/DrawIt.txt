@@ -103,10 +103,10 @@ Copyright:    Copyright (C) 2004-2007 Charles E. Campbell, Jr. {{{1
  ||              |             └─────────────────────┘                       ||
  || ,a           | draw arrow from corners of visual-block selected region   ||
  || ,b           | draw box on visual-block selected region                  ||
- || ,c           | the canvas routine (will query user, see above)           ||
- || ,e           | draw an ellipse on visual-block selected region           ||
- || ,f           | flood figure with a character (you will be prompted)      ||
  || ,l           | draw line from corners of visual-block selected region    ||
+ || ,e           | draw an ellipse on visual-block selected region           ||
+ || ,c           | the canvas routine (will query user, see above)           ||
+ || ,f           | flood figure with a character (you will be prompted)      ||
  || ,s           | spacer: appends spaces up to the textwidth (default: 78)  ||
  ||              |                                                           ||
  ++==============+===========================================================++

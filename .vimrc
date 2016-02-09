@@ -122,6 +122,7 @@ function! Source_comma_map()
     no <silent> <leader>e  :tabe ~/.vimrc<CR>
     no <silent> <leader>f  :set winwidth=30<CR>:NERDTreeToggle<CR>
     no <silent> <leader>g  <C-W>gF
+    no <silent> <leader>p  vi(y:tabedit <C-R>"<CR>
     no <silent> <leader>h  :sh<CR>
     no          <leader>i  :set ic<CR>
     no          <leader>m  :!Markdown.pl --html4tags <C-R>% > /winc/md.html<CR> 
@@ -153,10 +154,6 @@ function! Source_comma_map()
     nnoremap <silent> <F3> :set nu<CR>
     nnoremap <silent> <F4> :set nonu<CR>
     nnoremap          <F5> :make run<CR>:copen<CR><CR>
-
-    " draw keys, Box or Remove
-    vmap <silent> <C-B> :B !sed -e '1s/+-/┌─/g' -e '1s/-+/─┐/g' -e '$s/+-/└─/g' -e '$s/-+/─┘/g' -e 's/-/─/g' -e 's/\|/│/g'<CR>
-    vmap <silent> <C-R> :B !sed -e 's/[+-]/ /g' -e 's/\|/ /g'<CR>
 
     " del
     cnoremap <C-Y>    <BS>
@@ -232,8 +229,10 @@ nmap    <C-X>/  /\<\><Left><Left>
 nmap    <C-X>?  ?\<\><Left><Left>
 vmap    <C-X>/  c/*  */<ESC><Left><Left>Pl
 
-" 高亮及替换
-"map    <C-X>h  :syn keyword Search <C-R><C-W><CR>
+" draw keys, Box or Remove
+vmap    <silent> <C-X>b :B !sed -e '1s/+-/┌─/g' -e '1s/-+/─┐/g' -e '$s/+-/└─/g' -e '$s/-+/─┘/g' -e 's/-/─/g' -e 's/\|/│/g'<CR>
+vmap    <silent> <C-X>r :B !sed -e 's/[+-]/ /g' -e 's/\|/ /g'<CR>
+
 vmap    <C-X>s  :s#\<\>##g<Left><Left><Left><Left><Left>
 vmap    <C-X>_  c__<ESC>Pl
 vmap    <C-X><  c<><ESC>Pl
