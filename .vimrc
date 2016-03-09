@@ -11,6 +11,9 @@
 "           set term=xterm 
 "           map <ESC>     
 "
+" clean all plugin maps in <buffer>
+mapclear <buffer>
+
 syntax on
 syntax enable
 syntax clear Search
@@ -109,7 +112,7 @@ function! Source_comma_map()
     no <silent> <leader>`  :tabe /root/.maintaince.txt<CR>
     no <silent> <leader>1  :tabfirst<CR>
     no <silent> <leader>2  :tablast<CR>
-    no          <leader>3  :grep -r "" * .[a-z]*<S-Left><S-Left><Left><Left>
+    no          <leader>3  :grep -r "" [a-zA-Z]* .[a-z]*<S-Left><S-Left><Left><Left>
     no          <leader>#  :grep -r "" <C-R>%<S-Left><Left><Left>
     no <silent> <leader>4  :set et sta ts=8 sw=8 sts=8<CR>
     no <silent> <leader>5  :e <C-r>%<CR>
@@ -122,7 +125,7 @@ function! Source_comma_map()
     no <silent> <leader>e  :tabe ~/.vimrc<CR>
     no <silent> <leader>f  :set winwidth=30<CR>:NERDTreeToggle<CR>
     no <silent> <leader>g  <C-W>gF
-    no <silent> <leader>p  vi(y:tabedit <C-R>"<CR>
+    no          <leader>p  vi(y:tabedit <C-R>"<CR>
     no <silent> <leader>h  :sh<CR>
     no          <leader>i  :set ic<CR>
     no          <leader>m  :!Markdown.pl --html4tags <C-R>% > /winc/md.html<CR> 
@@ -170,8 +173,6 @@ let g:goyo_margin_top = 0
 let g:goyo_margin_bottom = 0
 let g:goyo_linenr = 1
 
-" vi means inner, and va menas all of the block;
-nnoremap <C-Z>  va{zf
 nnoremap <C-F>  18<C-E>
 nnoremap <C-B>  18<C-Y>
 nnoremap <C-D>  18j
@@ -212,6 +213,7 @@ cnoremap <C-F>    <S-Right>
 
 " <C-X> is all for plugins
 
+vmap    <C-X>.  :s#“#<#\|s#”#>#<CR>
 cnor    <C-X>r  '<,'>s/\<\>//g<Left><Left><Left><Left><Left>
 
 nmap    <C-X>c  :tabonly<CR><C-W>o:quit<CR>
@@ -244,6 +246,7 @@ vmap    <C-X>"  c""<ESC>Pl
 vmap    <C-X>'  c''<ESC>Pl
 vmap    <C-X>*  c**<ESC>Pl
 
+" zc    to fold
 vmap    <C-X>f  c{{{<CR><C-R>"}}}<ESC>
 
 vmap    <C-X>u  c[]()<ESC>hhPl
