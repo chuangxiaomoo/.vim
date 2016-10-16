@@ -1,5 +1,5 @@
 " ~/.vim/.cscope.vimrc|84|
-" ~/.vim/.forgot_vim_skills.vimrc 
+" ~/.vim/.forgot_vim_skills.md
 "
 " :helptags $VIMRUNTIME/doc
 " :helptags $HOME/.vim/doc/
