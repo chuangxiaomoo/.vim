@@ -12,7 +12,9 @@
 "           map <ESC>     
 "
 " clean all plugin maps in <buffer>
-mapclear <buffer>
+
+" -------- __clear_too many__, dangerous --------
+" mapclear <buffer>
 
 syntax on
 syntax enable
@@ -51,7 +53,7 @@ set tabpagemax=20
 set winwidth=82
 set fileencodings=ucs-bom,utf-8,cp936,gb18030
 set scrolloff=3
-set tw=999
+set tw=10000
 set fo=cqMmt                " cqMmtrol             
 set cinoptions=:0           " switch case
 "et scroll=10               " default is half screen when <C-D>;
@@ -94,6 +96,7 @@ noremap fft     :%s/  */	/g<CR>
 noremap ffp     :set fileencoding=cp936<CR>:w<CR>:set fileencoding<CR>
 noremap ffu     :set fileencoding=utf-8<CR>:w<CR>:set fileencoding<CR>
 noremap ffx     :set tw=999<CR>ggVGd
+noremap ffc     ggVGy
 noremap ffv     ggVG
 noremap ffs     :mksession! .session.vim<CR>
 noremap ffl     :source .session.vim<CR><CR>
@@ -135,7 +138,6 @@ function! Source_comma_map()
    "no          <leader>s  :mapclear <buffer><CR>:source ~/.vimrc<CR>:echo ". vimrc succ!"<CR>
     no          <leader>s                        :source ~/.vimrc<CR>:echo ". vimrc succ!"<CR>
     no          <leader>x  :tabonly<CR><C-W>o
-    im          <leader>x <Esc>v3hs
     im          <leader>> ＞
     im          <leader>< ＜
     "o <silent> <leader>t  Occupied by Align
@@ -213,7 +215,7 @@ cnoremap <C-F>    <S-Right>
 
 " <C-X> is all for plugins
 
-vmap    <C-X>.  :s#“#<#\|s#”#>#<CR>
+vmap    <C-X>.  :B s#[（“]#<#g\|s#[”）]#>#g<CR>
 cnor    <C-X>r  '<,'>s/\<\>//g<Left><Left><Left><Left><Left>
 
 nmap    <C-X>c  :tabonly<CR><C-W>o:quit<CR>
@@ -250,7 +252,7 @@ vmap    <C-X>*  c**<ESC>Pl
 vmap    <C-X>f  c{{{<CR><C-R>"}}}<ESC>
 
 vmap    <C-X>u  c[]()<ESC>hhPl
-imap    <C-X>u  []()<ESC>i
+imap    <C-X>u   []()<ESC>i
 nmap    <C-X>u  a[]()<ESC>i
 
 " 注意不完全初始化时，末尾追加`,`
@@ -269,7 +271,7 @@ vmap    <C-X>i  :<C-U>e ++ff=unix %<CR>:%s/<C-V><C-M>//ge<CR>:'<,'>!indent -ppi4
         \ --declaration-indentation 8<CR><CR>
 
 " markdown -> 
-imap    <C-X>>  `->` 
+imap    <C-X>>  -＞
 
 nmap <C-P>  :cp<CR>
 nmap <C-N>  :cn<CR>
@@ -359,13 +361,14 @@ if has("autocmd")
    \ endif
  augroup END
 
- autocmd! bufwritepost                 .vimrc source ~/.vimrc
+ autocmd! bufwritepost                 .vimrc source %
  autocmd  BufNewFile Makefile          0r ~/.vim/skeleton/Makefile
  autocmd  BufNewFile Makefile.prj      0r ~/.vim/skeleton/Makefile.prj
  autocmd  BufNewFile README            0r ~/.vim/skeleton/README
  autocmd  BufNewFile *.py              0r ~/.vim/skeleton/skeleton.py
 
- autocmd  BufEnter,BufRead       .soptter.*  setlocal ft=markdown
+ autocmd  BufEnter,BufRead             *.u   setlocal ft=markdown
+ autocmd  BufEnter,BufRead             *.u   nnoremap <F5> :tabn<CR>L:tabp<CR>
  autocmd  BufEnter,BufNewFile,BufRead  *.pl  setlocal makeprg=perl\ %
  autocmd  BufEnter,BufNewFile,BufRead  *.py  setlocal makeprg=python\ %
  autocmd  BufEnter,BufNewFile,BufRead  *.sh  setlocal makeprg=/bin/bash\ %
