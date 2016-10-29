@@ -41,7 +41,7 @@ set hls
 set cursorline
 set wildmenu
 set wildmode=longest,full
-set wrap
+set wrap linebreak nolist
 set ru
 set nu
 set is
@@ -115,7 +115,7 @@ function! Source_comma_map()
     no <silent> <leader>`  :tabe /root/.maintaince.txt<CR>
     no <silent> <leader>1  :tabfirst<CR>
     no <silent> <leader>2  :tablast<CR>
-    no          <leader>3  :grep -r "" [a-zA-Z]* .[a-z]*<S-Left><S-Left><Left><Left>
+    no          <leader>3  :grep -r "" [0-9a-zA-Z]* .[0-9a-z]*<S-Left><S-Left><Left><Left>
     no          <leader>#  :grep -r "" <C-R>%<S-Left><Left><Left>
     no <silent> <leader>4  :set et sta ts=8 sw=8 sts=8<CR>
     no <silent> <leader>5  :e <C-r>%<CR>
@@ -219,8 +219,6 @@ vmap    <C-X>.  :B s#[（“]#<#g\|s#[”）]#>#g<CR>
 cnor    <C-X>r  '<,'>s/\<\>//g<Left><Left><Left><Left><Left>
 
 nmap    <C-X>c  :tabonly<CR><C-W>o:quit<CR>
-nmap    <C-X>g  :Goyo<CR>
-
 
 " 删除行末尾的空格
 " 删除指定内容的行
@@ -336,7 +334,7 @@ function! Word_mode(num)
         " http://man.lupaworld.com/content/manage/vi/doc/change.html#fo-table
         " gqq format current line
         setlocal ft=markdown
-        setlocal tw=78
+        setlocal tw=82
         setlocal et sta ts=2 sw=2 sts=2
         setlocal fo-=a   " auto format paragraph is dangerous
         setlocal fo-=l   " Long lines are broken in insert mode
@@ -444,6 +442,34 @@ nnoremap          <C-M>u  :e ++ff=unix %
 nnoremap          <C-M>w  :call Word_mode(0)<CR>
 nnoremap          <C-M>W  :call Filetype_check()<CR>
 nnoremap      <C-M><C-M>  <CR>
+
+" ---------------- Goyo  ~/.vim/autoload/goyo.vim -----------------------
+nnoremap          <C-W>g  :Goyo<CR>
+
+function! s:goyo_enter()
+    if has('gui_running')
+    set fullscreen
+    elseif exists('$TMUX')
+    silent !tmux set status off
+    endif
+
+    nm j gj
+    nm k gk
+    nm J <Down>
+    nm K <Up>
+    set nocursorline
+endfunction
+
+function! s:goyo_leave()
+    nun j
+    nun k
+    nun J
+    nun K
+    set cursorline
+endfunction
+
+autocmd! User GoyoEnter nested call <SID>goyo_enter()
+autocmd! User GoyoLeave nested call <SID>goyo_leave()
 
 "
 " <C-C> can also interrupt grep, register 'y' is used in below <C-C>
