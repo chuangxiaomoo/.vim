@@ -41,7 +41,8 @@ set hls
 set cursorline
 set wildmenu
 set wildmode=longest,full
-set wrap linebreak nolist
+set wrap nolist
+"et linebreak breakat+=()
 set ru
 set nu
 set is
@@ -169,16 +170,10 @@ endf
 
 call Source_comma_map()
 
-" goyo
-let g:goyo_width = 88
-let g:goyo_margin_top = 0
-let g:goyo_margin_bottom = 0
-let g:goyo_linenr = 1
-
-nnoremap <C-F>  18<C-E>
-nnoremap <C-B>  18<C-Y>
-nnoremap <C-D>  18j
-nnoremap <C-U>  18k
+nnoremap <C-F>  10<C-E>
+nnoremap <C-B>  10<C-Y>
+nnoremap <C-D>  10gj
+nnoremap <C-U>  10gk
 nnoremap <C-T>  <C-O>
 nnoremap <C-H>  mB*`B
 
@@ -334,7 +329,7 @@ function! Word_mode(num)
         " http://man.lupaworld.com/content/manage/vi/doc/change.html#fo-table
         " gqq format current line
         setlocal ft=markdown
-        setlocal tw=82
+        "etlocal tw=82
         setlocal et sta ts=2 sw=2 sts=2
         setlocal fo-=a   " auto format paragraph is dangerous
         setlocal fo-=l   " Long lines are broken in insert mode
@@ -344,7 +339,7 @@ function! Word_mode(num)
         setlocal fo+=Mm  " formatoptions Mm work for CJK
 
         " setlocal complete+=k./*
-        " setlocal iskeyword+= " change motion of 'w' '*'
+        " setlocal iskeyword+=          " change motion of 'w' '*'
     endif
 endf
 
@@ -432,6 +427,7 @@ nnoremap          <C-M>B  :set ft=sh<CR>
 nnoremap          <C-M>c  mA[{0f_lvf(h"yy`A:r!~/bin/7Lite 0 <C-R><C-A> <C-R>y <C-R>%<CR>f{
 nnoremap          <C-M>d  ?\<<C-R><C-F>(\\|fn_<C-R><C-F>(<CR>f{%bb
 nnoremap          <C-M>f  lbvey[[2kO<ESC>:r!~/bin/7Lite 0 <C-R>0<CR>
+    vmap          <C-M>n  :s/\n\n/\r/g
 " fn_<C-R>0
 
 nnoremap <silent> <C-M>k  mA*`A:sp +b /dev/shm/ma<CR>:bd! {/dev/shm/ma}<CR>`A:!MANWIDTH=88 ma <cword><CR>:cclose<CR>:25sp /dev/shm/ma<CR>:set ic nonu ft=c<CR>
@@ -445,26 +441,26 @@ nnoremap      <C-M><C-M>  <CR>
 
 " ---------------- Goyo  ~/.vim/autoload/goyo.vim -----------------------
 nnoremap          <C-W>g  :Goyo<CR>
+let g:goyo_width = 82
+let g:goyo_height = 96
+let g:goyo_margin_top = 0
+let g:goyo_margin_bottom = 0
+let g:goyo_linenr = 1
 
 function! s:goyo_enter()
-    if has('gui_running')
-    set fullscreen
-    elseif exists('$TMUX')
-    silent !tmux set status off
-    endif
-
     nm j gj
     nm k gk
-    nm J <Down>
-    nm K <Up>
+    nm <C-F>    <Down><Down>
+    nm <C-B>    <Up><Up>
+    nm <silent> <leader>c  :cclos<CR>
+    nm <silent> <leader>o  :copen<CR>
+    no <silent> <leader>q   mM:q!<CR>`M
     set nocursorline
 endfunction
 
 function! s:goyo_leave()
     nun j
     nun k
-    nun J
-    nun K
     set cursorline
 endfunction
 

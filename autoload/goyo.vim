@@ -256,7 +256,7 @@ function! s:goyo_on(dim)
   let t:goyo_pads.b = s:init_pad('botright new')
 
   call s:resize_pads()
-  call s:tranquilize()
+  call s:tranquilize()  " 透明处理
 
   augroup goyo
     autocmd!
