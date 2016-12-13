@@ -210,7 +210,7 @@ cnoremap <C-F>    <S-Right>
 
 " <C-X> is all for plugins
 
-vmap    <C-X>.  :B s#[（“]#<#g\|s#[”）]#>#g<CR>
+vmap    <C-X>.  :B s#[（“‘]#<#g\|s#[”’）]#>#g<CR>
 cnor    <C-X>r  '<,'>s/\<\>//g<Left><Left><Left><Left><Left>
 
 nmap    <C-X>c  :tabonly<CR><C-W>o:quit<CR>
@@ -448,19 +448,24 @@ let g:goyo_margin_bottom = 0
 let g:goyo_linenr = 1
 
 function! s:goyo_enter()
-    nm j gj
-    nm k gk
-    nm <C-j> <Down>
-    nm <C-k> <Up>
-    nm <silent> <leader>c  :cclos<CR>
-    nm <silent> <leader>o  :copen<CR>
-    no <silent> <leader>q   mM:q!<CR>`M
+    nm  j gj
+    nm  k gk
+    nm  <C-j> <Down>
+    nm  <C-k> <Up>
+    nm  <silent> <leader>c  :cclos<CR>
+    nm  <silent> <leader>o  :copen<CR>
+    no  <silent> <leader>q   mM:q!<CR>`M
     set nocursorline
 endfunction
 
 function! s:goyo_leave()
     nun j
     nun k
+    no  <C-j>  :tabp<CR>
+    no  <C-k>  :tabn<CR>
+    no  <silent> <leader>c  :botright copen 11<CR>
+    no  <silent> <leader>o  :colder<CR>
+    no  <silent> <leader>q  :q!<CR>
     set cursorline
 endfunction
 

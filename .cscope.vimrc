@@ -78,7 +78,7 @@ endfunction
 
 
 " -------------------  cscope  ----------------------------------------
-" USAGE: cs add file.cscope [prepath] [flags]
+" USAGE: cs add [prepath]/cscope.out [prepath] [flags]
 "        [prepath] is the pathname after `cscope -P`
 "        e.g. /usr/include/
 "
@@ -117,7 +117,7 @@ nmap <C-L>P  mF:tabedit .cscope.files<CR>
 
 " 1st time, run `csgen` on command; `csgen -f` convenient for customize .cscope.file 
 nmap <C-L>z  :cs kill .cscope.out<CR>:!csgen -f<CR>:cs add .cscope.out<CR>jk
-nmap <C-L>Z  :cs kill .cscope.out<CR>:!csgen -U<CR>:cs add .cscope.out<CR>jk
+nmap <C-L>Z  :cs kill .cscope.out<CR>:!csgen -u<CR>:cs add .cscope.out<CR>jk
 nmap <C-L>A  :execute Cs_add_file()<CR>
 
 "
