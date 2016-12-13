@@ -450,8 +450,8 @@ let g:goyo_linenr = 1
 function! s:goyo_enter()
     nm j gj
     nm k gk
-    nm <C-F>    <Down><Down>
-    nm <C-B>    <Up><Up>
+    nm <C-j> <Down>
+    nm <C-k> <Up>
     nm <silent> <leader>c  :cclos<CR>
     nm <silent> <leader>o  :copen<CR>
     no <silent> <leader>q   mM:q!<CR>`M
