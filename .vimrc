@@ -301,16 +301,25 @@ hi DiffAdd                         ctermfg=0
 hi CursorColumn     term=underline cterm=underline  ctermbg=NONE ctermfg=NONE
 
 function! Resize_scroll()
-    if winheight(0) >= 45
+    " 9 * {4,3,2} + 4
+    if winheight(0) >= 40
+       "echo 'scroll 18'
         nnoremap <C-F>  18<C-E>
         nnoremap <C-B>  18<C-Y>
         nnoremap <C-D>  18gj
         nnoremap <C-U>  18gk
+    elseif winheight(0) >= 31
+       "echo 'scroll 13'
+        nnoremap <C-F>  13<C-E>
+        nnoremap <C-B>  13<C-Y>
+        nnoremap <C-D>  13gj
+        nnoremap <C-U>  13gk
     else
-        nnoremap <C-F>  12<C-E>
-        nnoremap <C-B>  12<C-Y>
-        nnoremap <C-D>  12gj
-        nnoremap <C-U>  12gk
+       "echo 'scroll 8'
+        nnoremap <C-F>   8<C-E>
+        nnoremap <C-B>   8<C-Y>
+        nnoremap <C-D>   8gj
+        nnoremap <C-U>   8gk
     endif
 endf
 
@@ -385,7 +394,6 @@ if has("autocmd")
  autocmd  BufEnter,BufRead             *.inc setlocal ft=sh
  autocmd  BufEnter,BufRead             *sql* setlocal ft=mysql
  autocmd  BufEnter,BufRead           chan.md cd ~/bin/stk/.chan/
- autocmd  BufNew,BufLeave,BufEnter,BufRead * checktime
  autocmd  BufEnter,BufNewFile,BufRead  *.bsp setlocal ft=make
  autocmd  BufEnter,BufNewFile,BufRead  *     call Introduce_boxdraw()
 
@@ -393,7 +401,9 @@ if has("autocmd")
  autocmd  BufEnter,BufNewFile,BufRead m[0-9] set path=,,
  autocmd  BufEnter,BufNewFile,BufRead    m1  call Word_mode(1)
  autocmd  BufEnter,BufNewFile,BufRead    m2  call Word_mode(2)
- autocmd  BufEnter,BufNewFile,BufRead    *   call Resize_scroll()
+
+ autocmd  BufNew,BufLeave,BufEnter,BufRead * checktime
+ autocmd  BufNew,WinEnter,BufEnter,BufRead * call Resize_scroll()
  
  " FileType
  autocmd  FileType sh       setlocal   isk-=.
