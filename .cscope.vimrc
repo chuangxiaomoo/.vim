@@ -110,10 +110,12 @@ nmap <C-L>1  mA:echo "mark A"<CR>
 nmap <C-L>2  mB:echo "mark B"<CR>
 nmap <C-L>3  mC:echo "mark C"<CR>
 nmap <C-L>4  mD:echo "mark D"<CR>
+nmap <C-L>5  mE`CmD`BmC`AmB`EmA:echo "Refreshed DCBA!"<CR>
+nmap <C-L>m  :marks<CR>
 nmap <C-L>a  :cs find s 
 nmap <C-L>e  :cs find e <C-R>=expand("<cword>")<CR>
 nmap <C-L>E  :grep -i '' `cat .cscope.files`<Home><S-Right><S-Right><Right><Right>
-nmap <C-L>m  :cclose<CR>:60vs Makefile<CR>:%s/run\ r://e<CR>u h
+nmap <C-L>r  :cclose<CR>:60vs Makefile<CR>:%s/run\ r://e<CR>u h
 nmap <C-L>p  mF:e .cscope.files<CR>
 nmap <C-L>P  mF:tabedit .cscope.files<CR>
 
@@ -138,12 +140,6 @@ nmap <C-L>F  :vert scs find f <C-R>=expand("<cfile>")<CR><CR>
 nmap <C-L>G  :vert scs find g <C-R>=expand("<cword>")<CR><CR>
 "map <C-L>I  :vert scs find i <C-R>=expand("<cfile>")<CR><CR>
 "map <C-L>S  :vert scs find s <C-R>=expand("<cword>")<CR><CR>
-
-" vim info and session
-set sessionoptions-=curdir
-set sessionoptions+=sesdir
-nmap <C-L>r  :mksession! .vimsession<CR>:wviminfo! .viminfo<CR>
-nmap <C-L>R  :source .vimsession<CR>:rviminfo .viminfo<cR> 
 
 "
 " k for C/C++ keyword

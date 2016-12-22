@@ -99,8 +99,13 @@ noremap ffu     :set fileencoding=utf-8<CR>:w<CR>:set fileencoding<CR>
 noremap ffx     :set tw=999<CR>ggVGd
 noremap ffc     ggVGy
 noremap ffv     ggVG
-noremap ffs     :mksession! .session.vim<CR>
-noremap ffl     :source .session.vim<CR><CR>
+
+" vim info and session
+set             sessionoptions-=curdir
+set             sessionoptions+=sesdir
+noremap ffs     :mksession! .vimsession<CR>:wviminfo! .viminfo<CR>
+noremap ffl     :source .vimsession<CR>:rviminfo .viminfo<cR> 
+
 noremap ff3     :copen<CR>gg/\<error\>\c<CR>
 noremap ff4     :copen<CR>gg/.arning:<CR>
 noremap ff5     :copen<CR>gg/undefined reference<CR>
