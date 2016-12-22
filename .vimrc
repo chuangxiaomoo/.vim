@@ -53,12 +53,12 @@ set nocursorcolumn
 set tabpagemax=20
 set winwidth=82
 set fileencodings=ucs-bom,utf-8,cp936,gb18030
-set scrolloff=3
 set tw=10000
 set fo=cqMmt                " cqMmtrol             
 set cinoptions=:0           " switch case
-"et scroll=10               " default is half screen when <C-D>;
 "et autochdir 	            " when open a file, cd `dirname file`
+"et scroll=10               " default is half screen when <C-D>;
+set scrolloff=2
 set background=light
 set showcmd
 set encoding=utf-8
@@ -168,15 +168,6 @@ function! Source_comma_map()
     inoremap <C-O>    <Del>
 endf
 
-call Source_comma_map()
-
-nnoremap <C-F>  10<C-E>
-nnoremap <C-B>  10<C-Y>
-nnoremap <C-D>  10gj
-nnoremap <C-U>  10gk
-nnoremap <C-T>  <C-O>
-nnoremap <C-H>  mB*`B
-
 "
 " PuTTY -> setting -> Terminal -> Keyboard -> The Backspace key -> Control-?
 " SqCRT -> Default Session -> Terminal -> simulat -> map key -> BS send delete
@@ -217,9 +208,11 @@ nmap    <C-X>c  :tabonly<CR><C-W>o:quit<CR>
 
 " 删除行末尾的空格
 " 删除指定内容的行
+nmap    <C-X>4  :set   expandtab<CR>:%retab!<CR>
+nmap    <C-X>3  :set noexpandtab<CR>:%retab!<CR>
 nmap    <C-X>d  :%s/^  *$//ge<CR>:s/xkmcdz//ge<CR>
 nmap    <C-X>D  :s/^.*.*\n//g<Left><Left><Left><Left><Left><Left><Left>
-nmap    <C-X>r  :cclose<CR>:make! -C .. main<CR><CR>:bo copen 11<CR>G
+nmap    <C-X>r  :cclose<CR>:make!<CR><CR>:bo copen 11<CR>G
 nmap    <C-X>s  :%s#\<\>##g<Left><Left><Left><Left><Left>
 nmap    <C-X>t  :%s#[ \t][ \t]*$##g<CR>:%s#\t# #g<CR>:%s#  *#\t#g<CR>/xkcdef<CR>,4
 nmap    <C-X>/  /\<\><Left><Left>
@@ -266,6 +259,7 @@ vmap    <C-X>i  :<C-U>e ++ff=unix %<CR>:%s/<C-V><C-M>//ge<CR>:'<,'>!indent -ppi4
 " markdown -> 
 imap    <C-X>>  -＞
 
+nmap <C-H>  mB*`B
 nmap <C-P>  :cp<CR>
 nmap <C-N>  :cn<CR>
 nmap <C-j>  :tabp<CR>
@@ -305,6 +299,20 @@ hi DiffChange                      ctermbg=0
 hi DiffDelete                      cterm=reverse
 hi DiffAdd                         ctermfg=0
 hi CursorColumn     term=underline cterm=underline  ctermbg=NONE ctermfg=NONE
+
+function! Resize_scroll()
+    if winheight(0) >= 45
+        nnoremap <C-F>  18<C-E>
+        nnoremap <C-B>  18<C-Y>
+        nnoremap <C-D>  18gj
+        nnoremap <C-U>  18gk
+    else
+        nnoremap <C-F>  12<C-E>
+        nnoremap <C-B>  12<C-Y>
+        nnoremap <C-D>  12gj
+        nnoremap <C-U>  12gk
+    endif
+endf
 
 " if getline(1) =~ '^/\*' || getline(1) =~ '^//' 
 function! Filetype_check()
@@ -385,6 +393,7 @@ if has("autocmd")
  autocmd  BufEnter,BufNewFile,BufRead m[0-9] set path=,,
  autocmd  BufEnter,BufNewFile,BufRead    m1  call Word_mode(1)
  autocmd  BufEnter,BufNewFile,BufRead    m2  call Word_mode(2)
+ autocmd  BufEnter,BufNewFile,BufRead    *   call Resize_scroll()
  
  " FileType
  autocmd  FileType sh       setlocal   isk-=.
@@ -430,7 +439,7 @@ nnoremap          <C-M>f  lbvey[[2kO<ESC>:r!~/bin/7Lite 0 <C-R>0<CR>
     vmap          <C-M>n  :s/\n\n/\r/g
 " fn_<C-R>0
 
-nnoremap <silent> <C-M>k  mA*`A:sp +b /dev/shm/ma<CR>:bd! {/dev/shm/ma}<CR>`A:!MANWIDTH=88 ma <cword><CR>:cclose<CR>:25sp /dev/shm/ma<CR>:set ic nonu ft=c<CR>
+nnoremap <silent> <C-M>k  mA*`A:sp +b /dev/shm/ma<CR>:bd! {/run/shm/ma}<CR>`A:!MANWIDTH=88 ma <cword><CR>:cclose<CR>:25sp /dev/shm/ma<CR>:set ic nonu ft=c<CR>
 nnoremap          <C-M>sd :!svn di <C-R><C-F><CR>
 nnoremap          <C-M>sl :!svn log  <C-R><C-F><CR>
 
@@ -512,6 +521,8 @@ function! Ab_c()
 endf
 
 call Ab_c()
+call Source_comma_map()
+call Resize_scroll()
 
 "
 "  gA    Append current word to highlight list
