@@ -7,7 +7,8 @@
 " Help: Use :help clang_complete
 "
 
-au FileType c,cpp,objc,objcpp call <SID>ClangCompleteInit()
+" comment by zhangjian 2016-12-23
+"au FileType c,cpp,objc,objcpp call <SID>ClangCompleteInit()
 
 let b:clang_parameters = ''
 let b:clang_user_options = ''
