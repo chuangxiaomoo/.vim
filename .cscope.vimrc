@@ -106,13 +106,14 @@ nmap <silent> <C-L>t   :TlistUpdate<CR>:set winwidth=30<CR>:Tlist<CR>
 nmap <silent> <C-L>T   :TlistUpdate<CR>:set winwidth=30<CR>:TlistOpen<CR>
 "map          <C-L>T   :TlistSync
 
-nmap <C-L>1  mA:echo "mark A"<CR>
-nmap <C-L>2  mB:echo "mark B"<CR>
-nmap <C-L>3  mC:echo "mark C"<CR>
-nmap <C-L>4  mD:echo "mark D"<CR>
-nmap <C-L>5  mE:echo "mark E"<CR>
-nmap <C-L>6  mF`DmE`CmD`BmC`AmB`FmA:echo "Refreshed EDCBA!"<CR>
-nmap <C-L>m  :marks ABCDE<CR>
+nmap <C-L>1  mAma:echo "mark Aa"<CR>
+nmap <C-L>2  mBmb:echo "mark Bb"<CR>
+nmap <C-L>3  mCmc:echo "mark Cc"<CR>
+nmap <C-L>4  mDmd:echo "mark Dd"<CR>
+nmap <C-L>$  mE`CmD`BmC`AmB`EmA:echo "Refreshed DCBA!"<CR>
+nmap <C-L>5  $a     <ESC>:w<CR>
+nmap <C-L>%   /     $<CR>
+nmap <C-L>m  :marks ABCD<CR>
 nmap <C-L>a  :cs find s 
 nmap <C-L>e  :cs find e <C-R>=expand("<cword>")<CR>
 nmap <C-L>E  :grep -i '' `cat .cscope.files`<Home><S-Right><S-Right><Right><Right>
