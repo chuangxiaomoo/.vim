@@ -129,12 +129,15 @@ nmap <C-L>A  :execute Cs_add_file()<CR>
 "
 " map cs, scs, vert scs 
 "
+
+nmap <C-L><C-C> <C-L>
+
 nmap <C-L>c  :cs find c <C-R>=expand("<cword>")<CR><CR>
 nmap <C-L>d  :cs find d <C-R>=expand("<cword>")<CR><CR>
 nmap <C-L>f  :cs find f <C-R>=expand("<cfile>")<CR><CR>
 nmap <C-L>i  :cs find i <C-R>=expand("<cfile>")<CR><CR>
-nmap <C-L>s  lbve<C-L>:cs find s <C-R>=expand("<cword>")<CR><CR>
-nmap <C-L>g  lbve<C-L>:cs find g <C-R>=expand("<cword>")<CR><CR>
+nmap <C-L>s  :cs find s <C-R>=expand("<cword>")<CR><CR>
+nmap <C-L>g  :cs find g <C-R>=expand("<cword>")<CR><CR>
 
 nmap <C-L>C  :vert scs find c <C-R>=expand("<cword>")<CR><CR>
 nmap <C-L>D  :vert scs find d <C-R>=expand("<cword>")<CR><CR>

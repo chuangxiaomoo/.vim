@@ -265,7 +265,7 @@ vmap    <C-X>i  :<C-U>e ++ff=unix %<CR>:%s/<C-V><C-M>//ge<CR>:'<,'>!indent -ppi4
 " markdown -> 
 imap    <C-X>>  -＞
 
-nmap <C-H>  mB*`B
+nmap <C-H>  *<C-O>
 nmap <C-P>  :cp<CR>
 nmap <C-N>  :cn<CR>
 nmap <C-j>  :tabp<CR>
@@ -503,6 +503,7 @@ autocmd! User GoyoLeave nested call <SID>goyo_leave()
 " x is the default register of motion d x p 
 " yp just yank, ygp will put a newline
 "
+
 imap <C-C><C-S> <Esc>:w<CR>
 nmap <C-C><C-S> <Esc>:w<CR>
 vmap <C-C><C-S> <Esc>:w<CR>
