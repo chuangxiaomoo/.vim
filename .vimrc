@@ -366,6 +366,18 @@ function! Word_mode(num)
     endif
 endf
 
+function! Update_Tlist_nor()
+    if mode() == 'n' || mode() == 'i'
+        silent! TlistHighlightTag
+    endif
+endf
+
+function! Del_Update_Tlist_nor()
+:function! Update_Tlist_nor()
+"   :redraw!
+endf
+endf
+
 " if bufname("%") == "" 
 
 if has("autocmd")
@@ -408,8 +420,11 @@ if has("autocmd")
  autocmd  BufEnter,BufNewFile,BufRead    m1  call Word_mode(1)
  autocmd  BufEnter,BufNewFile,BufRead    m2  call Word_mode(2)
 
- autocmd  BufNew,BufLeave,BufEnter,BufRead * checktime
- autocmd  BufNew,WinEnter,BufEnter,BufRead * call Resize_scroll()
+ autocmd  BufNew,BufLeave,BufEnter,BufRead  *   checktime
+ autocmd  BufNew,WinEnter,BufEnter,BufRead  *   call Resize_scroll()
+
+ " Tlist refresh
+ autocmd  BufEnter,CursorMoved,CursorMovedI *   call Update_Tlist_nor()
  
  " FileType
  autocmd  FileType sh       setlocal   isk-=.
@@ -517,6 +532,10 @@ vmap <C-C><C-X> "yx
 vmap <C-C><C-V> "xx"yP
 imap <C-C><C-V> <Esc>"ypa
 nmap <C-C><C-V> "yp
+
+" unexpectalbe <C-C>
+nmap <C-L><C-C> <C-L>
+nmap <C-W><C-C> <C-W>
 
 function! Escape_char(orgstr)
     " % not in the list

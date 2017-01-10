@@ -103,7 +103,7 @@ nmap <C-L>h :cclose<CR>:vimgrep /^##* /j <C-R>%<CR>:copen<CR>G<C-W>k
 
 nmap <silent> <C-L>o   :let Tlist_Display_Prototype=1<CR>:TlistUpdate<CR>:let Tlist_WinWidth=80<CR>:Tlist<CR>
 nmap <silent> <C-L>t   :TlistUpdate<CR>:set winwidth=30<CR>:Tlist<CR>
-nmap <silent> <C-L>T   :TlistUpdate<CR>:set winwidth=30<CR>:TlistOpen<CR>
+nmap <silent> <C-L>T   :TlistHighlightTag<CR>
 "map          <C-L>T   :TlistSync
 
 nmap <C-L>1  mAma:echo "mark Aa"<CR>
@@ -130,7 +130,6 @@ nmap <C-L>A  :execute Cs_add_file()<CR>
 " map cs, scs, vert scs 
 "
 
-nmap <C-L><C-C> <C-L>
 
 nmap <C-L>c  :cs find c <C-R>=expand("<cword>")<CR><CR>
 nmap <C-L>d  :cs find d <C-R>=expand("<cword>")<CR><CR>
