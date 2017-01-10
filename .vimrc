@@ -368,7 +368,9 @@ endf
 
 function! Update_Tlist_nor()
     if mode() == 'n' || mode() == 'i'
-        silent! TlistHighlightTag
+        if bufname('%') != "__Tag_List__"
+            silent! TlistHighlightTag
+        endif
     endif
 endf
 
@@ -424,7 +426,7 @@ if has("autocmd")
  autocmd  BufNew,WinEnter,BufEnter,BufRead  *   call Resize_scroll()
 
  " Tlist refresh
- autocmd  BufEnter,CursorMoved,CursorMovedI *   call Update_Tlist_nor()
+ autocmd  BufEnter,CursorMoved,CursorMovedI * call Update_Tlist_nor()
  
  " FileType
  autocmd  FileType sh       setlocal   isk-=.
