@@ -307,6 +307,9 @@ hi DiffAdd                         ctermfg=0
 hi CursorColumn     term=underline cterm=underline  ctermbg=NONE ctermfg=NONE
 
 function! Resize_scroll()
+    " check if changing
+    checktime
+
     " 9 * {4,3,2} + 4
     if winheight(0) >= 40
        "echo 'scroll 18'
@@ -366,18 +369,13 @@ function! Word_mode(num)
     endif
 endf
 
+let g:is_in_tlist = 0
 function! Update_Tlist_nor()
     if mode() == 'n' || mode() == 'i'
-        if bufname('%') != "__Tag_List__"
+        if g:is_in_tlist == 0
             silent! TlistHighlightTag
         endif
     endif
-endf
-
-function! Del_Update_Tlist_nor()
-:function! Update_Tlist_nor()
-"   :redraw!
-endf
 endf
 
 " if bufname("%") == "" 
@@ -415,18 +413,19 @@ if has("autocmd")
  autocmd  BufEnter,BufRead             *sql* setlocal ft=mysql
  autocmd  BufEnter,BufRead           chan.md cd ~/bin/stk/.chan/
  autocmd  BufEnter,BufNewFile,BufRead  *.bsp setlocal ft=make
- autocmd  BufEnter,BufNewFile,BufRead  *     call Introduce_boxdraw()
 
  " end
  autocmd  BufEnter,BufNewFile,BufRead m[0-9] set path=,,
  autocmd  BufEnter,BufNewFile,BufRead    m1  call Word_mode(1)
  autocmd  BufEnter,BufNewFile,BufRead    m2  call Word_mode(2)
 
- autocmd  BufNew,BufLeave,BufEnter,BufRead  *   checktime
- autocmd  BufNew,WinEnter,BufEnter,BufRead  *   call Resize_scroll()
+ autocmd  WinEnter,BufNew,BufEnter,BufRead  *   call Introduce_boxdraw()
+ autocmd  WinEnter,BufNew,BufEnter,BufRead  *   call Resize_scroll()
 
  " Tlist refresh
- autocmd  BufEnter,CursorMoved,CursorMovedI * call Update_Tlist_nor()
+ autocmd  CursorMoved,CursorMovedI *            call Update_Tlist_nor()
+"autocmd  BufEnter __Tag_List__                 let  g:is_in_tlist = 1
+"autocmd  BufLeave __Tag_List__                 let  g:is_in_tlist = 0
  
  " FileType
  autocmd  FileType sh       setlocal   isk-=.
