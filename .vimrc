@@ -142,6 +142,7 @@ function! Source_comma_map()
     no <silent> <leader>n  :cnewer<CR>
     no <silent> <leader>o  :colder<CR>
     no <silent> <leader>r  :cclose<CR>:make!<CR><CR>:bo copen 11<CR>G
+   "   same.as.    <C-X>r  :cclose<CR>:make!<CR><CR>:bo copen 11<CR>G  
    "no          <leader>s  :mapclear <buffer><CR>:source ~/.vimrc<CR>:echo ". vimrc succ!"<CR>
     no          <leader>s                        :source ~/.vimrc<CR>:echo ". vimrc succ!"<CR>
     no          <leader>x  :tabonly<CR><C-W>o

@@ -96,6 +96,8 @@ nmap <C-L>q :call QfMakeConv()<CR>
 "map <C-L>l :cclose<CR>:vimgrep /^[\-.*#0-9][\.#0-9]* /j <C-R>%<CR>:copen<CR>G<C-W>k
 nmap <C-L>l :cclose<CR>:vimgrep /^[\-.*#]#* \\|^[0-9a-z][0-9]*\. /j <C-R>%<CR>:copen<CR>G<C-W>k
 nmap <C-L>h :cclose<CR>:vimgrep /^##* /j <C-R>%<CR>:copen<CR>G<C-W>k
+nmap <C-L>j mfmF:e  flowchar.i<CR>
+nmap <C-L>J mfmF:sp flowchar.i<CR>
 
 "
 " L mean Location
@@ -116,7 +118,8 @@ nmap <C-L>%   /     $<CR>
 nmap <C-L>m  :marks ABCD<CR>
 nmap <C-L>a  :cs find s 
 nmap <C-L>e  :cs find e <C-R>=expand("<cword>")<CR>
-nmap <C-L>E  :grep -i '' `cat .cscope.files`<Home><S-Right><S-Right><Right><Right>
+nmap <C-L>E  :cs find e <C-R>l<CR>
+"map <C-L>E  :grep -i '' `cat .cscope.files`<Home><S-Right><S-Right><Right><Right>
 nmap <C-L>r  :cclose<CR>:60vs Makefile<CR>:%s/run\ r://e<CR>u h
 nmap <C-L>p  mF:e .cscope.files<CR>
 nmap <C-L>P  mF:tabedit .cscope.files<CR>
