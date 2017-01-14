@@ -221,6 +221,7 @@ nmap    <C-X>d  :%s/^  *$//ge<CR>:s/xkmcdz//ge<CR>
 nmap    <C-X>D  :s/^.*.*\n//g<Left><Left><Left><Left><Left><Left><Left>
 nmap    <C-X>r  :cclose<CR>:make!<CR><CR>:bo copen 11<CR>G
 nmap    <C-X>s  :%s#\<\>##g<Left><Left><Left><Left><Left>
+vmap    <C-X>b  :s/^\n\n/\r/g
 nmap    <C-X>t  :%s#[ \t][ \t]*$##g<CR>:%s#\t# #g<CR>:%s#  *#\t#g<CR>/xkcdef<CR>,4
 nmap    <C-X>/  /\<\><Left><Left>
 nmap    <C-X>?  ?\<\><Left><Left>
@@ -469,7 +470,6 @@ nnoremap          <C-M>B  :set ft=sh<CR>
 nnoremap          <C-M>c  mA[{0f_lvf(h"yy`A:r!~/bin/7Lite 0 <C-R><C-A> <C-R>y <C-R>%<CR>f{
 nnoremap          <C-M>d  ?\<<C-R><C-F>(\\|fn_<C-R><C-F>(<CR>f{%bb
 nnoremap          <C-M>f  lbvey[[2kO<ESC>:r!~/bin/7Lite 0 <C-R>0<CR>
-    vmap          <C-M>n  :s/\n\n/\r/g
 " fn_<C-R>0
 
 nnoremap <silent> <C-M>k  mA*`A:sp +b /dev/shm/ma<CR>:bd! {/run/shm/ma}<CR>`A:!MANWIDTH=88 ma <cword><CR>:cclose<CR>:25sp /dev/shm/ma<CR>:set ic nonu ft=c<CR>
