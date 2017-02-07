@@ -342,6 +342,7 @@ function! Filetype_check()
       setf dosbatch 
   elseif getline(1) =~ '^# '
       setf markdown
+      setl ai
   endif
 endf
 
