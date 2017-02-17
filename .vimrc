@@ -103,9 +103,10 @@ noremap ffv     ggVG
 " vim info and session
 set             sessionoptions-=curdir
 set             sessionoptions+=sesdir
-noremap ffs     :mksession! .session.vim<CR>:wviminfo! .viminfo<CR>
+noremap ffs     :mksession! .session.vim<CR>
+"                                           :wviminfo! .viminfo<CR>
 noremap ffl     :source     .session.vim<CR>
-"                                            rviminfo  .viminfo<cR> 
+"                                           :rviminfo  .viminfo<cR> 
 
 noremap ff3     :copen<CR>gg/\<error\>\c<CR>
 noremap ff4     :copen<CR>gg/.arning:<CR>
