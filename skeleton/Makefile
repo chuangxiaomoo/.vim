@@ -23,8 +23,8 @@ CPPFLAGS:= $(CFLAGS)
 # 因此在编译和链接时都使用 -pthread 选项而不是传统的 -lpthread 能够保持向后兼容，
 # 并提高命令行的一致性。
 
-LDFLAGS := -lrt -ldl -lmxml -pthread 
-# LDLIBS  := /usr/local/lib/libmxml.a
+LDFLAGS := -lrt -ldl -pthread 
+# LDLIBS  := /usr/local/lib/libmxml.a -lmxml 
 
 all: $(EXEC) $(EXECPP)
 

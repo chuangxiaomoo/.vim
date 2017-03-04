@@ -90,6 +90,11 @@ function! Cs_add_file()
         :execute g:csfile
 endfunct
 
+function! Save_filename()
+   "let g:save_filename = expand('%:p')
+    let @z=expand('%:p')
+endf
+
 " GBK编码转UTF-8
 nmap <C-L>q :call QfMakeConv()<CR>
 " markdown标题列表
@@ -97,7 +102,7 @@ nmap <C-L>q :call QfMakeConv()<CR>
 nmap <C-L>l :cclose<CR>:vimgrep /^[\-.*#]#* \\|^[0-9a-z][0-9]*\. /j <C-R>%<CR>:copen<CR>G<C-W>k
 nmap <C-L>h :cclose<CR>:vimgrep /^##* /j <C-R>%<CR>:copen<CR>G<C-W>k
 nmap <C-L>j mfmF:e  .flowchar.i<CR>
-nmap <C-L>J mfmF:sp .flowchar.i<CR>
+nmap <C-L>k mfmF:e  <C-R>z<CR>
 
 "
 " L mean Location
@@ -118,7 +123,7 @@ nmap <C-L>%   /     $<CR>
 nmap <C-L>m  :marks ABCD<CR>
 nmap <C-L>a  :cs find s 
 nmap <C-L>e  :cs find e <C-R>=expand("<cword>")<CR>
-nmap <C-L>E  :cs find e <C-R>l<CR>
+nmap <C-L>E  :let @l=substitute(@l, '(', '.', 'g')<CR>:cs find e <C-R>l<CR>
 "map <C-L>E  :grep -i '' `cat .cscope.files`<Home><S-Right><S-Right><Right><Right>
 nmap <C-L>r  :cclose<CR>:60vs Makefile<CR>:%s/run\ r://e<CR>u h
 nmap <C-L>p  mF:e .cscope.files<CR>
@@ -150,8 +155,6 @@ nmap <C-L>G  :vert scs find g <C-R>=expand("<cword>")<CR><CR>
 
 "
 " k for C/C++ keyword
-" ` for construction and destruction
 "
-nmap <silent> <C-L>k  :copen<CR>/>>[^,]*\(typedef\\|struct\\|enum\\|union\\|define\\|case\\|class\)<CR>
-nmap <silent> <C-L>`  :copen<CR>/>>[^,]*\(::\~<C-R>l\\|::<C-R>l\).*[^;]<CR>
+nmap <silent> <C-L>`  :copen<CR>/>>[^,]*\(typedef\\|struct\\|enum\\|union\\|define\\|case\\|class\)<CR>
 

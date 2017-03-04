@@ -90,6 +90,7 @@ vmap    tti     ttc:'<,'>B:s#/#_#g<CR>
  map    tth     Vtth
 vmap    tth     :s#/#_#g<CR>V:s#^#int get_#g<CR>V:s#$#(void *data);#g<CR>Vttc/xkd<CR>
 
+ map    fff     :call Save_filename()<CR>
 vmap    fff     JV4<Vgq
 vmap    fft     :s/  */	/g<CR>
 noremap fft     :%s/  */	/g<CR>
@@ -404,9 +405,8 @@ if has("autocmd")
  autocmd  BufEnter,BufNewFile,BufRead  *.pl  setlocal makeprg=perl\ %
  autocmd  BufEnter,BufNewFile,BufRead  *.py  setlocal makeprg=python\ %
  autocmd  BufEnter,BufNewFile,BufRead  *.sh  setlocal makeprg=/bin/bash\ %
- autocmd  FileType ruby                      setlocal makeprg=ruby\ %
- autocmd  FileType ruby                      setlocal iskeyword+=_,$,@,%,#,-
- autocmd  FileType sh                        setlocal makeprg=bash\ %
+ autocmd  FileType ruby                      setlocal makeprg=ruby\ %           iskeyword+=_,$,@,%,#,-
+ autocmd  FileType sh                        setlocal makeprg=bash\ %           iskeyword-=.
  autocmd  FileType text                      setlocal textwidth=80
  autocmd  FileType mysql                     setlocal complete+=k~/.vim/wordlists/mysql.list
  autocmd  FileType mysql                     nmap <C-L>a :grep "CREATE PROCEDURE" <C-R>%<CR><CR>
@@ -414,6 +414,7 @@ if has("autocmd")
  autocmd  BufEnter,BufNewFile,BufRead  *.rc  setlocal ft=sh
  autocmd  BufEnter,BufNewFile,BufRead  *.sh  setlocal complete+=k~/.vim/bash-support/wordlists/bash.list
  autocmd  BufEnter,BufRead             *.inc setlocal ft=sh
+ autocmd  BufEnter,BufRead             *.i   setlocal ft=cpp ai
  autocmd  BufEnter,BufRead             *sql* setlocal ft=mysql
  autocmd  BufEnter,BufRead           chan.md cd ~/bin/stk/.chan/
  autocmd  BufEnter,BufNewFile,BufRead  *.bsp setlocal ft=make
@@ -432,9 +433,8 @@ if has("autocmd")
 "autocmd  BufLeave __Tag_List__                 let  g:is_in_tlist = 0
  
  " FileType
- autocmd  FileType sh       setlocal   isk-=.
- autocmd  FileType c        setlocal   path=.,/usr/include,/usr/local/include,,
- autocmd  FileType cpp      setlocal   path=.,/usr/include,/usr/local/include,,
+ autocmd  FileType c        setlocal   path=.,/usr/include,/usr/local/include,, iskeyword-=!
+ autocmd  FileType cpp      setlocal   path=.,/usr/include,/usr/local/include,, iskeyword-=!
  autocmd  FileType c        setlocal   complete+=k~/.vim/c-support/wordlists/c-c++-keywords.list
  autocmd  FileType cpp      setlocal   complete+=k~/.vim/c-support/wordlists/*
  autocmd  FileType python   setlocal   complete+=k~/.vim/pydiction-1.2/pydiction.py
@@ -540,6 +540,8 @@ nmap <C-C><C-V> "yp
 " unexpectalbe <C-C>
 nmap <C-L><C-C> <C-L>
 nmap <C-W><C-C> <C-W>
+
+
 
 function! Escape_char(orgstr)
     " % not in the list
