@@ -104,10 +104,10 @@ noremap ffv     ggVG
 " vim info and session
 set             sessionoptions-=curdir
 set             sessionoptions+=sesdir
-noremap ffs     :mksession! .session.vim<CR>
-"                                           :wviminfo! .viminfo<CR>
-noremap ffl     :source     .session.vim<CR>
-"                                           :rviminfo  .viminfo<cR> 
+noremap ffs     :mksession! .session.vim<CR>:wviminfo! .viminfo<CR>
+"                                           
+noremap ffl     :source     .session.vim<CR>:rviminfo  .viminfo<cR>
+"                                           
 
 noremap ff3     :copen<CR>gg/\<error\>\c<CR>
 noremap ff4     :copen<CR>gg/.arning:<CR>
@@ -269,17 +269,19 @@ vmap    <C-X>i  :<C-U>e ++ff=unix %<CR>:%s/<C-V><C-M>//ge<CR>:'<,'>!indent -ppi4
 " markdown -> 
 imap    <C-X>>  -＞
 
-nmap <C-H>  *<C-O>
 nmap <C-P>  :cp<CR>
 nmap <C-N>  :cn<CR>
+
 nmap <C-j>  :tabp<CR>
 nmap <C-k>  :tabn<CR>
+nmap <C-H>  *<C-O>
 
 " CTRL-R CTRL-F the Filename under the cursor
 " CTRL-R CTRL-P the Filename under the cursor, expanded with 'path' as in |gf|
 " CTRL-R CTRL-W the word under the cursor
 " CTRL-R CTRL-A the W-O-R-D under the cursor; see |WORD|
-vmap <C-H>  "hy
+
+vmap <C-H>  gh<C-O>
 vmap <C-J>  "jy
 vmap <C-K>  "ky
 vmap <C-L>  "ly
