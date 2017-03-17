@@ -275,7 +275,7 @@ nmap <C-N>  :cn<CR>
 
 nmap <C-j>  :tabp<CR>
 nmap <C-k>  :tabn<CR>
-nmap <C-H>  *<C-O>
+nmap <C-H>  viw"ly*<C-O>
 
 " CTRL-R CTRL-F the Filename under the cursor
 " CTRL-R CTRL-P the Filename under the cursor, expanded with 'path' as in |gf|
@@ -340,6 +340,7 @@ function! Resize_scroll()
 endf
 
 function! Toggle_iskey()
+    " /usr/share/vim/vim73/syntax/progress.vim del '-'
     if g:toggle_iskey == 0
         echo "add ->"
         set iskeyword+=.,-,>
