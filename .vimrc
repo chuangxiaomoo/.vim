@@ -214,6 +214,7 @@ vmap    <C-X>.  :B s#[（“‘]#<#g\|s#[”’）]#>#g<CR>
 cnor    <C-X>r  '<,'>s/\<\>//g<Left><Left><Left><Left><Left>
 
 nmap    <C-X>c  :tabonly<CR><C-W>o:quit<CR>
+nmap    <C-X>k  :call Toggle_iskey()<CR>
 
 " 删除行末尾的空格
 " 删除指定内容的行
@@ -338,7 +339,18 @@ function! Resize_scroll()
     endif
 endf
 
-" if getline(1) =~ '^/\*' || getline(1) =~ '^//' 
+function! Toggle_iskey()
+    if g:toggle_iskey == 0
+        echo "add ->"
+        set iskeyword+=.,-,>
+        let g:toggle_iskey = 1
+    else
+        echo "del ->"
+        let g:toggle_iskey = 0
+        set iskeyword-=.,-,>
+    endif
+endf
+
 function! Filetype_check()
   if getline(1) =~ '^/[\*\/]' 
       setf cpp
@@ -407,7 +419,7 @@ if has("autocmd")
  autocmd  BufEnter,BufNewFile,BufRead  *.pl  setlocal makeprg=perl\ %
  autocmd  BufEnter,BufNewFile,BufRead  *.py  setlocal makeprg=python\ %
  autocmd  BufEnter,BufNewFile,BufRead  *.sh  setlocal makeprg=/bin/bash\ %
- autocmd  FileType ruby                      setlocal makeprg=ruby\ %           iskeyword+=_,$,@,%,#,-
+ "utocmd  FileType ruby                      setlocal makeprg=ruby\ %           iskeyword+=_,$,@,%,#,-
  autocmd  FileType sh                        setlocal makeprg=bash\ %           iskeyword-=.
  autocmd  FileType text                      setlocal textwidth=80
  autocmd  FileType mysql                     setlocal complete+=k~/.vim/wordlists/mysql.list
