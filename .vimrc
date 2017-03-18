@@ -76,9 +76,10 @@ noremap ttD     :r!date +\%Y.\%m.\%d<CR>E
 noremap ttt     :r!date +\%T<CR>E
 noremap ttf     o<C-R>%<ESC>vB
 noremap ttF     :cd /<CR>O<C-R>%<ESC>:cd -<CR>v0
-noremap ttp     mA:r!cat /dev/shm/xm<CR>
-vmap    tty     "yy:!> /dev/shm/xm<CR><CR>:vs /dev/shm/xm<CR>"yp:wq!<CR>
-vmap    ttY     "yy:vs /dev/shm/xm<CR>G"ygp:wq!<CR>
+
+nmap    ttp     :r   /dev/shm/xm<CR>
+vmap    tty     :w!  /dev/shm/xm<CR>
+vmap    ttY     :w >>/dev/shm/xm<CR>
 
 "
 " upper and lower case
@@ -555,8 +556,6 @@ nmap <C-C><C-V> "yp
 " unexpectalbe <C-C>
 nmap <C-L><C-C> <C-L>
 nmap <C-W><C-C> <C-W>
-
-
 
 function! Escape_char(orgstr)
     " % not in the list
