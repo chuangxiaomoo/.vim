@@ -149,8 +149,10 @@ function! Source_comma_map()
    "no          <leader>s  :mapclear <buffer><CR>:source ~/.vimrc<CR>:echo ". vimrc succ!"<CR>
     no          <leader>s                        :source ~/.vimrc<CR>:echo ". vimrc succ!"<CR>
     no          <leader>x  :tabonly<CR><C-W>o
-    im          <leader>> ＞
-    im          <leader>< ＜
+    im          <leader>>  ＞
+    im          <leader><  ＜
+   "im          <leader>>  <C-Q>uff1e
+   "im          <leader><  <C-Q>uff1c
     "o <silent> <leader>t  Occupied by Align
     no          <leader>w  :w!<CR>
 
