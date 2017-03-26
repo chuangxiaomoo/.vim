@@ -120,6 +120,7 @@ nmap <C-L>3  mCmc:echo "mark Cc"<CR>
 nmap <C-L>4  mDmd:echo "mark Dd"<CR>
 nmap <C-L>$  mE`CmD`BmC`AmB`EmA:echo "Refreshed DCBA!"<CR>
 nmap <C-L>5  $a     <ESC>:w<CR>
+nmap <C-L>7  :set isk+=-<CR>viw<C-L>l:let @l=substitute(@l, '201.', '201.', 'g')<CR>/<C-R>l<CR>
 nmap <C-L>%   /     $<CR>
 nmap <C-L>m  :marks ABCD<CR>
 nmap <C-L>a  :cs find s 

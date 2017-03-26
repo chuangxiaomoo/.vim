@@ -221,7 +221,7 @@ nmap    <C-X>k  :call Toggle_iskey()<CR>
 " 删除指定内容的行
 nmap    <C-X>4  :set   expandtab<CR>:%retab!<CR>
 nmap    <C-X>3  :set noexpandtab<CR>:%retab!<CR>
-nmap    <C-X>d  :%s/^  *$//ge<CR>:s/xkmcdz//ge<CR>
+nmap    <C-X>d  :%s/^  *$//ge<CR>/Tips:Del-tail-white-space<CR>
 nmap    <C-X>D  :s/^.*.*\n//g<Left><Left><Left><Left><Left><Left><Left>
 nmap    <C-X>r  :cclose<CR>:make!<CR><CR>:bo copen 11<CR>G
 nmap    <C-X>s  :%s#\<\>##g<Left><Left><Left><Left><Left>
@@ -447,7 +447,7 @@ if has("autocmd")
  autocmd  CursorMoved,CursorMovedI *            call Update_Tlist_nor()
 "autocmd  BufEnter __Tag_List__                 let  g:is_in_tlist = 1
 "autocmd  BufLeave __Tag_List__                 let  g:is_in_tlist = 0
- 
+
  " FileType
  autocmd  FileType c        setlocal   path=.,/usr/include,/usr/local/include,, iskeyword-=!
  autocmd  FileType cpp      setlocal   path=.,/usr/include,/usr/local/include,, iskeyword-=!
@@ -468,7 +468,7 @@ endif
     "o            <C-W>q  quit, so frequently, so a more convenient key
     "o            <C-W>s  split window
     "o            <C-W>v  vspli window
-    
+
     no <silent>   <C-W>c  :tabonly<CR><C-W>o
     no <silent>   <C-W>d  :50vs ~/bin/stk/dbank<CR>ggn$h
     no            <C-W>e  :vs<CR>:e <C-R><C-F><CR>
@@ -561,7 +561,7 @@ function! Escape_char(orgstr)
     " % not in the list
     " can't search string include '
     let b:tmpstr = a:orgstr
-    
+
     let b:tmpstr = substitute(b:tmpstr, '', '', 'g')
     let b:tmpstr = substitute(b:tmpstr, '\[', '\\&', 'g')
     let b:tmpstr = substitute(b:tmpstr, '\]', '\\&', 'g')
