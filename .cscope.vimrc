@@ -139,7 +139,9 @@ nmap <C-L>A  :execute Cs_add_file()<CR>
 "
 " map cs, scs, vert scs 
 "
-
+" __attention__: cscope g
+"   Nor does it recognize function definitions with a function pointer argument
+"
 
 nmap <C-L>c  :cs find c <C-R>=expand("<cword>")<CR><CR>
 nmap <C-L>d  :cs find d <C-R>=expand("<cword>")<CR><CR>

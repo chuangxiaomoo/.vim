@@ -417,7 +417,6 @@ if has("autocmd")
  autocmd  BufNewFile *.py              0r ~/.vim/skeleton/skeleton.py
 
  autocmd  BufEnter,BufRead             *.u   setlocal ft=markdown
- autocmd  BufEnter,BufRead             *.u   nnoremap <F5> :tabn<CR>L:tabp<CR>
  autocmd  BufEnter,BufNewFile,BufRead  *.pl  setlocal makeprg=perl\ %
  autocmd  BufEnter,BufNewFile,BufRead  *.py  setlocal makeprg=python\ %
  autocmd  BufEnter,BufNewFile,BufRead  *.sh  setlocal makeprg=/bin/bash\ %
