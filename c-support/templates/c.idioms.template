@@ -39,6 +39,8 @@ $%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 printf("%s|%d| <CURSOR>\n", __FILE__, __LINE__);
 == idioms.printf == insert ==
 printf("<CURSOR>\n");
+== idioms.debug == insert ==
+DBG("<CURSOR>\n");
 == idioms.scanf == insert ==
 scanf("<CURSOR>", &);
 $%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

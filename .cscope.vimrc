@@ -8,7 +8,6 @@ let g:clang_user_options='|| exit 0'
 let g:clang_complete_auto = 0
 let g:clang_complete_copen = 0
 let g:clang_close_preview=0
-let g:toggle_iskey = 0
 
 " ---------------------- BufExplorer ----------------------------------
 " http://zhouliang.pro/2012/06/28/vim-buffer/

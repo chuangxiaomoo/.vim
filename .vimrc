@@ -19,7 +19,9 @@
 syntax on
 syntax enable
 syntax clear Search
+
 source ~/.vim/.cscope.vimrc
+source ~/.vim/.snip.vimrc
 
 filetype plugin on
 filetype plugin indent on 
@@ -105,10 +107,10 @@ noremap ffv     ggVG
 " vim info and session
 set             sessionoptions-=curdir
 set             sessionoptions+=sesdir
-noremap ffs     :mksession! .session.vim<CR>:wviminfo! .viminfo<CR>
-"                                           
-noremap ffl     :source     .session.vim<CR>:rviminfo  .viminfo<cR>
-"                                           
+noremap ffs     :mksession! .session.vim<CR>
+"                                           :wviminfo! .viminfo<CR>
+noremap ffl     :source     .session.vim<CR>
+"                                           :rviminfo  .viminfo<cR>
 
 noremap ff3     :copen<CR>gg/\<error\>\c<CR>
 noremap ff4     :copen<CR>gg/.arning:<CR>
@@ -344,6 +346,10 @@ endf
 
 function! Toggle_iskey()
     " /usr/share/vim/vim73/syntax/progress.vim del '-'
+    if !exists("g:toggle_iskey")
+        let g:toggle_iskey = 0
+    endif
+
     if g:toggle_iskey == 0
         echo "add ->"
         set iskeyword+=.,-,>
@@ -431,7 +437,7 @@ if has("autocmd")
  autocmd  BufEnter,BufNewFile,BufRead  *.rc  setlocal ft=sh
  autocmd  BufEnter,BufNewFile,BufRead  *.sh  setlocal complete+=k~/.vim/bash-support/wordlists/bash.list
  autocmd  BufEnter,BufRead             *.inc setlocal ft=sh
- autocmd  BufEnter,BufRead             *.i   setlocal ft=cpp ai
+ autocmd  BufEnter,BufRead             *.i   setlocal ft=cpp ai | call Update_snip_syntax()
  autocmd  BufEnter,BufRead             *sql* setlocal ft=mysql
  autocmd  BufEnter,BufRead           chan.md cd ~/bin/stk/.chan/
  autocmd  BufEnter,BufNewFile,BufRead  *.bsp setlocal ft=make
@@ -456,7 +462,7 @@ if has("autocmd")
  autocmd  FileType cpp      setlocal   complete+=k~/.vim/c-support/wordlists/*
  autocmd  FileType python   setlocal   complete+=k~/.vim/pydiction-1.2/pydiction.py
  autocmd  FileType python   setlocal   et sta sw=4 sts=4 scrolloff=1
- autocmd  FileType markdown setlocal   et sta ts=2 sw=2 sts=2
+ autocmd  FileType markdown setlocal   et sta ts=2 sw=2 sts=2 | call Update_snip_syntax()
  autocmd  FileType xml      setlocal   et sta ts=2 sw=2 sts=2
 endif
 

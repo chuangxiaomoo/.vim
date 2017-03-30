@@ -276,6 +276,8 @@ inoremap    <buffer>  <silent>  <LocalLeader>is    <Esc>:call C_InsertTemplate("
 vnoremap    <buffer>  <silent>  <LocalLeader>iu    <Esc>:call C_InsertTemplate("idioms.union" , "v")<CR>
 inoremap    <buffer>  <silent>  <LocalLeader>iu    <Esc>:call C_InsertTemplate("idioms.union")<CR>
 "
+ noremap    <buffer>  <silent>  <LocalLeader>id         :call C_InsertTemplate("idioms.debug")<CR>
+inoremap    <buffer>  <silent>  <LocalLeader>id    <Esc>:call C_InsertTemplate("idioms.debug")<CR>
  noremap    <buffer>  <silent>  <LocalLeader>ip         :call C_InsertTemplate("idioms.printf")<CR>
 inoremap    <buffer>  <silent>  <LocalLeader>ip    <Esc>:call C_InsertTemplate("idioms.printf")<CR>
  noremap    <buffer>  <silent>  <LocalLeader>iP         :call C_InsertTemplate("idioms.Printf")<CR>
