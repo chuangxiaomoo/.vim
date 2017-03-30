@@ -1,4 +1,6 @@
-
+"
+" http://vim.wikia.com/wiki/Different_syntax_highlighting_within_regions_of_a_file
+"
 function! TextEnableCodeSnip(filetype,start,end,textSnipHl) abort
   let ft=toupper(a:filetype)
   let group='textGroup'.ft
@@ -36,4 +38,3 @@ endf
 "
 " @begin=sh@
 " @end=sh@
-
