@@ -27,14 +27,15 @@ function! TextEnableCodeSnip(filetype,start,end,textSnipHl) abort
 endfunction
 
 function! Update_snip_syntax()
-    call TextEnableCodeSnip(  'c',   '@begin=c@',   '@end=c@', 'SpecialComment')
-    call TextEnableCodeSnip( 'sh',  '@begin=sh@',  '@end=sh@', 'SpecialComment')
-    call TextEnableCodeSnip('cpp', '@begin=cpp@', '@end=cpp@', 'SpecialComment')
-    call TextEnableCodeSnip('sql', '@begin=sql@', '@end=sql@', 'SpecialComment')
+    call TextEnableCodeSnip(       'c',        '@begin=c@',        '@end=c@', 'SpecialComment')
+    call TextEnableCodeSnip(      'sh',       '@begin=sh@',       '@end=sh@', 'SpecialComment')
+    call TextEnableCodeSnip(     'cpp',      '@begin=cpp@',      '@end=cpp@', 'SpecialComment')
+    call TextEnableCodeSnip(     'sql',      '@begin=sql@',      '@end=sql@', 'SpecialComment')
+    call TextEnableCodeSnip('markdown', '@begin=markdown@', '@end=markdown@', 'SpecialComment')
 endf
 
-
-" Example
-"
+" auto:
 " @begin=sh@
 " @end=sh@
+nmap <silent> \il         :call C_InsertTemplate("idioms.mysnip")<CR>
+imap <silent> \il    <Esc>:call C_InsertTemplate("idioms.mysnip")<CR>
