@@ -345,7 +345,8 @@ function! Resize_scroll()
 endf
 
 function! Toggle_iskey()
-    " /usr/share/vim/vim73/syntax/progress.vim del '-'
+    " /usr/share/vim/vim73/syntax/progress.vim|iskeyword|   del '-'
+    " /usr/share/vim/vim73/syntax/sh.vim|sh_noisk|          del '.'
     if !exists("g:toggle_iskey")
         let g:toggle_iskey = 0
     endif
