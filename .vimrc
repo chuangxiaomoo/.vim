@@ -225,11 +225,10 @@ nmap    <C-X>k  :call Toggle_iskey()<CR>
 " 删除指定内容的行
 nmap    <C-X>4  :set   expandtab<CR>:%retab!<CR>
 nmap    <C-X>3  :set noexpandtab<CR>:%retab!<CR>
-nmap    <C-X>d  :%s/^  *$//ge<CR>/Tips:Del-tail-white-space<CR>
-nmap    <C-X>D  :s/^.*.*\n//g<Left><Left><Left><Left><Left><Left><Left>
+vmap    <C-X>B  :s/^\n\n\n/\r/g
+nmap    <C-X>D  :%s/^  *$//ge<CR>/Tips:Del-tail-white-space<CR>
 nmap    <C-X>r  :cclose<CR>:make!<CR><CR>:bo copen 11<CR>G
 nmap    <C-X>s  :%s#\<\>##g<Left><Left><Left><Left><Left>
-vmap    <C-X>b  :s/^\n\n/\r/g
 nmap    <C-X>t  :%s#[ \t][ \t]*$##g<CR>:%s#\t# #g<CR>:%s#  *#\t#g<CR>/xkcdef<CR>,4
 nmap    <C-X>/  /\<\><Left><Left>
 nmap    <C-X>?  ?\<\><Left><Left>
