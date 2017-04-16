@@ -1,5 +1,7 @@
 " ~/.vim/.cscope.vimrc|84|
 " ~/.vim/.forgot_vim_skills.md
+" ~/.vim/.vi_test_file
+" ~/.vim/.map
 "
 " :helptags $VIMRUNTIME/doc
 " :helptags $HOME/.vim/doc/
@@ -604,5 +606,3 @@ vmap gh  "yy/<C-R>=Escape_char('<C-R>y')<CR><CR>
 nmap X vy
 vmap X y
 
-" ~/.vim/.vi_test_file
-" ~/.vim/.map
