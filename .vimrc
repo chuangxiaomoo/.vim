@@ -245,6 +245,7 @@ vmap    <C-X>(  c()<ESC>Pl
 vmap    <C-X>[  c[]<ESC>Pl
 vmap    <C-X>{  c{}<ESC>Pl
 vmap    <C-X>h  c``<ESC>Pl
+vmap    <C-X>`  c“”<ESC>Pl
 vmap    <C-X>"  c""<ESC>Pl
 vmap    <C-X>'  c''<ESC>Pl
 vmap    <C-X>*  c**<ESC>Pl
