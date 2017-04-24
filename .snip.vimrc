@@ -91,7 +91,7 @@ function! Asc_comp(i1, i2)
    return a:i1 - a:i2
 endfunc
 
-function! BufCount()
+function! LSB()
   let buf_list = []
   for i in range(tabpagenr('$'))
     let buf_list += tabpagebuflist(i+1)
@@ -108,7 +108,17 @@ function! BufCount()
          if i < 10
              let tip = ' '
          endif
-         echo tip . i . '    ' . nr . '    ' . bufname(i)
+
+         let file = bufname(i)
+         if file == ''
+             if getbufvar(file, '&buftype') == 'quickfix'
+                 let file = '__Quickfix__'
+             else
+                 let file = '[No Name]'
+             endif
+         endif
+
+         echo tip . i . '    ' . nr . '    ' . file
       endif
       let o = i
   endfor
