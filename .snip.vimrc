@@ -39,3 +39,52 @@ endf
 " @end=sh@
 nmap <silent> \il         :call C_InsertTemplate("idioms.mysnip")<CR>
 imap <silent> \il    <Esc>:call C_InsertTemplate("idioms.mysnip")<CR>
+
+function! MyTabLine()
+  let s = ''
+  for i in range(tabpagenr('$'))
+    " select the highlighting
+    if i + 1 == tabpagenr()
+      let s .= '%#TabLineSel#'
+    else
+      let s .= '%#TabLine#'
+    endif
+
+    " set the tab page number (for mouse clicks)
+    let s .= '%' . (i + 1) . 'T'
+    let s .= '[' . i . ']'
+
+    " the label is made by MyTabLabel()
+    let s .= ' %{MyTabLabel(' . (i + 1) . ')} '
+  endfor
+
+  " after the last tab fill with TabLineFill and reset tab page nr
+  let s .= '%#TabLineFill#%T'
+
+  " right-align the label to close the current tab page
+  if tabpagenr('$') > 1
+    let s .= '%=%#TabLine#%999Xclose'
+  endif
+
+  return s
+endfunction
+
+function! MyTabLabel(n)
+  let buflist = tabpagebuflist(a:n)
+  let winnr = tabpagewinnr(a:n)
+  let file = bufname(buflist[winnr - 1])
+  let tip = ''
+  if getbufvar(file, '&modified')
+      let tip = '+ '
+  endif
+  if file == ''
+      if getbufvar(file, '&buftype') == 'quickfix'
+          let file = '__Quickfix__'
+      else
+          let file = '[No Name]'
+      endif
+  endif
+  return tip . fnamemodify(file, ':t')
+endfunction
+
+:set tabline=%!MyTabLine()
