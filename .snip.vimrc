@@ -87,4 +87,34 @@ function! MyTabLabel(n)
   return tip . fnamemodify(file, ':t')
 endfunction
 
-:set tabline=%!MyTabLine()
+function! Asc_comp(i1, i2)
+   return a:i1 - a:i2
+endfunc
+
+function! BufCount()
+  let buf_list = []
+  for i in range(tabpagenr('$'))
+    let buf_list += tabpagebuflist(i+1)
+  endfor
+
+  echo sort(buf_list, "Asc_comp")
+  echo "nr    cnt  bufname"
+
+  let o = 0
+  for i in buf_list
+      if o != i
+         let nr=count(buf_list, i)
+         let tip = ''
+         if i < 10
+             let tip = ' '
+         endif
+         echo tip . i . '    ' . nr . '    ' . bufname(i)
+      endif
+      let o = i
+  endfor
+endfunction
+
+" ====================== exec ======================================
+
+set tabline=%!MyTabLine()
+set switchbuf=useopen,usetab
