@@ -383,6 +383,8 @@ function! Word_mode(num)
         cd /root/bin/.m1doc/
     elseif a:num == 2
         cd /root/bin/.m2doc/
+    elseif a:num == 3
+        cd /root/bin/.m3doc/
     elseif a:num == 0
         " http://man.lupaworld.com/content/manage/vi/doc/change.html#fo-table
         " gqq format current line
@@ -449,6 +451,7 @@ if has("autocmd")
  autocmd  BufEnter,BufNewFile,BufRead m[0-9] set path=,,
  autocmd  BufEnter,BufNewFile,BufRead    m1  call Word_mode(1)
  autocmd  BufEnter,BufNewFile,BufRead    m2  call Word_mode(2)
+ autocmd  BufEnter,BufNewFile,BufRead    m3  call Word_mode(3)
 
  autocmd  WinEnter,BufNew,BufEnter,BufRead  *   call Introduce_boxdraw()
  autocmd  WinEnter,BufNew,BufEnter,BufRead  *   call Resize_scroll()
