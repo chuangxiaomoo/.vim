@@ -44,9 +44,10 @@ hi def link cBinaryOperatorError   cError
 hi def link cLogicalOperator       Opercolor
 hi def link cLogicalOperatorError  Opercolor
 
-syn keyword cType       BOOL My_Type_1 My_Type_2 My_Type_3
+syn keyword cType       BOOL My_Type_1 My_Type_2 My_Type_3 dyn
 syn keyword cConstant   FAILURE SUCCESS FALSE TRUE RETVOID __FUNCTION__
 syn keyword	cStatement	TEST return_val_if_fail return_if_fail goto_tag_if_fail until list_for_each_safe
+syn keyword	cStatement	once init thread
 "yn keyword	cRepeat		TEST return_val_if_fail return_if_fail
 "yn keyword	cStatement	xt_pri xt_dbg xt_ret xt_goto sy_ret sy_goto
 
