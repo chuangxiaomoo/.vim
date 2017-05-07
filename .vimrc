@@ -487,9 +487,8 @@ endif
     no            <C-W>e  :vs<CR>:e <C-R><C-F><CR>
     no <silent>   <C-W>f  :cclose<CR>:tabedit <C-R>%<CR>
     no            <C-W>t  :tabedit 
-    no            <C-W>m  :vs ~/bin/m
-    no            <C-W>p  :vs .cscope.files<CR>
-    no            <C-W>x  :vs /dev/shm/xm<CR>
+    no            <C-W>m  mF:e ~/bin/m
+    no            <C-W>x  mF:e /dev/shm/xm<CR>
 nnoremap          <C-W>.  0*:sp .codelist<CR>nyy:q<CR>pk
 nnoremap          <C-W>/  :only<CR>0*:sp .soptter.nb.md<CR>n
 
