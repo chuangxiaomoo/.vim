@@ -127,4 +127,4 @@ endfunction
 " ====================== exec ======================================
 
 set tabline=%!MyTabLine()
-set switchbuf=useopen,usetab
+"et switchbuf=useopen,usetab
