@@ -115,7 +115,7 @@ noremap ffl     :source     .session.vim<CR>
 "                                           :rviminfo  .viminfo<cR>
 
 noremap ff3     :copen<CR>gg/\<error\>\c<CR>
-noremap ff4     :copen<CR>gg/^\%(.*obsolete\)\@!.*\zs.arning:<CR>
+noremap ff4     :copen<CR>gg/^\%(.*obsolescent\)\@!.*\zs.arning:<CR>
 noremap ff5     :copen<CR>gg/undefined reference<CR>
 
 let mapleader=','
