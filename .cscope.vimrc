@@ -123,9 +123,11 @@ nmap <C-L>7  :set isk+=-<CR>viw<C-L>l:let @l=substitute(@l, '201.', '201.', 'g')
 nmap <C-L>%   /     $<CR>
 nmap <C-L>m  :marks ABCD<CR>
 nmap <C-L>a  :cs find s 
+
+"use [.] to  match literal symbol '.', and [*] as '*'
 nmap <C-L>e  :cs find e <C-R>=expand("<cword>")<CR>
 nmap <C-L>E  :let @l=substitute(@l, '(', '.', 'g')<CR>:cs find e <C-R>l<CR>
-"map <C-L>E  :grep -i '' `cat .cscope.files`<Home><S-Right><S-Right><Right><Right>
+
 nmap <C-L>r  :cclose<CR>:60vs Makefile<CR>:%s/run\ r://e<CR>u h
 nmap <C-L>p  mF:e .cscope.files<CR>
 nmap <C-L>P  mF:tabedit .cscope.files<CR>
