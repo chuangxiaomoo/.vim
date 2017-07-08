@@ -250,7 +250,9 @@ vmap    <C-X>h  c``<ESC>Pl
 vmap    <C-X>`  c“”<ESC>Pl
 vmap    <C-X>"  c""<ESC>Pl
 vmap    <C-X>'  c''<ESC>Pl
-vmap    <C-X>*  c**<ESC>Pl
+vmap    <C-X>8  c**<ESC>Pl
+vmap    <C-X>*  c****<ESC>hPl
+
 
 " zc    to fold
 vmap    <C-X>f  c{{{<CR><C-R>"}}}<ESC>
