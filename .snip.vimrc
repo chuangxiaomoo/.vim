@@ -2,6 +2,9 @@
 " http://vim.wikia.com/wiki/Different_syntax_highlighting_within_regions_of_a_file
 "
 function! TextEnableCodeSnip(filetype,start,end,textSnipHl) abort
+" if exists('b:is_sniping') | return | endif
+" let b:is_sniping = 1
+
   let ft=toupper(a:filetype)
   let group='textGroup'.ft
   if exists('b:current_syntax')
@@ -27,9 +30,6 @@ function! TextEnableCodeSnip(filetype,start,end,textSnipHl) abort
 endfunction
 
 function! Update_snip_syntax()
-  if exists('b:is_sniping') | return | endif
-  let b:is_sniping = 1
-
   call TextEnableCodeSnip(     'cpp',      '```cpp'     ,            '```', 'SpecialComment')
   call TextEnableCodeSnip(     'sql',      '```sql'     ,            '```', 'SpecialComment')
   call TextEnableCodeSnip(      'sh',      '```bash'    ,            '```', 'SpecialComment')
