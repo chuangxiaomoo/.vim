@@ -27,20 +27,14 @@ function! TextEnableCodeSnip(filetype,start,end,textSnipHl) abort
 endfunction
 
 function! Update_snip_syntax()
-    call TextEnableCodeSnip(       'c',        '@begin=c@',        '@end=c@', 'SpecialComment')
-    call TextEnableCodeSnip(      'sh',       '@begin=sh@',       '@end=sh@', 'SpecialComment')
-    call TextEnableCodeSnip(     'cpp',      '@begin=cpp@',      '@end=cpp@', 'SpecialComment')
-    call TextEnableCodeSnip(     'sql',      '@begin=sql@',      '@end=sql@', 'SpecialComment')
-    call TextEnableCodeSnip(    'html',     '@begin=html@',     '@end=html@', 'SpecialComment')
-    call TextEnableCodeSnip('markdown', '@begin=markdown@', '@end=markdown@', 'SpecialComment')
+  if exists('b:is_sniping') | return | endif
+  let b:is_sniping = 1
 
-    call TextEnableCodeSnip(       'c',      '```c'       ,            '```', 'SpecialComment')
-    call TextEnableCodeSnip(      'sh',      '```sh'      ,            '```', 'SpecialComment')
-    call TextEnableCodeSnip(      'sh',      '```bash'    ,            '```', 'SpecialComment')
-    call TextEnableCodeSnip(     'cpp',      '```cpp'     ,            '```', 'SpecialComment')
-    call TextEnableCodeSnip(     'sql',      '```sql'     ,            '```', 'SpecialComment')
-    call TextEnableCodeSnip(    'html',      '```html'    ,            '```', 'SpecialComment')
-    call TextEnableCodeSnip('markdown',      '```markdown',            '```', 'SpecialComment')
+  call TextEnableCodeSnip(     'cpp',      '```cpp'     ,            '```', 'SpecialComment')
+  call TextEnableCodeSnip(     'sql',      '```sql'     ,            '```', 'SpecialComment')
+  call TextEnableCodeSnip(      'sh',      '```bash'    ,            '```', 'SpecialComment')
+  call TextEnableCodeSnip(    'html',      '```html'    ,            '```', 'SpecialComment')
+  call TextEnableCodeSnip('markdown',      '```markdown',            '```', 'SpecialComment')
 endf
 
 " auto:
