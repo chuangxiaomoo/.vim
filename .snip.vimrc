@@ -31,12 +31,23 @@ function! Update_snip_syntax()
     call TextEnableCodeSnip(      'sh',       '@begin=sh@',       '@end=sh@', 'SpecialComment')
     call TextEnableCodeSnip(     'cpp',      '@begin=cpp@',      '@end=cpp@', 'SpecialComment')
     call TextEnableCodeSnip(     'sql',      '@begin=sql@',      '@end=sql@', 'SpecialComment')
+    call TextEnableCodeSnip(    'html',     '@begin=html@',     '@end=html@', 'SpecialComment')
     call TextEnableCodeSnip('markdown', '@begin=markdown@', '@end=markdown@', 'SpecialComment')
+
+    call TextEnableCodeSnip(       'c',      '```c'       ,            '```', 'SpecialComment')
+    call TextEnableCodeSnip(      'sh',      '```sh'      ,            '```', 'SpecialComment')
+    call TextEnableCodeSnip(      'sh',      '```bash'    ,            '```', 'SpecialComment')
+    call TextEnableCodeSnip(     'cpp',      '```cpp'     ,            '```', 'SpecialComment')
+    call TextEnableCodeSnip(     'sql',      '```sql'     ,            '```', 'SpecialComment')
+    call TextEnableCodeSnip(    'html',      '```html'    ,            '```', 'SpecialComment')
+    call TextEnableCodeSnip('markdown',      '```markdown',            '```', 'SpecialComment')
 endf
 
 " auto:
 " @begin=sh@
 " @end=sh@
+" sed -i -e '/@begin=/s/@$//g' -e '/@begin=/s/@begin=/```/g'  *
+" sed -i -e '/@end=/s/@$//g' -e '/@end=/s/@end=/```/g'  *
 nmap <silent> \il         :call C_InsertTemplate("idioms.mysnip")<CR>
 imap <silent> \il    <Esc>:call C_InsertTemplate("idioms.mysnip")<CR>
 

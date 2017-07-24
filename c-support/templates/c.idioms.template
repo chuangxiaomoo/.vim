@@ -121,5 +121,5 @@ fprintf(|?FILEPOINTER|, "<CURSOR>\n", );
 fscanf(|?FILEPOINTER|, "<CURSOR>", &);
 $%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 == idioms.mysnip == insert ==
-@begin=|?LANGUAGE|@
-@end=|LANGUAGE|@
+```|?LANGUAGE|
+```

@@ -85,7 +85,7 @@ endfunction
 " cd /usr/include && cscope -Rbq -P`pwd`
 "
 let csdir="/usr/include"
-let csfile = ": cs add " . csdir . "/cscope.out " . csdir
+let csfile = ": cs add " . csdir . "/.cscope.out " . csdir
 function! Cs_add_file()
         :execute g:csfile
 endfunct
