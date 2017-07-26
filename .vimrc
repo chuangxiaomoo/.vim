@@ -121,6 +121,11 @@ noremap ff5     :copen<CR>gg/undefined reference<CR>
 let mapleader=','
 let maplocalleader='\'
 
+function! Recall_buf_funcs()
+    if exists('b:is_sniping') | unlet b:is_sniping | endif
+    call Update_snip_syntax()
+endf
+
 function! Source_comma_map()
     " Don't use map <buffer>, it will be clear by mapclear or so command
     " nore <silent> <LocalLeader>g :<CR>
@@ -151,7 +156,7 @@ function! Source_comma_map()
     no <silent> <leader>r  :cclose<CR>:make!<CR><CR>:bo copen 11<CR>G
    "   same.as.    <C-X>r  :cclose<CR>:make!<CR><CR>:bo copen 11<CR>G  
    "no          <leader>s  :mapclear <buffer><CR>:source ~/.vimrc<CR>:echo ". vimrc succ!"<CR>
-    no          <leader>s                        :source ~/.vimrc<CR>:echo ". vimrc succ!"<CR>
+    no          <leader>s  :source ~/.vimrc<CR>:call Recall_buf_funcs()<CR>:echo ". vimrc succ!"<CR>
     no          <leader>x  :tabonly<CR><C-W>o
     im          <leader>>  ＞
     im          <leader><  ＜
@@ -223,18 +228,23 @@ cnor    <C-X>r  '<,'>s/\<\>//g<Left><Left><Left><Left><Left>
 nmap    <C-X>c  :tabonly<CR><C-W>o:quit<CR>
 nmap    <C-X>k  :call Toggle_iskey()<CR>
 
-" 删除行末尾的空格
 " 删除指定内容的行
 nmap    <C-X>4  :set   expandtab<CR>:%retab!<CR>
 nmap    <C-X>3  :set noexpandtab<CR>:%retab!<CR>
-vmap    <C-X>B  :s/^\n\n\n/\r/g
-nmap    <C-X>D  :%s/^  *$//ge<CR>/Tips:Del-tail-white-space<CR>
+
 nmap    <C-X>r  :cclose<CR>:make!<CR><CR>:bo copen 11<CR>G
 nmap    <C-X>s  :%s#\<\>##g<Left><Left><Left><Left><Left>
 nmap    <C-X>t  :%s#[ \t][ \t]*$##g<CR>:%s#\t# #g<CR>:%s#  *#\t#g<CR>/xkcdef<CR>,4
-nmap    <C-X>/  /\<\><Left><Left>
-nmap    <C-X>?  ?\<\><Left><Left>
 vmap    <C-X>/  c/*  */<ESC><Left><Left>Pl
+
+"
+" Search & Replace & Delete & Highlight
+"
+nmap    <C-X>/  /\<\><Left><Left>|                  " /Word
+nmap    <C-X>?  ?\<\><Left><Left>|                  " ?Word
+nmap    <C-X>*  /\*\*.\{-}\*\*<CR>|                 " 高亮 markdown Strong
+nmap    <C-X>S  :%s/^\n\n\n/\r/gc|                  " Squeeze压缩三空行
+nmap    <C-X>D  :%s/^  *$//ge<CR>|                  " 删除行末尾的空格
 
 " draw keys, Box or Remove
 vmap    <silent> <C-X>b :B !sed -e '1s/+-/┌─/g' -e '1s/-+/─┐/g' -e '$s/+-/└─/g' -e '$s/-+/─┘/g' -e 's/-/─/g' -e 's/\|/│/g'<CR>
