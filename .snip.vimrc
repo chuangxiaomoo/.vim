@@ -27,16 +27,21 @@ function! TextEnableCodeSnip(filetype,start,end,textSnipHl) abort
 endfunction
 
 function! Update_snip_syntax()
-  "if exists('b:is_sniping') | return | endif
-
+  if   g:is_sniping == 0 | return | endif
   call TextEnableCodeSnip(     'cpp',      '```cpp'     ,            '```', 'SpecialComment')
   call TextEnableCodeSnip(     'sql',      '```sql'     ,            '```', 'SpecialComment')
   call TextEnableCodeSnip(      'sh',      '```bash'    ,            '```', 'SpecialComment')
   call TextEnableCodeSnip(    'html',      '```html'    ,            '```', 'SpecialComment')
   call TextEnableCodeSnip('markdown',      '```markdown',            '```', 'SpecialComment')
-
-  "let b:is_sniping = 1
 endf
+
+function! Toggle_snip_syntax()
+  let g:is_sniping = !g:is_sniping
+  echo g:is_sniping ? "enable" : "disable"
+  call Update_snip_syntax()
+endf
+
+let g:is_sniping = 0
 
 " auto:
 " @begin=sh@

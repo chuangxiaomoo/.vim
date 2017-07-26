@@ -178,6 +178,7 @@ function! Source_comma_map()
 
     nnoremap <F6>          :set term=xterm mouse=a<CR>
     nnoremap <F7>          :set term=linux mouse=<CR>
+    nnoremap <F8>          :call Toggle_snip_syntax()<CR>
     nnoremap <silent> <F3> :set nu<CR>
     nnoremap <silent> <F4> :set nonu<CR>
     nnoremap          <F5> :make run<CR>:copen<CR><CR>
@@ -243,6 +244,7 @@ vmap    <C-X>/  c/*  */<ESC><Left><Left>Pl
 nmap    <C-X>/  /\<\><Left><Left>|                  " /Word
 nmap    <C-X>?  ?\<\><Left><Left>|                  " ?Word
 nmap    <C-X>*  /\*\*.\{-}\*\*<CR>|                 " 高亮 markdown Strong
+nmap    <C-X>`  :call Toggle_snip_syntax()<CR>|     " 高亮 嵌套语法 <F8>
 nmap    <C-X>S  :%s/^\n\n\n/\r/gc|                  " Squeeze压缩三空行
 nmap    <C-X>D  :%s/^  *$//ge<CR>|                  " 删除行末尾的空格
 
