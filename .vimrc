@@ -333,7 +333,7 @@ hi DiffChange                      ctermbg=0
 hi DiffDelete                      cterm=reverse
 hi DiffAdd                         ctermfg=0
 hi CursorColumn     term=underline cterm=underline  ctermbg=NONE ctermfg=NONE
-hi htmlBold         term=bold,reverse cterm=bold,reverse ctermfg=DarkGreen
+hi htmlBold         ctermfg=DarkGreen
 
 function! Resize_scroll()
     " check if changing
