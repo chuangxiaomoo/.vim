@@ -246,7 +246,7 @@ nmap    <C-X>?  ?\<\><Left><Left>|                  " ?Word
 nmap    <C-X>*  /\*\*.\{-}\*\*<CR>|                 " 高亮 markdown Strong
 nmap    <C-X>`  :call Toggle_snip_syntax()<CR>|     " 高亮 嵌套语法 <F8>
 nmap    <C-X>S  :%s/^\n\n\n/\r/gc|                  " Squeeze压缩三空行
-nmap    <C-X>D  :%s/^  *$//ge<CR>|                  " 删除行末尾的空格
+nmap    <C-X>D  :%s/  *$//gc<CR>|                   " 删除行末尾的空格
 
 " draw keys, Box or Remove
 vmap    <silent> <C-X>b :B !sed -e '1s/+-/┌─/g' -e '1s/-+/─┐/g' -e '$s/+-/└─/g' -e '$s/-+/─┘/g' -e 's/-/─/g' -e 's/\|/│/g'<CR>
@@ -333,6 +333,7 @@ hi DiffChange                      ctermbg=0
 hi DiffDelete                      cterm=reverse
 hi DiffAdd                         ctermfg=0
 hi CursorColumn     term=underline cterm=underline  ctermbg=NONE ctermfg=NONE
+hi htmlBold         term=bold,reverse cterm=bold,reverse ctermfg=DarkGreen
 
 function! Resize_scroll()
     " check if changing
