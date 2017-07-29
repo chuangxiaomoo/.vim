@@ -37,7 +37,7 @@ endf
 
 function! Toggle_snip_syntax()
   let g:is_sniping = !g:is_sniping
-  echo g:is_sniping ? "enable" : "disable"
+  echo g:is_sniping ? "enable_snip_hl" : "disable_snip_hl"
   call Update_snip_syntax()
 endf
 

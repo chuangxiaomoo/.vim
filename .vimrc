@@ -329,11 +329,11 @@ set fdm=marker
 
 " :syntax keyword {group} {keyword} ...
 " 语法组 {group} -> DiffChange DiffAdd Search 
-hi DiffChange                      ctermbg=0
-hi DiffDelete                      cterm=reverse
-hi DiffAdd                         ctermfg=0
-hi CursorColumn     term=underline cterm=underline  ctermbg=NONE ctermfg=NONE
-hi htmlBold         ctermfg=DarkGreen
+hi DiffChange                           ctermbg=0
+hi DiffDelete                           cterm=reverse
+hi DiffAdd                              ctermfg=0
+hi CursorColumn     term=underline      cterm=underline  ctermbg=NONE ctermfg=NONE
+hi htmlBold         ctermfg=DarkGreen   gui=bold guifg=DarkGreen
 
 function! Resize_scroll()
     " check if changing
