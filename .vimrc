@@ -181,7 +181,7 @@ function! Source_comma_map()
     nnoremap <F8>          :call Toggle_snip_syntax()<CR>
     nnoremap <silent> <F3> :set nu<CR>
     nnoremap <silent> <F4> :set nonu<CR>
-    nnoremap          <F5> :make run<CR>:copen<CR><CR>
+    nnoremap          <F5> :cclose<CR>:make<CR>:copen<CR><CR>
 
     " del
     cnoremap <C-Y>    <BS>
@@ -450,6 +450,7 @@ if has("autocmd")
  autocmd  BufEnter,BufNewFile,BufRead  *.sh  setlocal makeprg=/bin/bash\ %
  "utocmd  FileType ruby                      setlocal makeprg=ruby\ %           iskeyword+=_,$,@,%,#,-
  autocmd  FileType sh                        setlocal makeprg=bash\ %           iskeyword-=.
+ autocmd  FileType php                       setlocal makeprg=php\ %           iskeyword-=.
  autocmd  FileType text                      setlocal textwidth=80
  autocmd  FileType mysql                     setlocal complete+=k~/.vim/wordlists/mysql.list
  autocmd  FileType mysql                     nmap <C-L>a :grep "CREATE PROCEDURE" <C-R>%<CR><CR>
@@ -528,7 +529,7 @@ nnoremap      <C-M><C-M>  <CR>
 
 " ---------------- Goyo  ~/.vim/autoload/goyo.vim -----------------------
 nnoremap          <C-W>g  :Goyo<CR>
-let g:goyo_width = 82
+let g:goyo_width = 108
 let g:goyo_height = 96
 let g:goyo_margin_top = 0
 let g:goyo_margin_bottom = 0
