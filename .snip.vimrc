@@ -27,11 +27,16 @@ function! TextEnableCodeSnip(filetype,start,end,textSnipHl) abort
 endfunction
 
 function! Update_snip_syntax()
-  if   g:is_sniping == 0 | return | endif
+  if !exists('b:snip_visited')
+      let b:snip_visited=1
+  else
+      if  g:is_sniping == 0 | return | endif
+  endif
   call TextEnableCodeSnip(     'cpp',      '```cpp'     ,            '```', 'SpecialComment')
   call TextEnableCodeSnip(     'sql',      '```sql'     ,            '```', 'SpecialComment')
   call TextEnableCodeSnip(      'sh',      '```bash'    ,            '```', 'SpecialComment')
   call TextEnableCodeSnip(    'html',      '```html'    ,            '```', 'SpecialComment')
+  call TextEnableCodeSnip(  'python',      '```python'  ,            '```', 'SpecialComment')
   call TextEnableCodeSnip('markdown',      '```markdown',            '```', 'SpecialComment')
 endf
 

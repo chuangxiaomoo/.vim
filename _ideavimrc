@@ -1,3 +1,7 @@
+"
+" http://blog.csdn.net/simple_the_best/article/details/53132943
+"
+
 set incsearch
 set noic
 set hls
@@ -46,10 +50,40 @@ vmap <C-L>      "ly
 nnoremap <C-k>  gt
 nnoremap <C-j>  gT
 
-" copy and past
+" copy and past, share sys-clipboard-register-*
+set clipboard+=unnamed
 nmap <C-A> <Esc>ggVG
-vmap <C-C> "yy
-vmap <C-X> "yx
-vmap <C-V> "xx"yP
-imap <C-V> <Esc>"ypa
-nmap <C-V> "yp
+vmap <C-C> "*y
+vmap <C-X> "*x
+vmap <C-V> "xx"*P
+imap <C-V> <Esc>"*pa
+nmap <C-V> "*p
+nmap ffx   ggVG"*x
+
+" scroll
+nnoremap <C-D> 8j
+nnoremap <C-U> 8k
+
+" auto completion
+" Alt+/
+" Alt+Shift+/
+" Vim Emulation -> and set the "Handler" for Ctrl+N and Ctrl+P to "IDE" instead of "Vim".
+
+" pair
+vmap    <C-X>_  c__<ESC>Pl
+vmap    <C-X><  c<><ESC>Pl
+vmap    <C-X>(  c()<ESC>Pl
+vmap    <C-X>[  c[]<ESC>Pl
+vmap    <C-X>{  c{}<ESC>Pl
+vmap    <C-X>`  c``<ESC>Pl
+vmap    <C-X>"  c""<ESC>Pl
+vmap    <C-X>'  c''<ESC>Pl
+vmap    <C-X>*  c****<ESC>hPl
+
+" toggle window
+" Alt-F11           python console
+" Alt-F12           cmd console
+" Ctrl-Shift-F12    All windown
+
+" pycharm64.exe to %path% to edit a new file
+
