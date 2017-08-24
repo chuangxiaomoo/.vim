@@ -28,8 +28,12 @@ endfunction
 
 function! Update_snip_syntax()
   if !exists('b:snip_visited')
+      let g:is_sniping=0
       let b:snip_visited=1
+      call Toggle_snip_syntax()
+      return
   else
+      let b:snip_visited=0
       if  g:is_sniping == 0 | return | endif
   endif
   call TextEnableCodeSnip(     'cpp',      '```cpp'     ,            '```', 'SpecialComment')
@@ -42,7 +46,9 @@ endf
 
 function! Toggle_snip_syntax()
   let g:is_sniping = !g:is_sniping
-  echo g:is_sniping ? "enable_snip_hl" : "disable_snip_hl"
+  if  exists('b:snip_visited') && b:snip_visited==0 
+      echo g:is_sniping ? "enable_snip_hl" : "disable_snip_hl" 
+  endif
   call Update_snip_syntax()
 endf
 
