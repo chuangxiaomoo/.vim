@@ -446,7 +446,7 @@ if has("autocmd")
 
  autocmd  BufEnter,BufRead             *.u   setlocal ft=markdown
  autocmd  BufEnter,BufNewFile,BufRead  *.pl  setlocal makeprg=perl\ %
- autocmd  BufEnter,BufNewFile,BufRead  *.py  setlocal makeprg=python\ %
+ autocmd  BufEnter,BufNewFile,BufRead  *.py  setlocal makeprg=python3\ %
  autocmd  BufEnter,BufNewFile,BufRead  *.sh  setlocal makeprg=/bin/bash\ %
  "utocmd  FileType ruby                      setlocal makeprg=ruby\ %           iskeyword+=_,$,@,%,#,-
  autocmd  FileType sh                        setlocal makeprg=bash\ %           iskeyword-=.
@@ -483,7 +483,7 @@ if has("autocmd")
  autocmd  FileType c        setlocal   complete+=k~/.vim/c-support/wordlists/c-c++-keywords.list
  autocmd  FileType cpp      setlocal   complete+=k~/.vim/c-support/wordlists/*
  autocmd  FileType python   setlocal   complete+=k~/.vim/pydiction-1.2/pydiction.py
- autocmd  FileType python   setlocal   et sta sw=4 sts=4 scrolloff=1
+ autocmd  FileType python   setlocal   et sta sw=4 sts=4 scrolloff=1 | call Update_snip_syntax()
  autocmd  FileType markdown setlocal   et sta ts=2 sw=2 sts=2 | call Update_snip_syntax()
  autocmd  FileType xml      setlocal   et sta ts=2 sw=2 sts=2
 endif
