@@ -22,14 +22,14 @@
 +-------+---------------------------------------------------------------+
 |arrow2 |  ~/.vim/plugin/arrow2.vim                                     |
 |       |                                                               |
-|boxdraw|  ~/.vim/doc/boxdraw.txt|25|                                   |
-|       |  ~/.vim/plugin/boxdraw.vim|113|                               |
-|       |                                                               |
-|drawit |  when PuTty, export TERM=linux to enable Home and End         |
-|       |  ~/.vim/doc/DrawIt.txt|104|                                   |
+|drawit |  Ascii +|- PuTTY, export TERM=linux to enable Home and End    |
 |       |  ~/.vim/doc/DrawIt.txt|45|                                    |
+|       |  ~/.vim/doc/DrawIt.txt|104|                                   |
 |       |  ~/.vim/autoload/DrawIt.vim                                   |
 |       |  ~/.vim/plugin/DrawItPlugin.vim                               |
+|       |                                                               |
+|boxdraw|  ~/.vim/doc/boxdraw.txt|25|                                   |
+|       |  ~/.vim/plugin/boxdraw.vim|113|                               |
 +-------+---------------------------------------------------------------+
 |                                                                       |
 |               Template of support                                     |

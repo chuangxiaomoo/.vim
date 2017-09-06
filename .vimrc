@@ -50,10 +50,13 @@ set wrap nolist
 set ru
 set nu
 set is
+
 set noic
 set noeb vb t_vb=
 set noshowmatch             "when type (),the cursor jump
 set nocursorcolumn
+set nofoldenable
+
 set tabpagemax=20
 set winwidth=82
 set fileencodings=ucs-bom,utf-8,cp936,gb18030
