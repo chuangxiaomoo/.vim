@@ -124,6 +124,14 @@ noremap ff5     :copen<CR>gg/undefined reference<CR>
 let mapleader=','
 let maplocalleader='\'
 
+function! Syn_markdown()
+    " :highlight to show colorscheme
+    "/usr/share/vim/vim73/syntax/markdown.vim
+    "/usr/share/vim/vim73/syntax/c.vim
+    syntax match htmlEndTag "\[^.*\]"
+    syntax match Type "->"
+endf
+
 function! Recall_buf_funcs()
     if exists('b:is_sniping') | unlet b:is_sniping | endif
     call Update_snip_syntax()
@@ -487,7 +495,7 @@ if has("autocmd")
  autocmd  FileType cpp      setlocal   complete+=k~/.vim/c-support/wordlists/*
  autocmd  FileType python   setlocal   complete+=k~/.vim/pydiction-1.2/pydiction.py
  autocmd  FileType python   setlocal   et sta sw=4 sts=4 scrolloff=1 | call Update_snip_syntax()
- autocmd  FileType markdown setlocal   et sta ts=2 sw=2 sts=2 | call Update_snip_syntax()
+ autocmd  FileType markdown setlocal   et sta ts=2 sw=2 sts=2 | call Update_snip_syntax() | call Syn_markdown()
  autocmd  FileType xml      setlocal   et sta ts=2 sw=2 sts=2
 endif
 
