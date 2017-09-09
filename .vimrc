@@ -126,15 +126,17 @@ let maplocalleader='\'
 
 function! Syn_markdown()
     " :highlight to show colorscheme
-    "/usr/share/vim/vim73/syntax/markdown.vim
-    "/usr/share/vim/vim73/syntax/c.vim
-    syntax match htmlEndTag "\[^.*\]"
+    " /usr/share/vim/vim73/syntax/markdown.vim
+    " /usr/share/vim/vim73/syntax/c.vim
+    " Pmenu | Special
+    syntax match Special "\[^.*\]"
     syntax match Type "->"
 endf
 
 function! Recall_buf_funcs()
     if exists('b:is_sniping') | unlet b:is_sniping | endif
     call Update_snip_syntax()
+    call Filetype_check()
 endf
 
 function! Source_comma_map()
@@ -167,7 +169,7 @@ function! Source_comma_map()
     no <silent> <leader>r  :cclose<CR>:make!<CR><CR>:bo copen 11<CR>G
    "   same.as.    <C-X>r  :cclose<CR>:make!<CR><CR>:bo copen 11<CR>G  
    "no          <leader>s  :mapclear <buffer><CR>:source ~/.vimrc<CR>:echo ". vimrc succ!"<CR>
-    no          <leader>s  :source ~/.vimrc<CR>:call Recall_buf_funcs()<CR>:echo ". vimrc succ!"<CR>
+    no <silent> <leader>s  :source ~/.vimrc<CR>:call Recall_buf_funcs()<CR>:echo ". vimrc succ!"<CR>
     no          <leader>x  :tabonly<CR><C-W>o
     im          <leader>>  ＞
     im          <leader><  ＜
