@@ -129,6 +129,7 @@ function! Syn_markdown()
     " /usr/share/vim/vim73/syntax/markdown.vim
     " /usr/share/vim/vim73/syntax/c.vim
     " Pmenu | Special
+    nmap <C-L>1 :cclose<CR>:vimgrep /^# /j <C-R>%<CR>:copen<CR>G<C-W>k
     syntax match Special "\[^.*\]"
     syntax match Type "->"
 endf
@@ -277,7 +278,9 @@ vmap    <C-X>"  c""<ESC>Pl
 vmap    <C-X>'  c''<ESC>Pl
 vmap    <C-X>8  c**<ESC>Pl
 vmap    <C-X>*  c****<ESC>hPl
+vmap    <C-X>^  c[^]<ESC>Pl
 
+imap    <C-X>^  [^]<Left>
 
 " zc    to fold
 vmap    <C-X>f  c{{{<CR><C-R>"}}}<ESC>
