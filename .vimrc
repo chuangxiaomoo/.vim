@@ -140,6 +140,20 @@ function! Recall_buf_funcs()
     call Filetype_check()
 endf
 
+function! Toggle_tab()
+    if g:Tab_is8 == 0
+        let g:Tab_is8 = 1
+        set et sta ts=8 sw=8 sts=8
+    else
+        let g:Tab_is8 = 0
+        if &filetype == 'markdown'
+            set et sta ts=2 sw=2 sts=2
+        else
+            set et sta ts=4 sw=4 sts=4
+        endif
+    endif
+endfun
+
 function! Source_comma_map()
     " Don't use map <buffer>, it will be clear by mapclear or so command
     " nore <silent> <LocalLeader>g :<CR>
@@ -150,7 +164,7 @@ function! Source_comma_map()
     no <silent> <leader>2  :tablast<CR>
     no          <leader>3  :grep -r "" [0-9a-zA-Z]* .[0-9a-z]*<S-Left><S-Left><Left><Left>
     no          <leader>#  :grep -r "" <C-R>%<S-Left><Left><Left>
-    no <silent> <leader>4  :set et sta ts=8 sw=8 sts=8<CR>
+    no <silent> <leader>4  :call Toggle_tab()<CR>
     no <silent> <leader>5  :e <C-r>%<CR>
     no <silent> <leader>q  :q!<CR>
     "oremap     <leader>a  Occupied by Align, though ffx, no <leader>a 
@@ -211,7 +225,7 @@ endf
 
 inoremap <C-K>    <Up>
 inoremap <C-J>    <Down>
-inoremap <C-H>    <Esc>i
+inoremap <C-H>    <Left>
 inoremap <C-L>    <Right>
 
 inoremap <C-A>    <Home>
@@ -551,26 +565,32 @@ let g:goyo_margin_top = 0
 let g:goyo_margin_bottom = 0
 let g:goyo_linenr = 1
 
-function! s:goyo_enter()
-    nm  j gj
-    nm  k gk
-    nm  <C-j> <Down>
-    nm  <C-k> <Up>
-    nm  <silent> <leader>c  :cclos<CR>
-    nm  <silent> <leader>o  :copen<CR>
-    no  <silent> <leader>q   mM:q!<CR>`M
+function! Diff_enter()
+    set wrap
+    nm <C-P> [c
+    nm <C-N> ]c
+endfunction
+
+function! Goyo_enter()
+    nm j gj
+    nm k gk
+    nm <C-F>  <Down><Down>
+    nm <C-B>  <Up><Up>
     set nocursorline
 endfunction
 
-function! s:goyo_leave()
+function! s:goyo_enter()
+    call Goyo_enter()
+endfunction
+
+function! Goyo_leave()
     nun j
     nun k
-    no  <C-j>  :tabp<CR>
-    no  <C-k>  :tabn<CR>
-    no  <silent> <leader>c  :botright copen 11<CR>
-    no  <silent> <leader>o  :colder<CR>
-    no  <silent> <leader>q  :q!<CR>
     set cursorline
+endfunction
+
+function! s:goyo_leave()
+    call Goyo_leave()
 endfunction
 
 autocmd! User GoyoEnter nested call <SID>goyo_enter()
