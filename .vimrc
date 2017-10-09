@@ -10,8 +10,8 @@
 "
 " -------- __Forbind__ below, or disaster come along  --------------
 "
-"           set term=xterm 
-"           map <ESC>     
+"           set term=xterm
+"           map <ESC>
 "
 " clean all plugin maps in <buffer>
 
@@ -26,7 +26,7 @@ source ~/.vim/.cscope.vimrc
 source ~/.vim/.snip.vimrc
 
 filetype plugin on
-filetype plugin indent on 
+filetype plugin indent on
 
 "
 " set nowrapscan
@@ -40,7 +40,7 @@ filetype plugin indent on
 set vb t_vb=
 
 set diffopt=context:1
-set et sta sw=4 tabstop=4 sts=4   
+set et sta sw=4 tabstop=4 sts=4
 set hls
 set cursorline
 set wildmenu
@@ -61,7 +61,7 @@ set tabpagemax=20
 set winwidth=82
 set fileencodings=ucs-bom,utf-8,cp936,gb18030
 set tw=10000
-set fo=cqMmt                " cqMmtrol             
+set fo=cqMmt                " cqMmtrol
 set cinoptions=:0           " switch case
 "et autochdir 	            " when open a file, cd `dirname file`
 "et scroll=10               " default is half screen when <C-D>;
@@ -73,7 +73,7 @@ set splitbelow nosplitright
 set matchpairs+=<:>
 
 "
-" ttf relative path, and ttF obsolute 
+" ttf relative path, and ttF obsolute
 " tty yank to xm, and ttY append --- Don't use V but v to visual mode
 "
 
@@ -167,7 +167,7 @@ function! Source_comma_map()
     no <silent> <leader>4  :call Toggle_tab()<CR>
     no <silent> <leader>5  :e <C-r>%<CR>
     no <silent> <leader>q  :q!<CR>
-    "oremap     <leader>a  Occupied by Align, though ffx, no <leader>a 
+    "oremap     <leader>a  Occupied by Align, though ffx, no <leader>a
     "o <silent> <leader>b  Occupied by Boxdraw BufExplorer
     no          <leader>ba :tabedit <C-R>%<C-W>h
     no <silent> <leader>c  :botright copen 11<CR>
@@ -178,11 +178,11 @@ function! Source_comma_map()
     no          <leader>p  vi(y:tabedit <C-R>"<CR>
     no <silent> <leader>h  :sh<CR>
     no          <leader>i  :set ic<CR>
-    no          <leader>m  :!Markdown.pl --html4tags <C-R>% > /winc/md.html<CR> 
+    no          <leader>m  :!Markdown.pl --html4tags <C-R>% > /winc/md.html<CR>
     no <silent> <leader>n  :cnewer<CR>
     no <silent> <leader>o  :colder<CR>
     no <silent> <leader>r  :cclose<CR>:make!<CR><CR>:bo copen 11<CR>G
-   "   same.as.    <C-X>r  :cclose<CR>:make!<CR><CR>:bo copen 11<CR>G  
+   "   same.as.    <C-X>r  :cclose<CR>:make!<CR><CR>:bo copen 11<CR>G
    "no          <leader>s  :mapclear <buffer><CR>:source ~/.vimrc<CR>:echo ". vimrc succ!"<CR>
     no <silent> <leader>s  :source ~/.vimrc<CR>:call Recall_buf_funcs()<CR>:echo ". vimrc succ!"<CR>
     no          <leader>x  :tabonly<CR><C-W>o
@@ -193,9 +193,9 @@ function! Source_comma_map()
     "o <silent> <leader>t  Occupied by Align
     no          <leader>w  :w!<CR>
 
-    no <S-Up>    <Up>   
-    no <S-Down>  <Down> 
-    no <S-Left>  <Left> 
+    no <S-Up>    <Up>
+    no <S-Down>  <Down>
+    no <S-Left>  <Left>
     no <S-Right> <Right>
     "
     " Mouse keys
@@ -305,7 +305,7 @@ nmap    <C-X>u  a[]()<ESC>i
 
 " 注意不完全初始化时，末尾追加`,`
 nmap    <C-X>a  0[{jv0]}k<C-X>a
-vmap    <C-X>a  :<C-U>AlignCtrl p0P0 {<CR>:'<,'>Align {<CR>:AlignCtrl p0P1 ,<CR>:'<,'>Align ,<CR>:AlignCtrl p0P0 }<CR>:'<,'>Align }<CR> 
+vmap    <C-X>a  :<C-U>AlignCtrl p0P0 {<CR>:'<,'>Align {<CR>:AlignCtrl p0P1 ,<CR>:'<,'>Align ,<CR>:AlignCtrl p0P0 }<CR>:'<,'>Align }<CR>
 vmap    <C-X>D  :s/^.*.*\n//g<Left><Left><Left><Left><Left><Left><Left>
 vmap    <C-X>m  :<C-U>AlignCtrl Wp1P0 \\<CR>:'<,'>Align \\<CR>
 
@@ -318,7 +318,7 @@ vmap    <C-X>i  :<C-U>e ++ff=unix %<CR>:%s/<C-V><C-M>//ge<CR>:'<,'>!indent -ppi4
         \ --no-tabs -ip0 -i4
         \ --declaration-indentation 8<CR><CR>
 
-" markdown -> 
+" markdown ->
 imap    <C-X>>  -＞
 
 nmap <C-P>  :cp<CR>
@@ -358,7 +358,7 @@ imap <C-V>l <Esc>"lgpko
 set fdm=marker
 
 " :syntax keyword {group} {keyword} ...
-" 语法组 {group} -> DiffChange DiffAdd Search 
+" 语法组 {group} -> DiffChange DiffAdd Search
 hi DiffChange                           ctermbg=0
 hi DiffDelete                           cterm=reverse
 hi DiffAdd                              ctermfg=0
@@ -410,10 +410,10 @@ function! Toggle_iskey()
 endf
 
 function! Filetype_check()
-  if getline(1) =~ '^/[\*\/]' 
+  if getline(1) =~ '^/[\*\/]'
       setf cpp
   elseif getline(1) =~ '::'
-      setf dosbatch 
+      setf dosbatch
   elseif getline(1) =~ '^# '
       setf markdown
       setl ai
@@ -457,7 +457,7 @@ function! Update_Tlist_nor()
     endif
 endf
 
-" if bufname("%") == "" 
+" if bufname("%") == ""
 
 if has("autocmd")
  augroup vimrcEx
@@ -520,7 +520,7 @@ endif
 
 
 " user register y
-" 
+"
     "o            <C-W>b  buff
     "o            <C-W>c  org is close, overload to :tabonly
     "o            <C-W>o  current window the only one
@@ -532,7 +532,7 @@ endif
     no <silent>   <C-W>d  :50vs ~/bin/stk/dbank<CR>ggn$h
     no            <C-W>e  :vs<CR>:e <C-R><C-F><CR>
     no <silent>   <C-W>f  :cclose<CR>:tabedit <C-R>%<CR>
-    no            <C-W>t  :tabedit 
+    no            <C-W>t  :tabedit
     no            <C-W>m  mF:e ~/bin/m
     no            <C-W>x  mF:e /dev/shm/xm<CR>
 nnoremap          <C-W>.  0*:sp .codelist<CR>nyy:q<CR>pk
@@ -599,7 +599,7 @@ autocmd! User GoyoLeave nested call <SID>goyo_leave()
 "
 " <C-C> can also interrupt grep, register 'y' is used in below <C-C>
 " reg 0~9 are used for yank and del, do occupy them
-" x is the default register of motion d x p 
+" x is the default register of motion d x p
 " yp just yank, ygp will put a newline
 "
 
@@ -656,7 +656,7 @@ vmap gA <C-L>mG/<C-R>/\\|<C-R>l<CR>`G
 nmap gh /<C-R>=Escape_char('<C-R><C-F>')<CR><CR>
 vmap gh  "yy/<C-R>=Escape_char('<C-R>y')<CR><CR>
 
-" copy a CHAR 
+" copy a CHAR
 nmap X vy
 vmap X y
 
