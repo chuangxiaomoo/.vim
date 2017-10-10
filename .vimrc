@@ -256,6 +256,7 @@ cnor    <C-X>r  '<,'>s/\<\>//g<Left><Left><Left><Left><Left>
 
 nmap    <C-X>c  :tabonly<CR><C-W>o:quit<CR>
 nmap    <C-X>k  :call Toggle_iskey()<CR>
+nmap    <C-X>g  :call Toggle_Goyo()<CR>
 
 " 删除指定内容的行
 nmap    <C-X>4  :set   expandtab<CR>:%retab!<CR>
@@ -592,6 +593,20 @@ endfunction
 function! s:goyo_leave()
     call Goyo_leave()
 endfunction
+
+function! Toggle_Goyo()
+    if !exists("g:toggle_goyo")
+        let g:toggle_goyo = 0
+    endif
+
+    if g:toggle_goyo == 0
+        call Goyo_enter()
+        let g:toggle_goyo = 1
+    else
+        call Goyo_leave()
+        let g:toggle_goyo = 0
+    endif
+endf
 
 autocmd! User GoyoEnter nested call <SID>goyo_enter()
 autocmd! User GoyoLeave nested call <SID>goyo_leave()
