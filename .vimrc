@@ -565,6 +565,7 @@ let g:goyo_height = 96
 let g:goyo_margin_top = 0
 let g:goyo_margin_bottom = 0
 let g:goyo_linenr = 1
+let g:goyo_toggle = 0
 
 function! Diff_enter()
     set wrap
@@ -575,8 +576,10 @@ endfunction
 function! Goyo_enter()
     nm j gj
     nm k gk
-    nm <C-F>  <Down><Down>
-    nm <C-B>  <Up><Up>
+    nm <C-F>  5<C-E>
+    nm <C-B>  5<C-Y>
+    nm <C-D>  10gj
+    nm <C-U>  10gk
     set nocursorline
 endfunction
 
@@ -595,16 +598,12 @@ function! s:goyo_leave()
 endfunction
 
 function! Toggle_Goyo()
-    if !exists("g:toggle_goyo")
-        let g:toggle_goyo = 0
-    endif
-
-    if g:toggle_goyo == 0
+    if g:goyo_toggle == 0
         call Goyo_enter()
-        let g:toggle_goyo = 1
+        let g:goyo_toggle = 1
     else
         call Goyo_leave()
-        let g:toggle_goyo = 0
+        let g:goyo_toggle = 0
     endif
 endf
 
