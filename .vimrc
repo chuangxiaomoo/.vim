@@ -370,6 +370,10 @@ function! Resize_scroll()
     " check if changing
     checktime
 
+    if g:goyo_toggle == 1
+        return
+    endif
+
     " 9 * {4,3,2} + 4
     if winheight(0) >= 40
        "echo 'scroll 18'
@@ -558,8 +562,8 @@ nnoremap          <C-M>w  :call Word_mode(0)<CR>
 nnoremap          <C-M>W  :call Filetype_check()<CR>
 nnoremap      <C-M><C-M>  <CR>
 
-" ---------------- Goyo  ~/.vim/autoload/goyo.vim -----------------------
-nnoremap          <C-W>g  :Goyo<CR>
+" ---------------- :Goyo<CR>  ~/.vim/autoload/goyo.vim -----------------------
+nnoremap          <C-W>g  :call Goyo_enter()<CR>
 let g:goyo_width = 108
 let g:goyo_height = 96
 let g:goyo_margin_top = 0
@@ -574,12 +578,21 @@ function! Diff_enter()
 endfunction
 
 function! Goyo_enter()
-    nm j gj
-    nm k gk
-    nm <C-F>  5<C-E>
-    nm <C-B>  5<C-Y>
+    let b:lines = line('w$')-line('w0')
+    if b:lines >= 26
+        nm <C-F>  5<C-E>
+        nm <C-B>  5<C-Y>
+    elseif b:lines >= 18
+        nm <C-F>  4<C-E>
+        nm <C-B>  4<C-Y>
+    else
+        nm <C-F>  3<C-E>
+        nm <C-B>  3<C-Y>
+    endif
     nm <C-D>  10gj
     nm <C-U>  10gk
+    nm j gj
+    nm k gk
     set nocursorline
 endfunction
 
