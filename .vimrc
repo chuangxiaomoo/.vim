@@ -572,9 +572,9 @@ let g:goyo_linenr = 1
 let g:goyo_toggle = 0
 
 function! Diff_enter()
-    set wrap
-    nm <C-P> [c
-    nm <C-N> ]c
+    windo set wrap
+    windo nm <C-P> [c
+    windo nm <C-N> ]c
 endfunction
 
 function! Goyo_enter()
