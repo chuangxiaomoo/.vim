@@ -594,6 +594,7 @@ function! Goyo_enter()
     nm j gj
     nm k gk
     set nocursorline
+    let g:goyo_toggle = 1
 endfunction
 
 function! s:goyo_enter()
