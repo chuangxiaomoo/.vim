@@ -292,7 +292,7 @@ vmap    <C-X>`  c“”<ESC>Pl
 vmap    <C-X>"  c""<ESC>Pl
 vmap    <C-X>'  c''<ESC>Pl
 vmap    <C-X>8  c**<ESC>Pl
-vmap    <C-X>*  c****<ESC>hPl
+vmap    <C-X>*  c****<ESC>hPl|                      " nmap <C-X>* 可以在引用中高亮
 vmap    <C-X>^  c[^]<ESC>Pl
 
 imap    <C-X>^  [^]<Left>
