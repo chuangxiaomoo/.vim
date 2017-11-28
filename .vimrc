@@ -130,6 +130,8 @@ function! Syn_markdown()
     " /usr/share/vim/vim73/syntax/c.vim
     " Pmenu | Special
     nmap <C-L>1 :cclose<CR>:vimgrep /^# /j <C-R>%<CR>:copen<CR>G<C-W>k
+    vmap <C-X>a :<C-U>AlignCtrl p1P1 \|<CR>:'<,'>Align \|<CR>:'<,'>s/^  *//<CR>:'<,'>s/  *$//<CR>
+    nmap <localleader>st :r ~/.vim/skeleton/table.md<CR>
     syntax match Special "\[^.*\]"
     syntax match Type "->"
 endf
@@ -447,6 +449,7 @@ function! Word_mode(num)
         setlocal fo+=ro  " insert the current comment leader
         setlocal fo+=wn  " w & n don't work well, always 2
         setlocal fo+=Mm  " formatoptions Mm work for CJK
+        call     Syn_markdown()
 
         " setlocal complete+=k./*
         " setlocal iskeyword+=          " change motion of 'w' '*'
