@@ -8,16 +8,16 @@ from bokeh.sampledata.stocks import MSFT, AAPL
 from sys import exit
 
 def fn_plot_volume(df, p_v):
-    w = 16*60*60*1000 # half day in ms
+    w = .72 # 10jqka = 9/11
     i_src = ColumnDataSource(df[df.open <  df.close])
     d_src = ColumnDataSource(df[df.open >= df.close])
 
-    p_v.vbar('date', w, top='volume', source=i_src, name="volumn", fill_color="red", fill_alpha=0, line_width=0.8, line_color="red" )
-    p_v.vbar('date', w, top='volume', source=d_src, name="volumn", fill_color="green",             line_width=0.8, line_color="green")
+    p_v.vbar('idt', w, top='volume', source=i_src, name="volumn", fill_color="red", fill_alpha=0, line_width=0.8, line_color="red" )
+    p_v.vbar('idt', w, top='volume', source=d_src, name="volumn", fill_color="green",             line_width=0.8, line_color="green")
 
     p_v.toolbar.active_scroll = "auto"
     p_v.xaxis.major_label_orientation = pi/4
-    p_v.grid.grid_line_alpha=0.3
+    p_v.grid.grid_line_alpha=0.1
     p_v.background_fill_color = "black"
     p_v.sizing_mode = 'stretch_both'
 
@@ -44,22 +44,22 @@ def fn_ma(df, col, N):
     pass
 
 def fn_plot_kline(df, p_k, all_source):
-    w = 16*60*60*1000 # half day in ms
+    w = .72 # 10jqka = 9/11
     i_src = ColumnDataSource(df[df.open <  df.close])
     d_src = ColumnDataSource(df[df.open >= df.close])
 
     p_k.toolbar.active_scroll = "auto"
     p_k.xaxis.major_label_orientation = pi/4
-    p_k.grid.grid_line_alpha=0.3
+    p_k.grid.grid_line_alpha=0.1
     p_k.background_fill_color = "black"
 
-    p_k.segment('date', 'high', 'date', 'low', source=i_src, name="kline", color="red", line_width=0.8)
-    p_k.segment('date', 'high', 'date', 'low', source=d_src, name="kline", color="green", line_width=0.8)
+    p_k.segment('idt', 'high', 'idt', 'low', source=i_src, name="kline", color="red", line_width=0.8)
+    p_k.segment('idt', 'high', 'idt', 'low', source=d_src, name="kline", color="green", line_width=0.8)
 
-    p_k.vbar('date', w, 'open', 'close', source=i_src, name="kbar", fill_color="black", line_color="red", line_width=0.8)
-    p_k.vbar('date', w, 'open', 'close', source=d_src, name="kbar", fill_color="green", line_color="green", line_width=0.8)
+    p_k.vbar('idt', w, 'open', 'close', source=i_src, name="kbar", fill_color="black", line_color="red", line_width=0.8)
+    p_k.vbar('idt', w, 'open', 'close', source=d_src, name="kbar", fill_color="green", line_color="green", line_width=0.8)
 
-    p_k.line('date', 'ma20', source=all_source, name='ma20', line_color="purple")
+    p_k.line('idt', 'ma20', source=all_source, name='ma20', line_color="purple")
 
     hover_tool = p_k.add_tools(HoverTool(tooltips= [
                 ("date","@ToolTipDates"),
@@ -79,7 +79,7 @@ def fn_ema(df, src, dst, N):
     return df[dst]
 
 def fn_plot_macd(df, p_m, all_source):
-    w = 16*60*60*1000 # half day in ms
+    w = .40 # 10jqka = 9/11
     i_macd = ColumnDataSource(df[df.macd >= 0])
     d_macd = ColumnDataSource(df[df.macd <  0])
     # plot
@@ -87,10 +87,10 @@ def fn_plot_macd(df, p_m, all_source):
     p_m.xaxis.major_label_orientation = pi/4
     p_m.grid.grid_line_alpha=0.1
     p_m.background_fill_color = "black"
-    p_m.vbar('date', w/4, top='macd', source=i_macd, name='macd', fill_color="red", line_color="red")
-    p_m.vbar('date', w/4, top=0, bottom='macd', source=d_macd, name='macd', fill_color="green", line_color="green")
-    p_m.line('date', 'diff', source=all_source, name='macd', line_color="white")
-    p_m.line('date', 'dea',  source=all_source, name='macd', line_color="yellow")
+    p_m.vbar('idt', w/10, top='macd', source=i_macd, name='macd', fill_color="red", line_color="red")
+    p_m.vbar('idt', w/10, top=0, bottom='macd', source=d_macd, name='macd', fill_color="green", line_color="green")
+    p_m.line('idt', 'diff', source=all_source, name='macd', line_color="white")
+    p_m.line('idt', 'dea',  source=all_source, name='macd', line_color="yellow")
     pass
 
 def fn_uni_process(df, asc, sta, end):
@@ -106,11 +106,11 @@ def fn_uni_process(df, asc, sta, end):
             if asc_bi:
                 k1 = [max(k2[hi],k1[hi]), max(k1[lo], k2[lo])]
                 df.set_value(i, 'uni', 1)                       # up
-                # print('got i asc:', df.get_value(i, 'date'), i)
+                # print('got i asc:', df.get_value(i, 'idt'), i)
             else:
                 k1 = [min(k2[hi],k1[hi]), min(k1[lo], k2[lo])]
                 df.set_value(i, 'uni', -1)                      # down
-                # print('got i dsc:', df.get_value(i, 'date'), i)
+                # print('got i dsc:', df.get_value(i, 'idt'), i)
                 pass
         elif k2[hi] > k1[hi]:                           # k2 新高
             asc_bi = True
@@ -133,15 +133,15 @@ def fn_plot_fenbi(df, p_k, tbl_bi):
     # print(id_min_lo, id_max_hi)
 
     if id_max_hi - id_min_lo >= 4:
-        tbl_bi.loc[i_bi] = [df.get_value(id_min_lo, 'date'), df.get_value(id_min_lo, 'low')]
+        tbl_bi.loc[i_bi] = [df.get_value(id_min_lo, 'idt'), df.get_value(id_min_lo, 'low')]
         i_bi+=1
-        tbl_bi.loc[i_bi] = [df.get_value(id_max_hi, 'date'), df.get_value(id_max_hi, 'high')]
+        tbl_bi.loc[i_bi] = [df.get_value(id_max_hi, 'idt'), df.get_value(id_max_hi, 'high')]
         i_bi+=1
         asc = True
     elif  id_max_hi - id_min_lo <= -4:
-        tbl_bi.loc[i_bi] = [df.get_value(id_max_hi, 'date'), df.get_value(id_max_hi, 'high')]
+        tbl_bi.loc[i_bi] = [df.get_value(id_max_hi, 'idt'), df.get_value(id_max_hi, 'high')]
         i_bi+=1
-        tbl_bi.loc[i_bi] = [df.get_value(id_min_lo, 'date'), df.get_value(id_min_lo, 'low')]
+        tbl_bi.loc[i_bi] = [df.get_value(id_min_lo, 'idt'), df.get_value(id_min_lo, 'low')]
         i_bi+=1
         asc = False
     else:
@@ -167,7 +167,7 @@ def fn_plot_fenbi(df, p_k, tbl_bi):
 
         if asc0:
             if id_max_hi != id_max_hi0 and df.get_value(id_max_hi, 'high') > df.get_value(id_max_hi0, 'high'):   # 创新高
-                tbl_bi.loc[i_bi-1] = [df.get_value(id_max_hi, 'date'), df.get_value(id_max_hi, 'high')]
+                tbl_bi.loc[i_bi-1] = [df.get_value(id_max_hi, 'idt'), df.get_value(id_max_hi, 'high')]
                 id_max_hi0 = id_max_hi
                 offset = 0
                 continue
@@ -175,7 +175,7 @@ def fn_plot_fenbi(df, p_k, tbl_bi):
             # 形成底分型
             elif id_min_lo-id_max_hi>=4 and \
                     (id_min_lo-id_max_hi - len(df[(df.index>=id_max_hi) & (df.index<=id_min_lo) & (df.uni != 0)]) >= 4):
-                tbl_bi.loc[i_bi] = [df.get_value(id_min_lo, 'date'), df.get_value(id_min_lo, 'low')]
+                tbl_bi.loc[i_bi] = [df.get_value(id_min_lo, 'idt'), df.get_value(id_min_lo, 'low')]
                 i_bi+=1
                 asc0 = False
                 offset = 0
@@ -186,14 +186,14 @@ def fn_plot_fenbi(df, p_k, tbl_bi):
                 pass
         elif not asc0:
             if id_min_lo != id_min_lo0 and df.get_value(id_min_lo, 'low') < df.get_value(id_min_lo0, 'low'):
-                tbl_bi.loc[i_bi-1] = [df.get_value(id_min_lo, 'date'), df.get_value(id_min_lo, 'low')]
+                tbl_bi.loc[i_bi-1] = [df.get_value(id_min_lo, 'idt'), df.get_value(id_min_lo, 'low')]
                 id_min_lo0 = id_min_lo
                 offset = 0
                 continue
             # 形成顶分型
             elif id_max_hi-id_min_lo>=4 and \
                     (id_max_hi-id_min_lo - len(df[(df.index>=id_min_lo) & (df.index<=id_max_hi) & (df.uni != 0)]) >= 4):
-                tbl_bi.loc[i_bi] = [df.get_value(id_max_hi, 'date'), df.get_value(id_max_hi, 'high')]
+                tbl_bi.loc[i_bi] = [df.get_value(id_max_hi, 'idt'), df.get_value(id_max_hi, 'high')]
                 i_bi+=1
                 asc0 = True
                 offset = 0
@@ -203,9 +203,9 @@ def fn_plot_fenbi(df, p_k, tbl_bi):
                 offset += 5
                 pass
 
-    p_k.line(tbl_bi.date, tbl_bi.price, line_width=1, color="#3060a0")
-    p_k.triangle(df.date[df.uni ==  1], df.high[df.uni ==  1]*1.03, size=5, color="red", alpha=0.5)
-    p_k.triangle(df.date[df.uni == -1], df.low [df.uni == -1]*0.97, size=5, color="green", alpha=0.5)
+    p_k.line(tbl_bi.idt, tbl_bi.price, line_width=1, color="#3060a0")
+    p_k.triangle(df.idt[df.uni ==  1], df.high[df.uni ==  1]*1.03, size=5, color="red", alpha=0.5)
+    p_k.triangle(df.idt[df.uni == -1], df.low [df.uni == -1]*0.97, size=5, color="green", alpha=0.5)
     print('_____')
     pass
 
@@ -237,7 +237,7 @@ def fn_plot_segmt(p_k, tbl_bi):
     print('mygod is len', tbl_len)
 
     biprice = tbl_bi.price
-    bidate = tbl_bi.date
+    bidate = tbl_bi.idt
     while i <= tbl_len-5:
         if biprice[i+1] > biprice[i+0]:
             if biprice[i+3] < biprice[i+0]:                                         # 同向两笔须交
@@ -319,6 +319,7 @@ def fn_plot_segmt(p_k, tbl_bi):
 def fn_main():
     df = pd.DataFrame(AAPL)[:2000]
     df["date"] = pd.to_datetime(df["date"])
+    df["idt"] = [i+1 for i in range(len(df))]
     df['ToolTipDates'] = df.date.map(lambda x: x.strftime("%y-%m-%d")) # Saves work with the tooltip later
 
     # print(df.head(3))
@@ -327,9 +328,9 @@ def fn_main():
     TOOL_v = "pan,ywheel_zoom"
     TOOL_m = "pan,ywheel_zoom"
 
-    p_k = figure(x_axis_type="datetime", tools=TOOL_k, plot_width=1504, plot_height=600)     # title = "MSFT Candlestick") # hei 880
-    p_v = figure(x_axis_type="datetime", tools=TOOL_v, plot_width=1504, plot_height=160)     # title="volume"
-    p_m = figure(x_axis_type="datetime", tools=TOOL_m, plot_width=1504, plot_height=200)     # hei 880
+    p_k = figure(x_axis_type="linear", tools=TOOL_k, plot_width=1504, plot_height=600)     # title = "MSFT Candlestick") # hei 880
+    p_v = figure(x_axis_type="linear", tools=TOOL_v, plot_width=1504, plot_height=160)     # title="volume"
+    p_m = figure(x_axis_type="linear", tools=TOOL_m, plot_width=1504, plot_height=200)     # hei 880
 
     p_k.add_tools(CrosshairTool(line_color='#999999'))
     p_m.add_tools(CrosshairTool(line_color='#999999'))
@@ -348,7 +349,7 @@ def fn_main():
     df['macd'] = 2*(df['diff']-df['dea'])
 
     all_source = ColumnDataSource(df)
-    tbl_bi = pd.DataFrame(columns=('date', 'price'))
+    tbl_bi = pd.DataFrame(columns=('idt', 'price'))
 
     fn_plot_kline(df, p_k, all_source)
     fn_plot_fenbi(df, p_k, tbl_bi)
