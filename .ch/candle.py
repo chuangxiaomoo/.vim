@@ -15,7 +15,7 @@ def fn_plot_volume(df, p_v):
     p_v.vbar('idt', w, top='volume', source=i_src, name="volumn", fill_color="red", fill_alpha=0, line_width=0.8, line_color="red" )
     p_v.vbar('idt', w, top='volume', source=d_src, name="volumn", fill_color="green",             line_width=0.8, line_color="green")
 
-    p_v.toolbar.active_scroll = "auto"
+    #_v.toolbar.active_scroll = "auto"
     p_v.xaxis.major_label_orientation = pi/4
     p_v.grid.grid_line_alpha=0.1
     p_v.background_fill_color = "black"
@@ -48,7 +48,7 @@ def fn_plot_kline(df, p_k, all_source):
     i_src = ColumnDataSource(df[df.open <  df.close])
     d_src = ColumnDataSource(df[df.open >= df.close])
 
-    p_k.toolbar.active_scroll = "auto"
+    #_k.toolbar.active_scroll = "auto"
     p_k.xaxis.major_label_orientation = pi/4
     p_k.grid.grid_line_alpha=0.1
     p_k.background_fill_color = "black"
@@ -83,7 +83,7 @@ def fn_plot_macd(df, p_m, all_source):
     i_macd = ColumnDataSource(df[df.macd >= 0])
     d_macd = ColumnDataSource(df[df.macd <  0])
     # plot
-    p_m.toolbar.active_scroll = "auto"
+    #_m.toolbar.active_scroll = "auto"
     p_m.xaxis.major_label_orientation = pi/4
     p_m.grid.grid_line_alpha=0.1
     p_m.background_fill_color = "black"
@@ -203,7 +203,7 @@ def fn_plot_fenbi(df, p_k, tbl_bi):
                 offset += 5
                 pass
 
-    p_k.line(tbl_bi.idt, tbl_bi.price, line_width=1, color="#3060a0")
+    p_k.line(tbl_bi.idt, tbl_bi.price, line_width=.8, color="#6abcff", line_alpha=1)
     p_k.triangle(df.idt[df.uni ==  1], df.high[df.uni ==  1]*1.03, size=5, color="red", alpha=0.5)
     p_k.triangle(df.idt[df.uni == -1], df.low [df.uni == -1]*0.97, size=5, color="green", alpha=0.5)
     print('_____')
@@ -324,20 +324,25 @@ def fn_main():
 
     # print(df.head(3))
 
+    TOOL_x = "xwheel_zoom"
     TOOL_k = "pan,xwheel_zoom,ywheel_zoom,box_zoom,reset"
     TOOL_v = "pan,ywheel_zoom"
     TOOL_m = "pan,ywheel_zoom"
 
-    p_k = figure(x_axis_type="linear", tools=TOOL_k, plot_width=1504, plot_height=600)     # title = "MSFT Candlestick") # hei 880
-    p_v = figure(x_axis_type="linear", tools=TOOL_v, plot_width=1504, plot_height=160)     # title="volume"
-    p_m = figure(x_axis_type="linear", tools=TOOL_m, plot_width=1504, plot_height=200)     # hei 880
+    p_x = figure(x_axis_type="linear", tools=TOOL_x, plot_width=1504, plot_height= 12, active_scroll="xwheel_zoom")
+    p_k = figure(x_axis_type="linear", tools=TOOL_k, plot_width=1504, plot_height=600, active_scroll="ywheel_zoom")
+    p_v = figure(x_axis_type="linear", tools=TOOL_v, plot_width=1504, plot_height=152, active_scroll="ywheel_zoom")     # title="volume"
+    p_m = figure(x_axis_type="linear", tools=TOOL_m, plot_width=1504, plot_height=180, active_scroll="ywheel_zoom")     # hei 880
 
     p_k.add_tools(CrosshairTool(line_color='#999999'))
     p_m.add_tools(CrosshairTool(line_color='#999999'))
     p_v.add_tools(CrosshairTool(line_color='#999999'))
 
-    p_k.x_range = p_v.x_range = p_m.x_range         # 3 link must at one line
-    p_k.xaxis.visible = p_v.yaxis.visible = p_v.xaxis.visible = False
+    p_x.x_range = p_k.x_range = p_v.x_range = p_m.x_range         # 3 link must at one line
+    p_x.xaxis.visible = p_k.xaxis.visible = p_v.yaxis.visible = p_v.xaxis.visible = False
+    p_x.background_fill_color = "black"
+    p_x.grid.grid_line_alpha=0.1
+    p_x.line(df.idt, 0, line_color="white", line_width=.01)
 
     df['ma20'] = [0.0 for i in range(len(df))]
     fn_ma(df, 'ma20', 20)
@@ -358,7 +363,7 @@ def fn_main():
     fn_plot_macd(df, p_m, all_source)
 
     output_file("chan.html", title="chan", mode='inline')
-    grid = gridplot([[p_k], [p_v], [p_m]], merge_tools=False, responsive=True)
+    grid = gridplot([[p_x],[p_k], [p_v], [p_m]], merge_tools=False, responsive=True)
     grid.sizing_mode = 'stretch_both'
     show(grid)
     pass
