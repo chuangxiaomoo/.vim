@@ -1,19 +1,20 @@
 import time
+import pandas   as pd
+import tushare  as ts
 from math import pi
-import pandas as pd
 from bokeh.layouts import gridplot, column
 from bokeh.models import ColumnDataSource, HoverTool,CrosshairTool
 from bokeh.plotting import figure, show, output_file
 from bokeh.sampledata.stocks import MSFT, AAPL
 from sys import exit
 
-def fn_plot_volume(df, p_v):
+def fn_plot_vol(df, p_v):
     w = .72 # 10jqka = 9/11
     i_src = ColumnDataSource(df[df.open <  df.close])
     d_src = ColumnDataSource(df[df.open >= df.close])
 
-    p_v.vbar('idt', w, top='volume', source=i_src, name="volumn", fill_color="red", fill_alpha=0, line_width=0.8, line_color="red" )
-    p_v.vbar('idt', w, top='volume', source=d_src, name="volumn", fill_color="green",             line_width=0.8, line_color="green")
+    p_v.vbar('idt', w, top='vol', source=i_src, name="volumn", fill_color="red", fill_alpha=0, line_width=0.8, line_color="red" )
+    p_v.vbar('idt', w, top='vol', source=d_src, name="volumn", fill_color="green",             line_width=0.8, line_color="green")
 
     #_v.toolbar.active_scroll = "auto"
     p_v.xaxis.major_label_orientation = pi/4
@@ -22,8 +23,8 @@ def fn_plot_volume(df, p_v):
     p_v.sizing_mode = 'stretch_both'
 
     hover_tool = p_v.add_tools(HoverTool(tooltips=[
-                ("date","@ToolTipDates"),
-                ("volume","@volume{0,0.00}"),
+                ("date","@ToolTipD"),
+                ("vol" ,"@vol{0,0.00}"),
                 ("diff","@diff{0,0.00}"),
                 ("macd","@macd{0,0.00}"),
                 ("dea","@dea{0,0.00}")], names= ["volumn","macd"], mode="mouse", point_policy="follow_mouse"))
@@ -62,7 +63,8 @@ def fn_plot_kline(df, p_k, all_source):
     p_k.line('idt', 'ma20', source=all_source, name='ma20', line_color="purple")
 
     hover_tool = p_k.add_tools(HoverTool(tooltips= [
-                ("date","@ToolTipDates"),
+                ("date","@ToolTipD"),
+                ("time","@ToolTipT"),
                 ("close","@close{0,0.00}"),
                 ("high","@high{0,0.00}"),
                 ("low","@low{0,0.00}"),
@@ -145,7 +147,7 @@ def fn_plot_fenbi(df, p_k, tbl_bi):
         i_bi+=1
         asc = False
     else:
-        print('I am retrying')
+        print('I am Retrying')
         pass
 
     id_max_hi0 = id_max_hi
@@ -209,8 +211,8 @@ def fn_plot_fenbi(df, p_k, tbl_bi):
     print('_____')
     pass
 
-def fn_plot_segmt(p_k, tbl_bi):
-    # 因为 even 非中心对称，so use segment but not rect
+def fn_plot_block(p_k, tbl_bi):
+    # 因为 even 非中心对称，so use hbar but not rect
     i_zs = 0
     i = 0
     tbl_len = len(tbl_bi)
@@ -233,8 +235,6 @@ def fn_plot_segmt(p_k, tbl_bi):
     #             5     \           \ / \            \   / \   /       
     #                    \           3   \            \ /   \ /         
     #                     7               \5           1     3 
-
-    print('mygod is len', tbl_len)
 
     biprice = tbl_bi.price
     bidate = tbl_bi.idt
@@ -317,12 +317,29 @@ def fn_plot_segmt(p_k, tbl_bi):
     pass
 
 def fn_main():
-    df = pd.DataFrame(AAPL)[:2000]
-    df["date"] = pd.to_datetime(df["date"])
-    df["idt"] = [i+1 for i in range(len(df))]
-    df['ToolTipDates'] = df.date.map(lambda x: x.strftime("%y-%m-%d")) # Saves work with the tooltip later
+    #df = pd.DataFrame(AAPL)[:2000]
+    #print(df.head(3))
+    #print("index is:", df.index)
+    #print("columns is:", df.columns)
+    #return
 
-    # print(df.head(3))
+    cons = ts.get_apis()
+   #df = ts.bar('399006', conn=cons, asset='INDEX', freq='D', start_date='2015-01-01', end_date='')
+    df = ts.bar('399006', conn=cons, asset='INDEX', freq='D', start_date='2015-01-01', end_date='')
+
+    print("______len:", len(df))
+    #print(df)
+    #return
+    #df = ts.bar('600000', conn=cons, freq='D', start_date='2017-11-01', end_date='')
+    #print("index is:", df.index)
+    #print("columns is:", df.columns)
+    #return
+
+    df['ToolTipD'] = df.index.map(lambda x: x.strftime("%y-%m-%d"))
+    df['ToolTipT'] = df.index.map(lambda x: x.strftime("%T"))
+    df["idt"] = [i for i in range(len(df))]
+    df.index = [i for i in range(len(df))]
+    #df = df.reset_index(drop=True)
 
     TOOL_x = "xwheel_zoom"
     TOOL_k = "pan,xwheel_zoom,ywheel_zoom,box_zoom,reset"
@@ -331,7 +348,7 @@ def fn_main():
 
     p_x = figure(x_axis_type="linear", tools=TOOL_x, plot_width=1504, plot_height= 12, active_scroll="xwheel_zoom")
     p_k = figure(x_axis_type="linear", tools=TOOL_k, plot_width=1504, plot_height=600, active_scroll="ywheel_zoom")
-    p_v = figure(x_axis_type="linear", tools=TOOL_v, plot_width=1504, plot_height=152, active_scroll="ywheel_zoom")     # title="volume"
+    p_v = figure(x_axis_type="linear", tools=TOOL_v, plot_width=1504, plot_height=152, active_scroll="ywheel_zoom")     # title="vol"
     p_m = figure(x_axis_type="linear", tools=TOOL_m, plot_width=1504, plot_height=180, active_scroll="ywheel_zoom")     # hei 880
 
     p_k.add_tools(CrosshairTool(line_color='#999999'))
@@ -358,8 +375,8 @@ def fn_main():
 
     fn_plot_kline(df, p_k, all_source)
     fn_plot_fenbi(df, p_k, tbl_bi)
-    fn_plot_segmt(p_k, tbl_bi)
-    fn_plot_volume(df, p_v)
+    fn_plot_block(p_k, tbl_bi)
+    fn_plot_vol(df, p_v)
     fn_plot_macd(df, p_m, all_source)
 
     output_file("chan.html", title="chan", mode='inline')
