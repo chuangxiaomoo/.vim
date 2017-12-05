@@ -130,6 +130,7 @@ function! Syn_markdown()
     " /usr/share/vim/vim73/syntax/c.vim
     " Pmenu | Special
     nmap <C-L>1 :cclose<CR>:vimgrep /^# /j <C-R>%<CR>:copen<CR>G<C-W>k
+    nmap <C-L>2 :cclose<CR>:vimgrep /^##* /j <C-R>%<CR>:copen<CR>G<C-W>k
     vmap <C-X>a :<C-U>AlignCtrl p1P1 \|<CR>:'<,'>Align \|<CR>:'<,'>s/^  *//<CR>:'<,'>s/  *$//<CR>
     nmap <localleader>st :r ~/.vim/skeleton/table.md<CR>
     syntax match Special "\[^.*\]"
@@ -142,12 +143,14 @@ function! Recall_buf_funcs()
     call Filetype_check()
 endf
 
+let g:bab_is8 = 0
+
 function! Toggle_tab()
-    if g:Tab_is8 == 0
-        let g:Tab_is8 = 1
+    if g:bab_is8 == 0
+        let g:bab_is8 = 1
         set et sta ts=8 sw=8 sts=8
     else
-        let g:Tab_is8 = 0
+        let g:bab_is8 = 0
         if &filetype == 'markdown'
             set et sta ts=2 sw=2 sts=2
         else
@@ -359,6 +362,12 @@ imap <C-V>l <Esc>"lgpko
 "           when visual, re-fold all {} inside __SELECTed__
 " zf        fold __SELECT__
 set fdm=marker
+
+function! Diff_enter()
+    windo set wrap
+    windo nm <C-P> [c
+    windo nm <C-N> ]c
+endfunction
 
 " :syntax keyword {group} {keyword} ...
 " 语法组 {group} -> DiffChange DiffAdd Search
@@ -573,12 +582,6 @@ let g:goyo_margin_top = 0
 let g:goyo_margin_bottom = 0
 let g:goyo_linenr = 1
 let g:goyo_toggle = 0
-
-function! Diff_enter()
-    windo set wrap
-    windo nm <C-P> [c
-    windo nm <C-N> ]c
-endfunction
 
 function! Goyo_enter()
     let b:lines = line('w$')-line('w0')
