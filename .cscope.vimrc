@@ -82,7 +82,7 @@ endfunction
 "        [prepath] is the pathname after `cscope -P`
 "        e.g. /usr/include/
 "
-" cd /usr/include && cscope -Rbq -P`pwd`
+" cd /usr/include && cscope -Rbq -P`pwd` -f .cscope.out
 "
 let csdir="/usr/include"
 let csfile = ": cs add " . csdir . "/.cscope.out " . csdir
