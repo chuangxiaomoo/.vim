@@ -1,0 +1,2 @@
+syn keyword	Function	fprintf
+
