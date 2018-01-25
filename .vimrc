@@ -135,6 +135,14 @@ function! Syn_markdown()
     nmap <localleader>st :r ~/.vim/skeleton/table.md<CR>
     syntax match Special "\[^.*\]"
     syntax match Type "->"
+    syntax match Type "\<ge\>"
+    syntax match Type "\<gt\>"
+    syntax match Type "\<le\>"
+    syntax match Type "\<lt\>"
+    syntax match Type "\<eq\>"
+    syntax match Type "\<and\>"
+    syntax match Type "\<or\>"
+    syntax match Type "\<not\>"
 endf
 
 function! Recall_buf_funcs()
