@@ -661,7 +661,7 @@ nmap <C-C><C-A> <Esc>ggVG
 vmap <C-C><C-C> "yy
 vmap <C-C><C-X> "yx
 
-vmap <C-C><C-V> "xx"yP
+vmap <C-C><C-V> "yp
 imap <C-C><C-V> <Esc>"ypa
 nmap <C-C><C-V> "yp
 
