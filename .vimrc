@@ -55,7 +55,6 @@ set noic
 set noeb vb t_vb=
 set noshowmatch             "when type (),the cursor jump
 set nocursorcolumn
-set nofoldenable
 
 set tabpagemax=20
 set winwidth=82
@@ -135,9 +134,6 @@ function! Syn_markdown()
     nmap <localleader>st :r ~/.vim/skeleton/table.md<CR>
     syntax match Special "\[^.*\]"
     syntax match Type "->"
-    syntax match Type ">"
-    syntax match Type "<"
-    syntax match Type "="
     syntax match Type "&&"
     syntax match Type "||"
     syntax match Type "!"
@@ -316,9 +312,6 @@ vmap    <C-X>^  c[^]<ESC>Pl
 
 imap    <C-X>^  [^]<Left>
 
-" zc    to fold
-vmap    <C-X>f  c{{{<CR><C-R>"}}}<ESC>
-
 vmap    <C-X>u  c[]()<ESC>hhPl
 imap    <C-X>u   []()<ESC>i
 nmap    <C-X>u  a[]()<ESC>i
@@ -371,12 +364,6 @@ imap <C-V>l <Esc>"lgpko
 " dp        - Put the changes from current window into the other window.
 " [c        Jump backwards to the previous start of a change.
 " ]c        Jump forwards to the next start of a change.
-" zo        un-fold
-" zc        when normal, re-fold inside {}
-"           when visual, re-fold all {} inside __SELECTed__
-" zf        fold __SELECT__
-set fdm=marker
-
 function! Diff_enter()
     windo set wrap
     windo nm <C-P> [c
@@ -390,6 +377,18 @@ hi DiffDelete                           cterm=reverse
 hi DiffAdd                              ctermfg=0
 hi CursorColumn     term=underline      cterm=underline  ctermbg=NONE ctermfg=NONE
 hi htmlBold         ctermfg=DarkGreen   gui=bold guifg=DarkGreen
+
+" zo        un-fold
+" zc        when normal, re-fold inside {}, when visual, re-fold all {} inside __SELECTed__
+" zf        fold __SELECT__
+" zm zM     Map    折叠.映射
+" zr zR     Reduce 打开.化简
+"    zE     Erase  删除所有的折叠标签
+" zj        next
+" zk        prev
+set     foldenable
+set     foldmethod=marker
+vmap    <C-X>f  c{{{<CR><C-R>"}}}<ESC>
 
 function! Resize_scroll()
     " check if changing
