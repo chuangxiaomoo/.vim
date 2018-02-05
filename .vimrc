@@ -132,7 +132,7 @@ function! Syn_markdown()
     nmap <C-L>2 :cclose<CR>:vimgrep /^##* /j <C-R>%<CR>:copen<CR>G<C-W>k
     vmap <C-X>a :<C-U>AlignCtrl p1P1 \|<CR>:'<,'>Align \|<CR>:'<,'>s/^  *//<CR>:'<,'>s/  *$//<CR>
     nmap <localleader>st :r ~/.vim/skeleton/table.md<CR>
-    syntax match Special "\[^.*\]"
+    syntax match Operator "\[^.*\]"
     syntax match Type "->"
     syntax match Type "&&"
     syntax match Type "||"
