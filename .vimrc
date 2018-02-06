@@ -125,8 +125,9 @@ let maplocalleader='\'
 
 function! Syn_markdown()
     " :highlight to show colorscheme
-    " /usr/share/vim/vim73/syntax/markdown.vim
     " /usr/share/vim/vim73/syntax/c.vim
+    " /usr/share/vim/vim73/syntax/markdown.vim
+    " ~/.vim/syntax/markdown.vim
     " Pmenu | Special
     nmap <C-L>1 :cclose<CR>:vimgrep /^# /j <C-R>%<CR>:copen<CR>G<C-W>k
     nmap <C-L>2 :cclose<CR>:vimgrep /^##* /j <C-R>%<CR>:copen<CR>G<C-W>k
