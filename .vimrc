@@ -563,7 +563,7 @@ endif
     no <silent>   <C-W>d  :50vs ~/bin/stk/dbank<CR>ggn$h
     no            <C-W>e  :vs<CR>:e <C-R><C-F><CR>
     no <silent>   <C-W>f  :cclose<CR>:tabedit <C-R>%<CR>
-    no            <C-W>t  :tabedit
+    no            <C-W>t  :tabedit |
     no            <C-W>m  mF:e ~/bin/m
     no            <C-W>x  mF:e /dev/shm/xm<CR>
 nnoremap          <C-W>.  0*:sp .codelist<CR>nyy:q<CR>pk
