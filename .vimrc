@@ -107,6 +107,7 @@ noremap ffu     :set fileencoding=utf-8<CR>:w<CR>:set fileencoding<CR>
 noremap ffx     :set tw=999<CR>ggVGd
 noremap ffc     ggVGy
 noremap ffv     ggVG
+noremap ffb     /^$<CR>kVNj
 
 " vim info and session
 set             sessionoptions-=curdir
