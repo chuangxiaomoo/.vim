@@ -108,6 +108,10 @@ noremap ffx     :set tw=999<CR>ggVGd
 noremap ffc     ggVGy
 noremap ffv     ggVG
 noremap ffb     /^$<CR>kVNj
+noremap ffa     /^$<CR>kVNj:<C-U>AlignCtrl p1P1 \|<CR>:'<,'>Align \|<CR>:'<,'>s/^  *//<CR>:'<,'>s/  *$//<CR>3<C-O>
+
+no <silent> gn :set nohls<CR>/^$<CR>:s/sakulala//ge<CR>:set hls<CR>
+no <silent> gN :set nohls<CR>?^$<CR>:s/sakulala//ge<CR>:set hls<CR>
 
 " vim info and session
 set             sessionoptions-=curdir
@@ -133,7 +137,8 @@ function! Syn_markdown()
     nmap <C-L>1 :cclose<CR>:vimgrep /^# /j <C-R>%<CR>:copen<CR>G<C-W>k
     nmap <C-L>2 :cclose<CR>:vimgrep /^##* /j <C-R>%<CR>:copen<CR>G<C-W>k
     vmap <C-X>a :<C-U>AlignCtrl p1P1 \|<CR>:'<,'>Align \|<CR>:'<,'>s/^  *//<CR>:'<,'>s/  *$//<CR>
-    nmap <localleader>st :r ~/.vim/skeleton/table.md<CR>
+    nmap <localleader>st      :r ~/.vim/skeleton/table.md<CR>
+    imap <localleader>st <ESC>:r ~/.vim/skeleton/table.md<CR>
     syntax match Operator "\[^.\{-}\]"
     syntax match Type "->"
     syntax match Type "&&"
