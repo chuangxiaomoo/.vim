@@ -108,10 +108,10 @@ noremap ffx     :set tw=999<CR>ggVGd
 noremap ffc     ggVGy
 noremap ffv     ggVG
 noremap ffb     /^$<CR>kVNj
-noremap ffa     /^$<CR>kVNj:<C-U>AlignCtrl p1P1 \|<CR>:'<,'>Align \|<CR>:'<,'>s/^  *//<CR>:'<,'>s/  *$//<CR>3<C-O>
 
-no <silent> gn :set nohls<CR>/^$<CR>
-no <silent> gN :set   hls<CR>
+no <silent> ffa :set nohls<CR>/^$<CR>kVNj:<C-U>AlignCtrl p1P1 \|<CR>:'<,'>Align \|<CR>:'<,'>s/^  *//\|s/  *$//<CR>3<C-O>
+no <silent> gn  :set nohls<CR>/^$<CR>
+no <silent> gN  :set   hls<CR>
 
 " vim info and session
 set             sessionoptions-=curdir
