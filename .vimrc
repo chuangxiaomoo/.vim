@@ -110,8 +110,8 @@ noremap ffv     ggVG
 noremap ffb     /^$<CR>kVNj
 noremap ffa     /^$<CR>kVNj:<C-U>AlignCtrl p1P1 \|<CR>:'<,'>Align \|<CR>:'<,'>s/^  *//<CR>:'<,'>s/  *$//<CR>3<C-O>
 
-no <silent> gn :set nohls<CR>/^$<CR>:s/sakulala//ge<CR>:set hls<CR>
-no <silent> gN :set nohls<CR>?^$<CR>:s/sakulala//ge<CR>:set hls<CR>
+no <silent> gn :set nohls<CR>/^$<CR>
+no <silent> gN :set   hls<CR>
 
 " vim info and session
 set             sessionoptions-=curdir

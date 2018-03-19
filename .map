@@ -31,6 +31,8 @@
 |boxdraw|  ~/.vim/doc/boxdraw.txt|25|                                   |
 |       |  ~/.vim/plugin/boxdraw.vim|113|                               |
 +-------+---------------------------------------------------------------+
+|visincr|  ctrl-v to increase {number,char,date,weekday}                |
++-------+---------------------------------------------------------------+
 |                                                                       |
 |               Template of support                                     |
 |                                                                       |

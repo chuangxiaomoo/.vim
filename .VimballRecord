@@ -1,3 +1,5 @@
 Align.vba: call delete('/root/.vim/plugin/AlignPlugin.vim')|call delete('/root/.vim/plugin/AlignMapsPlugin.vim')|call delete('/root/.vim/plugin/cecutil.vim')|call delete('/root/.vim/doc/Align.txt')|call delete('/root/.vim/autoload/Align.vim')|call delete('/root/.vim/autoload/AlignMaps.vim')
 markdown-1.2.2.vba: call delete('/root/.vim/ftdetect/markdown.vim')|call delete('/root/.vim/snippets/markdown.snippets')|call delete('/root/.vim/syntax/markdown.vim')
 DrawIt.vba: call delete('/root/.vim/plugin/DrawItPlugin.vim')|call delete('/root/.vim/plugin/cecutil.vim')|call delete('/root/.vim/autoload/DrawIt.vim')|call delete('/root/.vim/doc/DrawIt.txt')
+visincr.vba: call delete('/root/.vim/plugin/visincrPlugin.vim')|call delete('/root/.vim/autoload/visincr.vim')|call delete('/root/.vim/doc/visincr.txt')
+calutil.vba: call delete('/root/.vim/doc/calutil.txt')|call delete('/root/.vim/autoload/calutil.vim')
