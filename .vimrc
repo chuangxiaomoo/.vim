@@ -1,6 +1,7 @@
 " ~/.vim/.cscope.vimrc|84|
 " ~/.vim/.forgot_vim_skills.md
 " ~/.vim/.vi_test_file
+" ~/.vim/.VimballRecord
 " ~/.vim/.map
 "
 " :helptags $VIMRUNTIME/doc
@@ -141,6 +142,8 @@ function! Syn_markdown()
     imap <localleader>st <ESC>:r ~/.vim/skeleton/table.md<CR>
     syntax match Operator "\[^.\{-}\]"
     syntax match Type "->"
+    syntax match Type ">>"
+    syntax match Type "<<"
     syntax match Type "&&"
     syntax match Type "||"
     syntax match Type "!"

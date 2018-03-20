@@ -31,7 +31,14 @@
 |boxdraw|  ~/.vim/doc/boxdraw.txt|25|                                   |
 |       |  ~/.vim/plugin/boxdraw.vim|113|                               |
 +-------+---------------------------------------------------------------+
+|Vis    |  Visual Block Commands                                        |
+|       |  http://www.drchip.org/astronaut/vim/vbafiles/vis.vba.gz      |
++-------+---------------------------------------------------------------+
+|Align  |  align markdown tables                                        |
+|       |  http://www.drchip.org/astronaut/vim/vbafiles/Align.vba.gz    |
++-------+---------------------------------------------------------------+
 |visincr|  ctrl-v to increase {number,char,date,weekday}                |
+|       |  http://www.drchip.org/astronaut/vim/index.html#VISINCR       |
 +-------+---------------------------------------------------------------+
 |                                                                       |
 |               Template of support                                     |
