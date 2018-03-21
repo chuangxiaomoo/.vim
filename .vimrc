@@ -90,40 +90,41 @@ vmap    ttY     :w >>/dev/shm/xm<CR>
 "
 " upper and lower case
 "
-vmap    ttc     :B !tr 'A-Z' 'a-z'<CR>
-vmap    ttC     :B !tr 'a-z' 'A-Z'<CR>
-vmap    tti     ttc:'<,'>B:s#/#_#g<CR>
+vn          ttc     :B !tr 'A-Z' 'a-z'<CR>
+vn          ttC     :B !tr 'a-z' 'A-Z'<CR>
+vn          tti     ttc:'<,'>B:s#/#_#g<CR>
 
- map    tth     Vtth
-vmap    tth     :s#/#_#g<CR>V:s#^#int get_#g<CR>V:s#$#(void *data);#g<CR>Vttc/xkd<CR>
+nn          tth     Vtth
+vn          tth     :s#/#_#g<CR>V:s#^#int get_#g<CR>V:s#$#(void *data);#g<CR>Vttc/xkd<CR>
 
- map    fff     :call Save_filename()<CR>
-vmap    fff     JV4<Vgq
-vmap    fft     :s/  */	/g<CR>
-noremap fft     :%s/  */	/g<CR>
+nn          fff     :call Save_filename()<CR>
+vn          fff     JV4<Vgq
 
-noremap ffp     :set fileencoding=cp936<CR>:w<CR>:set fileencoding<CR>
-noremap ffu     :set fileencoding=utf-8<CR>:w<CR>:set fileencoding<CR>
-noremap ffx     :set tw=999<CR>ggVGd
-noremap ffc     ggVGy
-noremap ffv     ggVG
-noremap ffb     /^$<CR>kVNj
+vn          fft     :s/  */	/g<CR>
+nn          fft     :%s/  */	/g<CR>
 
-no <silent> ffa :set nohls<CR>/^$<CR>kVNj:<C-U>AlignCtrl p1P1 \|<CR>:'<,'>Align \|<CR>:'<,'>s/^  *//\|s/  *$//<CR>3<C-O>
-no <silent> gn  :set nohls<CR>/^$<CR>
-no <silent> gN  :set   hls<CR>
+nn <silent> ffp :set fileencoding=cp936<CR>:w<CR>:set fileencoding<CR>
+nn <silent> ffu :set fileencoding=utf-8<CR>:w<CR>:set fileencoding<CR>
+nn <silent> ffx :set tw=999<CR>ggVGd
+nn <silent> ffc ggVGy
+nn <silent> ffv ggVG
+nn <silent> ffb /^$<CR>kVNj
+
+nn <silent> ffa :set nohls<CR>/^$<CR>kVNj:<C-U>AlignCtrl p1P1 \|<CR>:'<,'>Align \|<CR>:'<,'>s/^  *//\|s/  *$//<CR>3<C-O>
+nn <silent> gn  :set nohls<CR>/^$<CR>
+nn <silent> gN  :set   hls<CR>
 
 " vim info and session
-set             sessionoptions-=curdir
-set             sessionoptions+=sesdir
-noremap ffs     :mksession! .session.vim<CR>
-"                                           :wviminfo! .viminfo<CR>
-noremap ffl     :source     .session.vim<CR>
-"                                           :rviminfo  .viminfo<cR>
+set         sessionoptions-=curdir
+set         sessionoptions+=sesdir
+nn          ffs :mksession! .session.vim<CR>
+nn          ffS :wviminfo!  .viminfo<CR>
+nn          ffl :source     .session.vim<CR>
+nn          ffL :rviminfo   .viminfo<cR>
 
-noremap ff3     :copen<CR>gg/\<error\>\c<CR>
-noremap ff4     :copen<CR>gg/^\%(.*obsolescent\)\@!.*\zs.arning:<CR>
-noremap ff5     :copen<CR>gg/undefined reference<CR>
+nn          ff3 :copen<CR>gg/\<error\>\c<CR>
+nn          ff4 :copen<CR>gg/^\%(.*obsolescent\)\@!.*\zs.arning:<CR>
+nn          ff5 :copen<CR>gg/undefined reference<CR>
 
 let mapleader=','
 let maplocalleader='\'
@@ -373,7 +374,7 @@ imap <C-V>l <Esc>"lgpko
 " dp        - Put the changes from current window into the other window.
 " [c        Jump backwards to the previous start of a change.
 " ]c        Jump forwards to the next start of a change.
-no  ffi :se diffopt+=iwhite diffexpr=""<CR>
+nn  ffi :se diffopt+=iwhite diffexpr=""<CR>
 set diffopt=context:1
 function! Diff_enter()
     windo set wrap
