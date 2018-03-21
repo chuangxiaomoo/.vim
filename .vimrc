@@ -373,7 +373,7 @@ imap <C-V>l <Esc>"lgpko
 " dp        - Put the changes from current window into the other window.
 " [c        Jump backwards to the previous start of a change.
 " ]c        Jump forwards to the next start of a change.
-no  di :set diffopt+=iwhite diffexpr=""<CR>
+no  ffi :se diffopt+=iwhite diffexpr=""<CR>
 set diffopt=context:1
 function! Diff_enter()
     windo set wrap
