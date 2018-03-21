@@ -40,7 +40,6 @@ filetype plugin indent on
 " no beep or flash is wanted
 set vb t_vb=
 
-set diffopt=context:1
 set et sta sw=4 tabstop=4 sts=4
 set hls
 set cursorline
@@ -374,6 +373,8 @@ imap <C-V>l <Esc>"lgpko
 " dp        - Put the changes from current window into the other window.
 " [c        Jump backwards to the previous start of a change.
 " ]c        Jump forwards to the next start of a change.
+no  di :set diffopt+=iwhite diffexpr=""<CR>
+set diffopt=context:1
 function! Diff_enter()
     windo set wrap
     windo nm <C-P> [c
