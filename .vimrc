@@ -29,6 +29,11 @@ source ~/.vim/.snip.vimrc
 filetype plugin on
 filetype plugin indent on
 
+" ctags
+" <C-W>] to open tag in split windown
+" <C-W>} to open tag in quickfix-like windown
+set tags=.tags
+
 "
 " set nowrapscan
 " expandtab, smarttab, shiftwidth, tabstop, softtabstop
