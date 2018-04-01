@@ -32,7 +32,7 @@ filetype plugin indent on
 " ctags
 " <C-W>] to open tag in split windown
 " <C-W>} to open tag in quickfix-like windown
-set tags=.tags
+set tags=.py.tags
 
 "
 " set nowrapscan
@@ -133,6 +133,13 @@ nn          ff5 :copen<CR>gg/undefined reference<CR>
 
 let mapleader=','
 let maplocalleader='\'
+
+function! Syn_python()
+    nmap <localleader>sfo ifor i in range(len()):<LEFT><LEFT><LEFT>
+    imap <localleader>sfo  for i in range(len()):<LEFT><LEFT><LEFT>
+    nmap <localleader>sfu idef ():<LEFT><LEFT><LEFT>
+    imap <localleader>sfu  def ():<LEFT><LEFT><LEFT>
+endf
 
 function! Syn_markdown()
     " :highlight to show colorscheme
@@ -559,7 +566,7 @@ if has("autocmd")
  autocmd  FileType cpp      setlocal   path=.,/usr/include,/usr/local/include,, iskeyword-=!
  autocmd  FileType c        setlocal   complete+=k~/.vim/c-support/wordlists/c-c++-keywords.list
  autocmd  FileType cpp      setlocal   complete+=k~/.vim/c-support/wordlists/*
- autocmd  FileType python   setlocal   complete+=k~/.vim/pydiction-1.2/pydiction.py
+ autocmd  FileType python   setlocal   complete+=k~/.vim/pydiction-1.2/pydiction.py | call Syn_python()
  autocmd  FileType python   setlocal   et sta sw=4 sts=4 scrolloff=1 | call Update_snip_syntax()
  autocmd  FileType markdown setlocal   et sta ts=2 sw=2 sts=2 | call Update_snip_syntax() | call Syn_markdown()
  autocmd  FileType xml      setlocal   et sta ts=2 sw=2 sts=2
