@@ -135,10 +135,13 @@ let mapleader=','
 let maplocalleader='\'
 
 function! Syn_python()
+   :com! -nargs=* -complete=shellcmd R new | setlocal buftype=nofile bufhidden=hide noswapfile | r !<args>
     nmap <localleader>sfo ifor i in range(len()):<LEFT><LEFT><LEFT>
     imap <localleader>sfo  for i in range(len()):<LEFT><LEFT><LEFT>
     nmap <localleader>sfu idef ():<LEFT><LEFT><LEFT>
     imap <localleader>sfu  def ():<LEFT><LEFT><LEFT>
+    nmap <C-M>k  :!pydoc3 <cword><CR>
+    nmap <C-M>K  :R pydoc3 <C-R>=expand("<cword>")<CR><CR>
 endf
 
 function! Syn_markdown()
