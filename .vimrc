@@ -135,6 +135,7 @@ let mapleader=','
 let maplocalleader='\'
 
 function! Syn_python()
+    setl makeprg=python3\ %
    :com! -nargs=* -complete=shellcmd R new | setlocal buftype=nofile bufhidden=hide noswapfile | r !<args>
     nmap <localleader>sfo ifor i in range(len()):<LEFT><LEFT><LEFT>
     imap <localleader>sfo  for i in range(len()):<LEFT><LEFT><LEFT>
