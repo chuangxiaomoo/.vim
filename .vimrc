@@ -115,7 +115,8 @@ nn <silent> ffc ggVGy
 nn <silent> ffv ggVG
 nn <silent> ffb /^$<CR>kVNj
 
-nn <silent> ffa :set nohls<CR>/^$<CR>kVNj:<C-U>AlignCtrl p1P1 \|<CR>:'<,'>Align \|<CR>:'<,'>s/^  *//\|s/  *$//<CR>3<C-O>
+nn <silent> ffa :set nohls<CR>/^$<CR>kVNj:<C-U>AlignCtrl p1P1 \|<CR>:'<,'>Align \|<CR>:'<,'>s/^  *//\|%s/  *$//<CR>3<C-O>
+nn <silent> ffA :set nohls<CR>/^$<CR>kVNj:<C-U>AlignCtrl p1P1 \|<CR>:'<,'>Align \|<CR>:'<,'>s/^  *//\|%s/  *$//<CR>3<C-O>vi{>
 nn <silent> gn  :set nohls<CR>/^$<CR>
 nn <silent> gN  :set   hls<CR>
 
