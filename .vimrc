@@ -250,7 +250,7 @@ function! Source_comma_map()
     nnoremap <F8>          :call Toggle_snip_syntax()<CR>
     nnoremap <silent> <F3> :set nu<CR>
     nnoremap <silent> <F4> :set nonu<CR>
-    nnoremap          <F5> :cclose<CR>:make<CR>:copen<CR><CR>
+    nnoremap          <F5> :cclose<CR>:make run<CR>:copen<CR>:setl tabstop=8<CR><CR>
 
     " del
     cnoremap <C-Y>    <BS>
