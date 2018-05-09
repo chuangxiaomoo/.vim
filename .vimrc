@@ -453,7 +453,7 @@ function! Toggle_iskey()
     " /usr/share/vim/vim73/syntax/progress.vim|iskeyword|   del '-'
     " /usr/share/vim/vim73/syntax/sh.vim|sh_noisk|          del '.'
     if !exists("g:toggle_iskey")
-        let g:toggle_iskey = 0
+        let g:toggle_iskey = 1
     endif
 
     if g:toggle_iskey == 0
@@ -463,7 +463,9 @@ function! Toggle_iskey()
     else
         echo "del ->"
         let g:toggle_iskey = 0
-        set iskeyword-=.,-,>
+        set iskeyword-=.
+        set iskeyword-=-
+        set iskeyword-=>
     endif
 endf
 
@@ -539,7 +541,7 @@ if has("autocmd")
  autocmd  BufEnter,BufNewFile,BufRead  *.sh  setlocal makeprg=/bin/bash\ %
  "utocmd  FileType ruby                      setlocal makeprg=ruby\ %           iskeyword+=_,$,@,%,#,-
  autocmd  FileType sh                        setlocal makeprg=bash\ %           iskeyword-=.
- autocmd  FileType php                       setlocal makeprg=php\ %           iskeyword-=.
+ autocmd  FileType php                       setlocal makeprg=php\ %            iskeyword-=.
  autocmd  FileType text                      setlocal textwidth=80
  autocmd  FileType mysql                     setlocal complete+=k~/.vim/wordlists/mysql.list
  autocmd  FileType mysql                     nmap <C-L>a :grep "CREATE PROCEDURE" <C-R>%<CR><CR>
