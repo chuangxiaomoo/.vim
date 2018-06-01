@@ -415,8 +415,10 @@ hi htmlBold         ctermfg=DarkGreen   gui=bold guifg=DarkGreen
 "    zE     Erase  删除所有的折叠标签
 " zj        next
 " zk        prev
+" fdm       foldmethod marker will append {{{,}}}, [zf] to manual fold
+
 set     foldenable
-set     foldmethod=marker
+set     foldmethod=manual
 vmap    <C-X>f  c{{{<CR><C-R>"}}}<ESC>
 
 function! Resize_scroll()
