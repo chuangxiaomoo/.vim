@@ -207,6 +207,7 @@ function! Source_comma_map()
     no <silent> <leader>`  :tabe /root/.maintaince.txt<CR>
     no <silent> <leader>1  :tabfirst<CR>
     no <silent> <leader>2  :tablast<CR>
+    no <silent> <leader>@  :set et sta ts=2 sw=2 sts=2<CR>
     no          <leader>3  :grep -r "" [0-9a-zA-Z]* .[0-9a-z]*<S-Left><S-Left><Left><Left>
     no          <leader>#  :grep -r "" <C-R>%<S-Left><Left><Left>
     no <silent> <leader>4  :call Toggle_tab()<CR>
@@ -601,6 +602,7 @@ endif
     no            <C-W>t  :tabedit |
     no            <C-W>m  mF:e ~/bin/m
     no            <C-W>x  mF:e /dev/shm/xm<CR>
+    no            <C-W>X  mF:e /dev/shm/XM<CR>
 nnoremap          <C-W>.  0*:sp .codelist<CR>nyy:q<CR>pk
 nnoremap          <C-W>/  :only<CR>0*:sp .soptter.nb.md<CR>n
 
