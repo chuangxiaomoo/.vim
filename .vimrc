@@ -78,7 +78,7 @@ set matchpairs+=<:>
 
 "
 " ttf relative path, and ttF obsolute
-" tty yank to xm, and ttY append --- Don't use V but v to visual mode
+" tty yank to xm, and tta append --- Don't use V but v to visual mode
 "
 
 noremap ttx     :r!cat ~/bin/.warehouse/xert.sh<CR>
@@ -88,9 +88,11 @@ noremap ttt     :r!date +\%T<CR>E
 noremap ttf     o<C-R>%<ESC>vB
 noremap ttF     :cd /<CR>O<C-R>%<ESC>:cd -<CR>v0
 
-nmap    ttp     :r   /dev/shm/xm<CR>
+vmap    tta     :w >>/dev/shm/xm<CR>
 vmap    tty     :w!  /dev/shm/xm<CR>
-vmap    ttY     :w >>/dev/shm/xm<CR>
+nmap    ttp     :r   /dev/shm/xm<CR>
+vmap    ttY     :w!  /dev/shm/XM<CR>
+nmap    ttP     :r   /dev/shm/XM<CR>
 
 "
 " upper and lower case
@@ -131,6 +133,7 @@ nn          ffL :rviminfo   .viminfo<cR>
 nn          ff3 :copen<CR>gg/\<error\>\c<CR>
 nn          ff4 :copen<CR>gg/^\%(.*obsolescent\)\@!.*\zs.arning:<CR>
 nn          ff5 :copen<CR>gg/undefined reference<CR>
+nn          ff; n?>:$<CR>|" valgrind
 
 let mapleader=','
 let maplocalleader='\'
