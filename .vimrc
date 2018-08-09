@@ -93,6 +93,8 @@ vmap    tty     :w!  /dev/shm/xm<CR>
 nmap    ttp     :r   /dev/shm/xm<CR>
 vmap    ttY     :w!  /dev/shm/XM<CR>
 nmap    ttP     :r   /dev/shm/XM<CR>
+vmap    ttw     :w!  /winc/xm.txt<CR>
+nmap    ttr     :r   /winc/xm.txt<CR>
 
 "
 " upper and lower case
