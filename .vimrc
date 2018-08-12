@@ -55,6 +55,7 @@ set wrap nolist
 set ru
 set nu
 set is
+set nowrapscan
 
 set noic
 set noeb vb t_vb=
