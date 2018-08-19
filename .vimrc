@@ -35,18 +35,14 @@ filetype plugin indent on
 set tags=.py.tags
 
 "
-" set nowrapscan
 " expandtab, smarttab, shiftwidth, tabstop, softtabstop
 " set fileformats ff, if line end with , please check with /[^]$
 "
-" 无 折 返 查 找
-" set nowrapscan
 
 " no beep or flash is wanted
 set vb t_vb=
 
 set et sta sw=4 tabstop=4 sts=4
-set hls
 set cursorline
 set wildmenu
 set wildmode=longest,full
@@ -54,8 +50,11 @@ set wrap nolist
 "et linebreak breakat+=()
 set ru
 set nu
+
+" 无 折 返 查 找 会 在 搜 索 时 按 下 多 余 的 gg
+" set nowrapscan
 set is
-set nowrapscan
+set hls
 
 set noic
 set noeb vb t_vb=
