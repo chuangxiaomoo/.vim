@@ -480,6 +480,9 @@ endf
 function! Filetype_check()
   if getline(1) =~ '^/[\*\/]'
       setf cpp
+  elseif getline(2) =~ '^----'
+      setf man
+      setl et sta ts=2 sw=2 sts=2
   elseif getline(1) =~ '::'
       setf dosbatch
   elseif getline(1) =~ '^# '
@@ -599,6 +602,7 @@ endif
 
     no <silent>   <C-W>c  :tabonly<CR><C-W>o
     no <silent>   <C-W>d  :50vs ~/bin/stk/dbank<CR>ggn$h
+    no <silent>   <C-W>w  :60vs ~/bin/.m2doc/english_wordlist<CR>ggn$h
     no            <C-W>e  :vs<CR>:e <C-R><C-F><CR>
     no <silent>   <C-W>f  :cclose<CR>:tabedit <C-R>%<CR>
     no            <C-W>t  :tabedit |
@@ -614,7 +618,7 @@ nnoremap          <C-W>/  :only<CR>0*:sp .soptter.nb.md<CR>n
 nnoremap          <C-M>b  :!man bash<CR>
 nnoremap          <C-M>B  :set ft=sh<CR>
 nnoremap          <C-M>c  mA[{0f_lvf(h"yy`A:r!~/bin/7Lite 0 <C-R><C-A> <C-R>y <C-R>%<CR>f{
-nnoremap          <C-M>d  ?\<<C-R><C-F>(\\|fn_<C-R><C-F>(\\|<C-R><C-W> *=<CR>
+nnoremap          <C-M>d  ?\<<C-R><C-F>(\\|fn_<C-R><C-F>\>\\|<C-R><C-W> *=<CR>
 nnoremap          <C-M>f  lbvey[[2kO<ESC>:r!~/bin/7Lite 0 <C-R>0<CR>
 " fn_<C-R>0
 
