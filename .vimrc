@@ -227,6 +227,7 @@ function! Source_comma_map()
     no          <leader>P  vi(y:copen 12<CR>:e <C-R>"<CR><CR>:set modifiable<CR>
     no <silent> <leader>h  :sh<CR>
     no          <leader>i  :set ic<CR>
+    no          <leader>I  :set noic<CR>
     no          <leader>m  :!Markdown.pl --html4tags <C-R>% > /winc/md.html<CR>
     no <silent> <leader>n  :cnewer<CR>
     no <silent> <leader>o  :colder<CR>
