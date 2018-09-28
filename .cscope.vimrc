@@ -111,7 +111,7 @@ nmap <C-L>k mfmF:view  <C-R>z<CR>
 
 nmap <silent> <C-L>o   :let Tlist_Display_Prototype=1<CR>:TlistUpdate<CR>:let Tlist_WinWidth=80<CR>:Tlist<CR>
 nmap <silent> <C-L>t   :TlistUpdate<CR>:set winwidth=30<CR>:TlistOpen<CR>
-nmap <silent> <C-L>T   :TlistHighlightTag<CR>
+nmap <silent> <C-L>T   :w<CR>:TlistUpdate<CR>:TlistHighlightTag<CR>
 "map          <C-L>T   :TlistSync
 
 nmap <C-L>1  mAma:echo "mark Aa"<CR>

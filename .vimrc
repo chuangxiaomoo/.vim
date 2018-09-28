@@ -46,7 +46,7 @@ set et sta sw=4 tabstop=4 sts=4
 set cursorline
 set wildmenu
 set wildmode=longest,full
-set wrap nolist
+set nowrap nolist
 "et linebreak breakat+=()
 set ru
 set nu
@@ -228,6 +228,7 @@ function! Source_comma_map()
     no <silent> <leader>h  :sh<CR>
     no          <leader>i  :set ic<CR>
     no          <leader>I  :set noic<CR>
+    no          <leader>W  :set wrap<CR>
     no          <leader>m  :!Markdown.pl --html4tags <C-R>% > /winc/md.html<CR>
     no <silent> <leader>n  :cnewer<CR>
     no <silent> <leader>o  :colder<CR>
@@ -468,7 +469,8 @@ function! Toggle_iskey()
 
     if g:toggle_iskey == 0
         echo "add ->"
-        set iskeyword+=.,-,>
+        "et iskeyword+=.,-,>
+        set iskeyword=a-z,A-Z,48-57,_,.,-,>
         let g:toggle_iskey = 1
     else
         echo "del ->"
