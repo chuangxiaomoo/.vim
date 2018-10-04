@@ -85,6 +85,8 @@ noremap ttx     :r!cat ~/bin/.warehouse/xert.sh<CR>
 noremap ttd     :r!date +\%Y-\%m-\%d<CR>E
 noremap ttD     :r!date +\%Y.\%m.\%d<CR>E
 noremap ttt     :r!date +\%T<CR>E
+noremap ttk     :r!date +\%Y-\%m-                 <CR>E
+noremap ttj     :r!date +\%Y-\%m- -d '30 days ago'<CR>E
 noremap ttf     o<C-R>%<ESC>vB
 noremap ttF     :cd /<CR>O<C-R>%<ESC>:cd -<CR>v0
 
@@ -228,7 +230,6 @@ function! Source_comma_map()
     no <silent> <leader>h  :sh<CR>
     no          <leader>i  :set ic<CR>
     no          <leader>I  :set noic<CR>
-    no          <leader>W  :set wrap<CR>
     no          <leader>m  :!Markdown.pl --html4tags <C-R>% > /winc/md.html<CR>
     no <silent> <leader>n  :cnewer<CR>
     no <silent> <leader>o  :colder<CR>
@@ -613,8 +614,14 @@ endif
     no            <C-W>m  mF:e ~/bin/m
     no            <C-W>x  mF:e /dev/shm/xm<CR>
     no            <C-W>X  mF:e /dev/shm/XM<CR>
-nnoremap          <C-W>.  0*:sp .codelist<CR>nyy:q<CR>pk
-nnoremap          <C-W>/  :only<CR>0*:sp .soptter.nb.md<CR>n
+
+" scale window width, See :help CTRL-W 
+"
+" Ctrl+W +/-: increase/decrease height (ex. 20<C-w>+)
+" Ctrl+W >/<: increase/decrease width  (ex. 30<C-w><), > to great and < to less
+" Ctrl+W _  : set height (ex. 50<C-w>_)
+" Ctrl+W |  : set width (ex. 50<C-w>|)
+" Ctrl+W =  : equalize width and height of all windows
 
 "
 " ---------------- <C-M> double for quickfix jump -----------------------
