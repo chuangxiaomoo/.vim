@@ -161,6 +161,7 @@ function! Syn_markdown()
     " Pmenu | Special
     nmap <C-L>1 :cclose<CR>:vimgrep /^# /j <C-R>%<CR>:copen<CR>G<C-W>k
     nmap <C-L>2 :cclose<CR>:vimgrep /^##* /j <C-R>%<CR>:copen<CR>G<C-W>k
+    nmap <C-L>3 :cclose<CR>:vimgrep /[^a-zA-Z1-9。，）！？：”]$/j <C-R>%<CR>:copen<CR>G<C-W>k/[^a-zA-Z1-9。，）！？：”]$<CR>
     vmap <C-X>a :<C-U>AlignCtrl p1P1 \|<CR>:'<,'>Align \|<CR>:'<,'>s/^  *//<CR>:'<,'>s/  *$//<CR>
     nmap <localleader>st      :r ~/.vim/skeleton/table.md<CR>
     imap <localleader>st <ESC>:r ~/.vim/skeleton/table.md<CR>
@@ -230,6 +231,7 @@ function! Source_comma_map()
     no <silent> <leader>h  :sh<CR>
     no          <leader>i  :set ic<CR>
     no          <leader>I  :set noic<CR>
+    no          <leader>W  :set wrap<CR>
     no          <leader>m  :!Markdown.pl --html4tags <C-R>% > /winc/md.html<CR>
     no <silent> <leader>n  :cnewer<CR>
     no <silent> <leader>o  :colder<CR>
