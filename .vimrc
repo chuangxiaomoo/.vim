@@ -495,11 +495,12 @@ function! Filetype_check()
   elseif getline(1) =~ '^# '
       setf markdown
       setl ai
+      setl wrap
   endif
 endf
 
 function! Word_mode(num)
-    " :call Filetype_check()
+    call Filetype_check()
     autocmd BufNewFile,BufRead,BufEnter * call Filetype_check()
 
     if a:num == 1
