@@ -172,6 +172,7 @@ function! Syn_markdown()
     syntax match Type "&&"
     syntax match Type "||"
     syntax match Type "!"
+    syntax match Type "//"
     syntax match Type "\<ge\>"
     syntax match Type "\<gt\>"
     syntax match Type "\<le\>"
