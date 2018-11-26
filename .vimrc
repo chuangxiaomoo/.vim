@@ -85,6 +85,8 @@ noremap ttx     :r!cat ~/bin/.warehouse/xert.sh<CR>
 noremap ttd     :r!date +\%Y-\%m-\%d<CR>E
 noremap ttD     :r!date +\%Y.\%m.\%d<CR>E
 noremap ttt     :r!date +\%T<CR>E
+noremap ttk     :r!date +\%Y-\%m-                 <CR>E
+noremap ttj     :r!date +\%Y-\%m- -d '30 days ago'<CR>E
 noremap ttf     o<C-R>%<ESC>vB
 noremap ttF     :cd /<CR>O<C-R>%<ESC>:cd -<CR>v0
 
@@ -170,6 +172,7 @@ function! Syn_markdown()
     syntax match Type "&&"
     syntax match Type "||"
     syntax match Type "!"
+    syntax match Type "//"
     syntax match Type "\<ge\>"
     syntax match Type "\<gt\>"
     syntax match Type "\<le\>"
@@ -405,8 +408,8 @@ nn  ffi :se diffopt+=iwhite diffexpr=""<CR>
 set diffopt=context:1
 function! Diff_enter()
     windo set wrap
-    windo nm <C-P> [c
-    windo nm <C-N> ]c
+    windo nm <C-k> [c
+    windo nm <C-j> ]c
 endfunction
 
 " :syntax keyword {group} {keyword} ...
@@ -493,6 +496,7 @@ function! Filetype_check()
   elseif getline(1) =~ '^# '
       setf markdown
       setl ai
+      setl wrap
   endif
 endf
 

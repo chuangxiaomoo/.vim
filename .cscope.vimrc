@@ -114,10 +114,10 @@ nmap <silent> <C-L>t   :TlistUpdate<CR>:set winwidth=30<CR>:TlistOpen<CR>
 nmap <silent> <C-L>T   :w<CR>:TlistUpdate<CR>:TlistHighlightTag<CR>
 "map          <C-L>T   :TlistSync
 
-nmap <C-L>1  mAma:echo "mark Aa"<CR>
-nmap <C-L>2  mBmb:echo "mark Bb"<CR>
-nmap <C-L>3  mCmc:echo "mark Cc"<CR>
-nmap <C-L>4  mDmd:echo "mark Dd"<CR>
+"
+" 1~4 is reserved for markdown
+"
+"
 nmap <C-L>$  mE`CmD`BmC`AmB`EmA:echo "Refreshed DCBA!"<CR>
 nmap <C-L>5  $a     <ESC>:w<CR>
 nmap <C-L>7  :set isk+=-<CR>viw<C-L>l:let @l=substitute(@l, '201.', '201.', 'g')<CR>/<C-R>l<CR>
