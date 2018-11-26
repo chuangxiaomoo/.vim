@@ -159,6 +159,7 @@ function! Syn_markdown()
     " Pmenu | Special
     nmap <C-L>1 :cclose<CR>:vimgrep /^# /j <C-R>%<CR>:copen<CR>G<C-W>k
     nmap <C-L>2 :cclose<CR>:vimgrep /^##* /j <C-R>%<CR>:copen<CR>G<C-W>k
+    nmap <C-L>3 :cclose<CR>:vimgrep /[^a-zA-Z1-9。，）！？：”]$/j <C-R>%<CR>:copen<CR>G<C-W>k/[^a-zA-Z1-9。，）！？：”]$<CR>
     vmap <C-X>a :<C-U>AlignCtrl p1P1 \|<CR>:'<,'>Align \|<CR>:'<,'>s/^  *//<CR>:'<,'>s/  *$//<CR>
     nmap <localleader>st      :r ~/.vim/skeleton/table.md<CR>
     imap <localleader>st <ESC>:r ~/.vim/skeleton/table.md<CR>
@@ -496,7 +497,7 @@ function! Filetype_check()
 endf
 
 function! Word_mode(num)
-    " :call Filetype_check()
+    call Filetype_check()
     autocmd BufNewFile,BufRead,BufEnter * call Filetype_check()
 
     if a:num == 1
@@ -613,8 +614,14 @@ endif
     no            <C-W>m  mF:e ~/bin/m
     no            <C-W>x  mF:e /dev/shm/xm<CR>
     no            <C-W>X  mF:e /dev/shm/XM<CR>
-nnoremap          <C-W>.  0*:sp .codelist<CR>nyy:q<CR>pk
-nnoremap          <C-W>/  :only<CR>0*:sp .soptter.nb.md<CR>n
+
+" scale window width, See :help CTRL-W 
+"
+" Ctrl+W +/-: increase/decrease height (ex. 20<C-w>+)
+" Ctrl+W >/<: increase/decrease width  (ex. 30<C-w><), > to great and < to less
+" Ctrl+W _  : set height (ex. 50<C-w>_)
+" Ctrl+W |  : set width (ex. 50<C-w>|)
+" Ctrl+W =  : equalize width and height of all windows
 
 "
 " ---------------- <C-M> double for quickfix jump -----------------------
