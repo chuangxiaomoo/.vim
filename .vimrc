@@ -410,8 +410,8 @@ nn  ffi :se diffopt+=iwhite diffexpr=""<CR>
 set diffopt=context:1
 function! Diff_enter()
     windo set wrap
-    windo nm <C-P> [c
-    windo nm <C-N> ]c
+    windo nm <C-k> [c
+    windo nm <C-j> ]c
 endfunction
 
 " :syntax keyword {group} {keyword} ...
