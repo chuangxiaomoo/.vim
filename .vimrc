@@ -167,8 +167,10 @@ function! Syn_markdown()
     imap <localleader>st <ESC>:r ~/.vim/skeleton/table.md<CR>
     syntax match Operator "\[^.\{-}\]"
     syntax match Type "->"
-    syntax match Type ">>"
-    syntax match Type "<<"
+    syntax match Type ">="
+    syntax match Type "<="
+    syntax match Type "\.>\."
+    syntax match Type "\.<\."
     syntax match Type "&&"
     syntax match Type "||"
     syntax match Type "!"
