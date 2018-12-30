@@ -83,7 +83,7 @@ set matchpairs+=<:>
 
 noremap ttx     :r!cat ~/bin/.warehouse/xert.sh<CR>
 noremap ttd     :r!date +\%Y-\%m-\%d<CR>E
-noremap ttD     :r!date +\%Y.\%m.\%d<CR>E
+noremap ttD     :r!date +\%Y\%m\%d<CR>E
 noremap ttt     :r!date +\%T<CR>E
 noremap ttk     :r!date +\%Y-\%m-                 <CR>E
 noremap ttj     :r!date +\%Y-\%m- -d '30 days ago'<CR>E
