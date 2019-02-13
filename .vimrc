@@ -120,6 +120,8 @@ nn <silent> ffx :set tw=999<CR>ggVGd
 nn <silent> ffc ggVGy
 nn <silent> ffv ggVG
 nn <silent> ffb /^$<CR>kVNj
+nn <silent> ffg bdwpbe3ldw2lcw
+nn <silent> ffG mFggVGk:w! /dev/shm/xm<CR>:e /dev/shm/xm<CR>gg4jVG:!sort -gr -k6<CR>:w<CR>
 
 nn <silent> ffa :set nohls<CR>/^$<CR>kVNj:<C-U>AlignCtrl p1P1 \|<CR>:'<,'>Align \|<CR>:'<,'>s/^  *//\|%s/  *$//<CR>3<C-O>
 nn <silent> ffA :set nohls<CR>/^$<CR>kVNj:<C-U>AlignCtrl p1P1 \|<CR>:'<,'>Align \|<CR>:'<,'>s/^  *//\|%s/  *$//<CR>3<C-O>vi{>
@@ -232,6 +234,7 @@ function! Source_comma_map()
     no          <leader>p  vi(y:tabedit <C-R>"<CR>
     no          <leader>P  vi(y:copen 12<CR>:e <C-R>"<CR><CR>:set modifiable<CR>
     no <silent> <leader>h  :sh<CR>
+    no          <leader>H  :set hls<CR>
     no          <leader>i  :set ic<CR>
     no          <leader>I  :set noic<CR>
     no          <leader>W  :set wrap<CR>
