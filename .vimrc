@@ -47,7 +47,7 @@ set cursorline
 set wildmenu
 set wildmode=longest,full
 set nowrap nolist
-"et linebreak breakat+=()
+"et linebreak breakat+=()       " Stop wrapping lines in the middle of a word
 set ru
 set nu
 
@@ -237,6 +237,7 @@ function! Source_comma_map()
     no          <leader>H  :set hls<CR>
     no          <leader>i  :set ic<CR>
     no          <leader>I  :set noic<CR>
+    no <silent> <leader>j  :call Toggle_Logmove()<CR>
     no          <leader>W  :set wrap<CR>
     no          <leader>m  :!Markdown.pl --html4tags <C-R>% > /winc/md.html<CR>
     no <silent> <leader>n  :cnewer<CR>
@@ -659,6 +660,7 @@ let g:goyo_margin_top = 0
 let g:goyo_margin_bottom = 0
 let g:goyo_linenr = 1
 let g:goyo_toggle = 0
+let g:logmove = 0
 
 function! Goyo_enter()
     let b:lines = line('w$')-line('w0')
@@ -677,6 +679,7 @@ function! Goyo_enter()
     nm j gj
     nm k gk
     set nocursorline
+    set linebreak
     let g:goyo_toggle = 1
 endfunction
 
@@ -702,6 +705,30 @@ function! Toggle_Goyo()
         call Goyo_leave()
         let g:goyo_toggle = 0
     endif
+endf
+
+function! Log_j()
+    let g:logmove = g:logmove/2
+    call cursor(line('.')+g:logmove, 0)
+    if g:logmove <= 1
+        unmap <buffer> j
+        unmap <buffer> k
+    endif
+endf
+
+function! Log_k()
+    let g:logmove = g:logmove/2
+    call cursor(line('.')-g:logmove, 0)
+    if g:logmove <= 1
+        unmap <buffer> j
+        unmap <buffer> k
+    endif
+endf
+
+function! Toggle_Logmove()
+    let g:logmove = line('w$')-line('w0')
+    map <silent> <buffer> j :call Log_j()<CR>
+    map <silent> <buffer> k :call Log_k()<CR>
 endf
 
 autocmd! User GoyoEnter nested call <SID>goyo_enter()
