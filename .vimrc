@@ -47,7 +47,7 @@ set cursorline
 set wildmenu
 set wildmode=longest,full
 set nowrap nolist
-"et linebreak breakat+=()
+"et linebreak breakat+=()       " Stop wrapping lines in the middle of a word
 set ru
 set nu
 
@@ -83,7 +83,7 @@ set matchpairs+=<:>
 
 noremap ttx     :r!cat ~/bin/.warehouse/xert.sh<CR>
 noremap ttd     :r!date +\%Y-\%m-\%d<CR>E
-noremap ttD     :r!date +\%Y.\%m.\%d<CR>E
+noremap ttD     :r!date +\%Y\%m\%d<CR>E
 noremap ttt     :r!date +\%T<CR>E
 noremap ttk     :r!date +\%Y-\%m-                 <CR>E
 noremap ttj     :r!date +\%Y-\%m- -d '30 days ago'<CR>E
@@ -117,6 +117,8 @@ nn <silent> ffx :set tw=999<CR>ggVGd
 nn <silent> ffc ggVGy
 nn <silent> ffv ggVG
 nn <silent> ffb /^$<CR>kVNj
+nn <silent> ffg bdwpbe3ldw2lcw
+nn <silent> ffG mFggVGk:w! /dev/shm/xm<CR>:e /dev/shm/xm<CR>gg4jVG:!sort -gr -k6<CR>:w<CR>
 
 nn <silent> ffa :set nohls<CR>/^$<CR>kVNj:<C-U>AlignCtrl p1P1 \|<CR>:'<,'>Align \|<CR>:'<,'>s/^  *//\|%s/  *$//<CR>3<C-O>
 nn <silent> ffA :set nohls<CR>/^$<CR>kVNj:<C-U>AlignCtrl p1P1 \|<CR>:'<,'>Align \|<CR>:'<,'>s/^  *//\|%s/  *$//<CR>3<C-O>vi{>
@@ -169,8 +171,10 @@ function! Syn_markdown()
     imap <localleader>st <ESC>:r ~/.vim/skeleton/table.md<CR>
     syntax match Operator "\[^.\{-}\]"
     syntax match Type "->"
-    syntax match Type ">>"
-    syntax match Type "<<"
+    syntax match Type ">="
+    syntax match Type "<="
+    syntax match Type "\.>\."
+    syntax match Type "\.<\."
     syntax match Type "&&"
     syntax match Type "||"
     syntax match Type "!"
@@ -232,8 +236,10 @@ function! Source_comma_map()
     no          <leader>p  vi(y:tabedit <C-R>"<CR>
     no          <leader>P  vi(y:copen 12<CR>:e <C-R>"<CR><CR>:set modifiable<CR>
     no <silent> <leader>h  :sh<CR>
+    no          <leader>H  :set hls<CR>
     no          <leader>i  :set ic<CR>
     no          <leader>I  :set noic<CR>
+    no <silent> <leader>j  :call Toggle_Logmove()<CR>
     no          <leader>W  :set wrap<CR>
     no          <leader>m  :!Markdown.pl --html4tags <C-R>% > /winc/md.html<CR>
     no <silent> <leader>n  :cnewer<CR>
@@ -656,6 +662,7 @@ let g:goyo_margin_top = 0
 let g:goyo_margin_bottom = 0
 let g:goyo_linenr = 1
 let g:goyo_toggle = 0
+let g:logmove = 0
 
 function! Goyo_enter()
     let b:lines = line('w$')-line('w0')
@@ -674,6 +681,7 @@ function! Goyo_enter()
     nm j gj
     nm k gk
     set nocursorline
+    set linebreak
     let g:goyo_toggle = 1
 endfunction
 
@@ -699,6 +707,30 @@ function! Toggle_Goyo()
         call Goyo_leave()
         let g:goyo_toggle = 0
     endif
+endf
+
+function! Log_j()
+    let g:logmove = g:logmove/2
+    call cursor(line('.')+g:logmove, 0)
+    if g:logmove <= 1
+        unmap <buffer> j
+        unmap <buffer> k
+    endif
+endf
+
+function! Log_k()
+    let g:logmove = g:logmove/2
+    call cursor(line('.')-g:logmove, 0)
+    if g:logmove <= 1
+        unmap <buffer> j
+        unmap <buffer> k
+    endif
+endf
+
+function! Toggle_Logmove()
+    let g:logmove = line('w$')-line('w0')
+    map <silent> <buffer> j :call Log_j()<CR>
+    map <silent> <buffer> k :call Log_k()<CR>
 endf
 
 autocmd! User GoyoEnter nested call <SID>goyo_enter()
