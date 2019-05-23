@@ -728,6 +728,7 @@ function! Log_k()
 endf
 
 function! Toggle_Logmove()
+    mar j
     let g:logmove = line('w$')-line('w0')
     map <silent> <buffer> j :call Log_j()<CR>
     map <silent> <buffer> k :call Log_k()<CR>
