@@ -111,9 +111,6 @@ vn          tth     :s#/#_#g<CR>V:s#^#int get_#g<CR>V:s#$#(void *data);#g<CR>Vtt
 nn          fff     :call Save_filename()<CR>
 vn          fff     JV4<Vgq
 
-vn          fft     :s/  */	/g<CR>
-nn          fft     :%s/  */	/g<CR>
-
 nn <silent> ffp :set fileencoding=cp936<CR>:w<CR>:set fileencoding<CR>
 nn <silent> ffu :set fileencoding=utf-8<CR>:w<CR>:set fileencoding<CR>
 nn <silent> ffx :set tw=999<CR>ggVGd
@@ -123,6 +120,11 @@ nn <silent> ffb /^$<CR>kVNj
 
 nn <silent> ffa :set nohls<CR>/^$<CR>kVNj:<C-U>AlignCtrl p1P1 \|<CR>:'<,'>Align \|<CR>:'<,'>s/^  *//\|%s/  *$//<CR>3<C-O>
 nn <silent> ffA :set nohls<CR>/^$<CR>kVNj:<C-U>AlignCtrl p1P1 \|<CR>:'<,'>Align \|<CR>:'<,'>s/^  *//\|%s/  *$//<CR>3<C-O>vi{>
+
+" https://josetomastocino.github.io/mindmapit/
+nn <silent> fft :g/^  /s/ [^ ]/ -&/<CR>
+nn <silent> ffT :g/^  /s/- //<CR>
+
 nn <silent> gn  :set nohls<CR>/^$<CR>
 nn <silent> gN  :set   hls<CR>
 
