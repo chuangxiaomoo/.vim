@@ -240,6 +240,7 @@ function! Source_comma_map()
     no          <leader>i  :set ic<CR>
     no          <leader>I  :set noic<CR>
     no <silent> <leader>j  :call Toggle_Logmove()<CR>
+    no <silent> <leader>l  :call Toggle_Logmove_hor()<CR>
     no          <leader>W  :set wrap<CR>
     no          <leader>m  :!Markdown.pl --html4tags <C-R>% > /winc/md.html<CR>
     no <silent> <leader>n  :cnewer<CR>
@@ -251,6 +252,7 @@ function! Source_comma_map()
     no          <leader>x  :tabonly<CR><C-W>o
     im          <leader>>  ＞
     im          <leader><  ＜
+    im          <leader>,  <ESC>
    "im          <leader>>  <C-Q>uff1e
    "im          <leader><  <C-Q>uff1c
     "o <silent> <leader>t  Occupied by Align
@@ -663,6 +665,7 @@ let g:goyo_margin_bottom = 0
 let g:goyo_linenr = 1
 let g:goyo_toggle = 0
 let g:logmove = 0
+let g:logmove_hor = 0
 
 function! Goyo_enter()
     let b:lines = line('w$')-line('w0')
@@ -732,6 +735,32 @@ function! Toggle_Logmove()
     let g:logmove = line('w$')-line('w0')
     map <silent> <buffer> j :call Log_j()<CR>
     map <silent> <buffer> k :call Log_k()<CR>
+endf
+
+function! Log_h()
+    let g:logmove_hor = g:logmove_hor/2
+    call cursor(0, col('.')-g:logmove_hor)
+    if g:logmove_hor <= 1
+        unmap <buffer> h
+        unmap <buffer> l
+    endif
+endf
+
+function! Log_l()
+    let g:logmove_hor = g:logmove_hor/2
+    call cursor(0, col('.')+g:logmove_hor)
+    if g:logmove_hor <= 1
+        unmap <buffer> h
+        unmap <buffer> l
+    endif
+endf
+
+
+function! Toggle_Logmove_hor()
+    mar l
+    let g:logmove_hor = col('$')
+    map <silent> <buffer> h :call Log_h()<CR>
+    map <silent> <buffer> l :call Log_l()<CR>
 endf
 
 autocmd! User GoyoEnter nested call <SID>goyo_enter()
