@@ -163,8 +163,8 @@ nmap <C-L>G  :vert scs find g <C-R>=expand("<cword>")<CR><CR>
 " :p expand to full path
 " :h head (last path component removed)
 " :t tail (last path component only)
-nmap <C-L>y  :let @l = expand("%:t")<CR>
-nmap <C-L>Y  :let @l = expand("%:p")<CR>
+nmap <C-L>y  :let @y = expand("%:t")<CR>
+nmap <C-L>Y  :let @y = expand("%:p")<CR>
 
 "
 " k for C/C++ keyword

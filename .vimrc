@@ -684,7 +684,7 @@ function! Goyo_enter()
     nm j gj
     nm k gk
     set nocursorline
-    set linebreak
+    "et linebreak
     let g:goyo_toggle = 1
 endfunction
 
