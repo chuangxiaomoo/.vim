@@ -159,6 +159,13 @@ nmap <C-L>G  :vert scs find g <C-R>=expand("<cword>")<CR><CR>
 "map <C-L>I  :vert scs find i <C-R>=expand("<cfile>")<CR><CR>
 "map <C-L>S  :vert scs find s <C-R>=expand("<cword>")<CR><CR>
 
+" cp current file to clipboard -- help expand()
+" :p expand to full path
+" :h head (last path component removed)
+" :t tail (last path component only)
+nmap <C-L>y  :let @l = expand("%:t")<CR>
+nmap <C-L>Y  :let @l = expand("%:p")<CR>
+
 "
 " k for C/C++ keyword
 "
