@@ -111,6 +111,18 @@ vn          tth     :s#/#_#g<CR>V:s#^#int get_#g<CR>V:s#$#(void *data);#g<CR>Vtt
 nn          fff     :call Save_filename()<CR>
 vn          fff     JV4<Vgq
 
+"
+" mindmap
+" https://josetomastocino.github.io/mindmapit/
+"
+nn          ffm     :%s/   */&- /g<CR>
+nn          ffM     :%s/- //g<CR>
+vn          ffm     :s/   */&- /g<CR>
+vn          ffM     :s/- //g<CR>
+
+nn <silent> fft :g/^  /s/ [^ ]/ -&/<CR>
+nn <silent> ffT :g/^  /s/- //<CR>
+
 nn <silent> ffp :set fileencoding=cp936<CR>:w<CR>:set fileencoding<CR>
 nn <silent> ffu :set fileencoding=utf-8<CR>:w<CR>:set fileencoding<CR>
 nn <silent> ffx :set tw=999<CR>ggVGd
@@ -122,10 +134,6 @@ nn <silent> ffG mFggVGk:w! /dev/shm/xm<CR>:e /dev/shm/xm<CR>gg4jVG:!sort -gr -k6
 
 nn <silent> ffa :set nohls<CR>/^$<CR>kVNj:<C-U>AlignCtrl p1P1 \|<CR>:'<,'>Align \|<CR>:'<,'>s/^  *//\|%s/  *$//<CR>3<C-O>
 nn <silent> ffA :set nohls<CR>/^$<CR>kVNj:<C-U>AlignCtrl p1P1 \|<CR>:'<,'>Align \|<CR>:'<,'>s/^  *//\|%s/  *$//<CR>3<C-O>vi{>
-
-" https://josetomastocino.github.io/mindmapit/
-nn <silent> fft :g/^  /s/ [^ ]/ -&/<CR>
-nn <silent> ffT :g/^  /s/- //<CR>
 
 nn <silent> gn  :set nohls<CR>/^$<CR>
 nn <silent> gN  :set   hls<CR>
@@ -830,3 +838,8 @@ vmap gh  "yy/<C-R>=Escape_char('<C-R>y')<CR><CR>
 nmap X vy
 vmap X y
 
+"
+" :help modeline 
+" # vim: ts=4 sw=4 et
+"
+"&-
