@@ -60,7 +60,7 @@ while <CURSOR> ; do
 <SPLIT>done
 §%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 == statements.function ==
-function |?FUNCTION_NAME|()
+|?FUNCTION_NAME|()
 {
 <CURSOR><SPLIT>
 }

@@ -52,7 +52,8 @@ set ru
 set nu
 
 " 无 折 返 查 找 会 在 搜 索 时 按 下 多 余 的 gg
-" set nowrapscan
+" search hit BOTTOM, continuing at TOP
+set nowrapscan
 set is
 set hls
 
@@ -97,6 +98,8 @@ vmap    ttY     :w!  /dev/shm/XM<CR>
 nmap    ttP     :r   /dev/shm/XM<CR>
 vmap    ttw     :w!  /winc/xm.txt<CR>
 nmap    ttr     :r   /winc/xm.txt<CR>
+vmap    ttW    y:call writefile(split(getreg('"'), '\n'), '/winc/xm.txt')<CR>
+nmap    ttl     :let @" = join(readfile('/winc/xm.txt'), "\n")<CR>:echo ':load to reg "'<CR>
 
 "
 " upper and lower case
