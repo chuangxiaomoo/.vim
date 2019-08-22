@@ -101,10 +101,13 @@ nmap <C-L>q :call QfMakeConv()<CR>
 "map <C-L>l :cclose<CR>:vimgrep /^[\-.*#]#* \\|^[0-9a-z][0-9]*\. /j <C-R>%<CR>:copen<CR>G<C-W>k
 nmap <C-L>6 :cclose<CR>:vimgrep /^\[^/j  <C-R>%<CR>:copen<CR>G<C-W>k
 nmap <C-L>l :cclose<CR>:vimgrep /^##* /j <C-R>%<CR>:copen<CR>G<C-W>k
-nmap <C-L>h ?#include<CR>yyp$hvi"c<C-R>y<ESC>
 nmap <C-L>j mfmF:view  .flowchar.i<CR>
 nmap <C-L>k mfmF:view  <C-R>z<CR>
 
+" copy & past
+nmap <C-L>h ?#include<CR>yyp$hvi"c<C-R>y<ESC>
+nmap <C-L>y  :let @y = expand("%:t")<CR>|   " basename
+nmap <C-L>Y  :let @y = expand("%:p")<CR>|   " fullpath
 "
 " L mean Location
 "
@@ -163,8 +166,6 @@ nmap <C-L>G  :vert scs find g <C-R>=expand("<cword>")<CR><CR>
 " :p expand to full path
 " :h head (last path component removed)
 " :t tail (last path component only)
-nmap <C-L>y  :let @y = expand("%:t")<CR>
-nmap <C-L>Y  :let @y = expand("%:p")<CR>
 
 "
 " k for C/C++ keyword

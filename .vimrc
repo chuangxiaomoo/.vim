@@ -53,7 +53,7 @@ set nu
 
 " 无 折 返 查 找 会 在 搜 索 时 按 下 多 余 的 gg
 " search hit BOTTOM, continuing at TOP
-set nowrapscan
+"et nowrapscan
 set is
 set hls
 
@@ -98,6 +98,7 @@ vmap    ttY     :w!  /dev/shm/XM<CR>
 nmap    ttP     :r   /dev/shm/XM<CR>
 vmap    ttw     :w!  /winc/xm.txt<CR>
 nmap    ttr     :r   /winc/xm.txt<CR>
+" dump & load to "
 vmap    ttW    y:call writefile(split(getreg('"'), '\n'), '/winc/xm.txt')<CR>
 nmap    ttl     :let @" = join(readfile('/winc/xm.txt'), "\n")<CR>:echo ':load to reg "'<CR>
 
@@ -118,13 +119,13 @@ vn          fff     JV4<Vgq
 " mindmap
 " https://josetomastocino.github.io/mindmapit/
 "
-nn          ffm     :%s/   */&- /g<CR>
-nn          ffM     :%s/- //g<CR>
+nn          ffm     :%s/   */&- /g<CR>| " add Prefix
+nn          ffM     :%s/- //g<CR>|      " del Prefix
 vn          ffm     :s/   */&- /g<CR>
 vn          ffM     :s/- //g<CR>
 
-nn <silent> fft :g/^  /s/ [^ ]/ -&/<CR>
-nn <silent> ffT :g/^  /s/- //<CR>
+nn <silent> fft :g/^  /s/ [^ ]/ -&/<CR>| " add Prefix, 与ffm实现相同的功能
+nn <silent> ffT :g/^  /s/- //<CR>|       " del Prefix
 
 nn <silent> ffp :set fileencoding=cp936<CR>:w<CR>:set fileencoding<CR>
 nn <silent> ffu :set fileencoding=utf-8<CR>:w<CR>:set fileencoding<CR>
@@ -149,10 +150,10 @@ nn          ffS :wviminfo!  .viminfo<CR>
 nn          ffl :source     .session.vim<CR>
 nn          ffL :rviminfo   .viminfo<cR>
 
-nn          ff3 :copen<CR>gg/\<error\>\c<CR>
-nn          ff4 :copen<CR>gg/^\%(.*obsolescent\)\@!.*\zs.arning:<CR>
-nn          ff5 :copen<CR>gg/undefined reference<CR>
-nn          ff; n?>:$<CR>|" valgrind
+nn          ffe :copen<CR>gg/\<error\>\c<CR>|                           " Error 
+nn          ffw :copen<CR>gg/^\%(.*obsolescent\)\@!.*\zs.arning:<CR>|   " Warning
+nn          ffr :copen<CR>gg/undefined reference<CR>|                   " Reference
+nn          ff; n?>:$<CR>|                                              " Valgrind search <function>:
 
 let mapleader=','
 let maplocalleader='\'
@@ -425,7 +426,7 @@ imap <C-V>l <Esc>"lgpko
 " dp        - Put the changes from current window into the other window.
 " [c        Jump backwards to the previous start of a change.
 " ]c        Jump forwards to the next start of a change.
-nn  ffi :se diffopt+=iwhite diffexpr=""<CR>
+nn  ffi :se diffopt+=iwhite diffexpr=""<CR>:call Diff_enter()<CR>
 set diffopt=context:1
 function! Diff_enter()
     windo set wrap
