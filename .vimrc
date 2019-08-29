@@ -201,6 +201,14 @@ function! Syn_markdown()
     syntax match Type "\<not\>"
 endf
 
+" (~/.vimrc#endf) -> @j @k
+" no <silent> <leader>O  F(lvf#h"jyf#lvf)h"ky:tabedit +/<C-R>k$\\c <C-R>j<CR>l
+function! Split_path()
+    let items = split(@", '#')
+    let @j = items[0]
+    let @k = items[1]
+endf
+
 function! Recall_buf_funcs()
     if exists('b:is_sniping') | unlet b:is_sniping | endif
     call Update_snip_syntax()
@@ -246,7 +254,7 @@ function! Source_comma_map()
     no <silent> <leader>f  :set winwidth=30<CR>:NERDTreeToggle<CR>
     no <silent> <leader>g  <C-W>gF
     no          <leader>p  vi(y:tabedit <C-R>"<CR>
-    no <silent> <leader>P  F(lvf#h"jyf#lvf)h"ky:tabedit +/<C-R>k$\\c <C-R>j<CR>l
+    no <silent> <leader>P  vi(y:call Split_path()<CR>:tabedit +/<C-R>k$\\c <C-R>j<CR>l
     no <silent> <leader>h  :sh<CR>
     no          <leader>H  :set hls<CR>
     no          <leader>i  :set ic<CR>
