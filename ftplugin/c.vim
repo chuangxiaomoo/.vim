@@ -92,28 +92,23 @@ inoremap    <buffer>  <silent>  <LocalLeader>cj    <Esc>:call C_AdjustLineEndCom
  noremap    <buffer>  <silent>  <LocalLeader>c*         :call C_CodeToCommentC()<CR>:nohlsearch<CR>j
 vnoremap    <buffer>  <silent>  <LocalLeader>c*         :call C_CodeToCommentC()<CR>:nohlsearch<CR>j
 
- noremap    <buffer>  <silent>  <LocalLeader>cc         :call C_CodeToCommentCpp()<CR>:nohlsearch<CR>j
-vnoremap    <buffer>  <silent>  <LocalLeader>cc         :call C_CodeToCommentCpp()<CR>:nohlsearch<CR>j
  noremap    <buffer>  <silent>  <LocalLeader>co         :call C_CommentToCode()<CR>:nohlsearch<CR>
 vnoremap    <buffer>  <silent>  <LocalLeader>co         :call C_CommentToCode()<CR>:nohlsearch<CR>
 
  noremap    <buffer>  <silent>  <LocalLeader>cfr        :call C_InsertTemplate("comment.frame")<CR>
  noremap    <buffer>  <silent>  <LocalLeader>cfu        :call C_InsertTemplate("comment.function")<CR>
  noremap    <buffer>  <silent>  <LocalLeader>cme        :call C_InsertTemplate("comment.method")<CR>
- noremap    <buffer>  <silent>  <LocalLeader>ccl        :call C_InsertTemplate("comment.class")<CR>
+ noremap    <buffer>  <silent>  <LocalLeader>cls        :call C_InsertTemplate("comment.class")<CR>
  noremap    <buffer>  <silent>  <LocalLeader>cfdi       :call C_InsertTemplate("comment.file-description")<CR>
  noremap    <buffer>  <silent>  <LocalLeader>cfdh       :call C_InsertTemplate("comment.file-description-header")<CR>
 
 inoremap    <buffer>  <silent>  <LocalLeader>cfr   <Esc>:call C_InsertTemplate("comment.frame")<CR>
 inoremap    <buffer>  <silent>  <LocalLeader>cfu   <Esc>:call C_InsertTemplate("comment.function")<CR>
 inoremap    <buffer>  <silent>  <LocalLeader>cme   <Esc>:call C_InsertTemplate("comment.method")<CR>
-inoremap    <buffer>  <silent>  <LocalLeader>ccl   <Esc>:call C_InsertTemplate("comment.class")<CR>
+inoremap    <buffer>  <silent>  <LocalLeader>cls   <Esc>:call C_InsertTemplate("comment.class")<CR>
 inoremap    <buffer>  <silent>  <LocalLeader>cfdi  <Esc>:call C_InsertTemplate("comment.file-description")<CR>
 inoremap    <buffer>  <silent>  <LocalLeader>cfdh  <Esc>:call C_InsertTemplate("comment.file-description-header")<CR>
 
- noremap    <buffer>  <silent>  <LocalLeader>cd    <Esc>:call C_InsertDateAndTime('d')<CR>
-inoremap    <buffer>  <silent>  <LocalLeader>cd    <Esc>:call C_InsertDateAndTime('d')<CR>a
-vnoremap    <buffer>  <silent>  <LocalLeader>cd   s<Esc>:call C_InsertDateAndTime('d')<CR>a
  noremap    <buffer>  <silent>  <LocalLeader>ct    <Esc>:call C_InsertDateAndTime('dt')<CR>
 inoremap    <buffer>  <silent>  <LocalLeader>ct    <Esc>:call C_InsertDateAndTime('dt')<CR>a
 vnoremap    <buffer>  <silent>  <LocalLeader>ct   s<Esc>:call C_InsertDateAndTime('dt')<CR>a
@@ -124,12 +119,10 @@ vnoremap    <buffer>  <silent>  <LocalLeader>cx         :call C_CommentToggle( )
 "
 " call the above defined commands:
 "
- noremap    <buffer>            <LocalLeader>ccs   <Esc>:CFileSection<Space>
  noremap    <buffer>            <LocalLeader>chs   <Esc>:HFileSection<Space>
  noremap    <buffer>            <LocalLeader>ckc   <Esc>:KeywordComment<Space>
  noremap    <buffer>            <LocalLeader>csc   <Esc>:SpecialComment<Space>
 "
-inoremap    <buffer>            <LocalLeader>ccs   <Esc>:CFileSection<Space>
 inoremap    <buffer>            <LocalLeader>chs   <Esc>:HFileSection<Space>
 inoremap    <buffer>            <LocalLeader>ckc   <Esc>:KeywordComment<Space>
 inoremap    <buffer>            <LocalLeader>csc   <Esc>:SpecialComment<Space>

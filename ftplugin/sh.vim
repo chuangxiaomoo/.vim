@@ -106,14 +106,6 @@ inoremap  <buffer>  <silent>  <LocalLeader>cfu     <Esc>:call BASH_InsertTemplat
  noremap  <buffer>  <silent>  <LocalLeader>ch           :call BASH_InsertTemplate("comment.file-description")<CR>
 inoremap  <buffer>  <silent>  <LocalLeader>ch      <Esc>:call BASH_InsertTemplate("comment.file-description")<CR>
 
- noremap    <buffer>  <silent>  <LocalLeader>cc         :call BASH_CommentToggle()<CR>j
-inoremap    <buffer>  <silent>  <LocalLeader>cc    <Esc>:call BASH_CommentToggle()<CR>j
-vnoremap    <buffer>  <silent>  <LocalLeader>cc         :call BASH_CommentToggle()<CR>j
-
- noremap  <buffer>  <silent>  <LocalLeader>cd           :call BASH_InsertDateAndTime('d')<CR>
-inoremap  <buffer>  <silent>  <LocalLeader>cd      <Esc>:call BASH_InsertDateAndTime('d')<CR>a
-vnoremap  <buffer>  <silent>  <LocalLeader>cd     s<Esc>:call BASH_InsertDateAndTime('d')<CR>
-
  noremap  <buffer>  <silent>  <LocalLeader>ct           :call BASH_InsertDateAndTime('dt')<CR>
 inoremap  <buffer>  <silent>  <LocalLeader>ct      <Esc>:call BASH_InsertDateAndTime('dt')<CR>a
 vnoremap  <buffer>  <silent>  <LocalLeader>ct     s<Esc>:call BASH_InsertDateAndTime('dt')<CR>

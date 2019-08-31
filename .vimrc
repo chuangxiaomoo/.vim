@@ -234,8 +234,8 @@ endfun
 function! Source_comma_map()
     " Don't use map <buffer>, it will be clear by mapclear or so command
     " nore <silent> <LocalLeader>g :<CR>
-    "inore <silent> <LocalLeader>g
-    no          <localleader>cd :cd %:p:h<CR>:pwd<CR>
+    no          <localleader>cd :let @c=getcwd()<CR>:cd %:p:h<CR>:pwd<CR>
+    no          <localleader>cc :exe "lcd " . @c<CR>:pwd<CR>
 
     no <silent> <leader>`  :tabe /root/.maintaince.txt<CR>
     no <silent> <leader>1  :tabfirst<CR>

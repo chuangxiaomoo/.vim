@@ -36,6 +36,7 @@ function! Update_snip_syntax()
       let b:snip_visited=0
       if  g:is_sniping == 0 | return | endif
   endif
+  call TextEnableCodeSnip(     'txt',      '```txt'     ,            '```', 'SpecialComment')
   call TextEnableCodeSnip(     'cpp',      '```cpp'     ,            '```', 'SpecialComment')
   call TextEnableCodeSnip(     'sql',      '```sql'     ,            '```', 'SpecialComment')
   call TextEnableCodeSnip(      'sh',      '```bash'    ,            '```', 'SpecialComment')
