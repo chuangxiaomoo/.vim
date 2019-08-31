@@ -235,6 +235,7 @@ function! Source_comma_map()
     " Don't use map <buffer>, it will be clear by mapclear or so command
     " nore <silent> <LocalLeader>g :<CR>
     "inore <silent> <LocalLeader>g
+    no          <localleader>cd :cd %:p:h<CR>:pwd<CR>
 
     no <silent> <leader>`  :tabe /root/.maintaince.txt<CR>
     no <silent> <leader>1  :tabfirst<CR>
@@ -601,7 +602,7 @@ if has("autocmd")
  autocmd  BufEnter,BufRead             *.inc setlocal ft=sh
  autocmd  BufEnter,BufRead             *.i   setlocal ft=cpp ai | call Update_snip_syntax()
  autocmd  BufEnter,BufRead             *sql* setlocal ft=mysql
- autocmd  BufEnter,BufRead           chan.md cd ~/bin/stk/.chan/
+ autocmd  BufEnter,BufRead             *.md  lcd %:p:h
  autocmd  BufEnter,BufNewFile,BufRead  *.bsp setlocal ft=make
 
  " end
