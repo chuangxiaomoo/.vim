@@ -37,9 +37,11 @@ function! Update_snip_syntax()
       if  g:is_sniping == 0 | return | endif
   endif
   call TextEnableCodeSnip(     'txt',      '```txt'     ,            '```', 'SpecialComment')
+  call TextEnableCodeSnip(     'asm',      '```asm'     ,            '```', 'SpecialComment')
   call TextEnableCodeSnip(     'cpp',      '```cpp'     ,            '```', 'SpecialComment')
   call TextEnableCodeSnip(     'sql',      '```sql'     ,            '```', 'SpecialComment')
   call TextEnableCodeSnip(      'sh',      '```bash'    ,            '```', 'SpecialComment')
+  call TextEnableCodeSnip(    'make',      '```make'    ,            '```', 'SpecialComment')
   call TextEnableCodeSnip(    'html',      '```html'    ,            '```', 'SpecialComment')
   call TextEnableCodeSnip(  'python',      '```python'  ,            '```', 'SpecialComment')
   call TextEnableCodeSnip('markdown',      '```markdown',            '```', 'SpecialComment')

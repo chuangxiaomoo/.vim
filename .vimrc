@@ -243,7 +243,8 @@ function! Source_comma_map()
     no <silent> <leader>@  :set et sta ts=2 sw=2 sts=2<CR>
     no          <leader>3  :grep -r "" [0-9a-zA-Z]* .[0-9a-z]*<S-Left><S-Left><Left><Left>
     no          <leader>#  :grep -r "" <C-R>%<S-Left><Left><Left>
-    no <silent> <leader>4  :call Toggle_tab()<CR>
+    no <silent> <leader>4  :set et sta ts=4 sw=4 sts=4<CR>
+    no <silent> <leader>$  :call Toggle_tab()<CR>
     no <silent> <leader>5  :e <C-r>%<CR>
     no <silent> <leader>q  :q!<CR>
     "oremap     <leader>a  Occupied by Align, though ffx, no <leader>a
