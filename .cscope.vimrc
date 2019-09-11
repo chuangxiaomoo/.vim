@@ -99,8 +99,8 @@ endf
 nmap <C-L>q :call QfMakeConv()<CR>
 " markdown标题列表
 "map <C-L>l :cclose<CR>:vimgrep /^[\-.*#]#* \\|^[0-9a-z][0-9]*\. /j <C-R>%<CR>:copen<CR>G<C-W>k
-nmap <C-L>6 :cclose<CR>:vimgrep /^\[^/j  <C-R>%<CR>:copen<CR>G<C-W>k
-nmap <C-L>l :cclose<CR>:vimgrep /^##* /j <C-R>%<CR>:copen<CR>G<C-W>k
+nmap <C-L>6 :cclose<CR>:vimgrep /^\[^/j  <C-R>%<CR>:bot copen<CR>G<C-W>k
+nmap <C-L>l :cclose<CR>:vimgrep /^##* /j <C-R>%<CR>:bot copen<CR>G<C-W>k
 nmap <C-L>j mfmF:view  .flowchar.i<CR>
 nmap <C-L>k mfmF:view  <C-R>z<CR>
 
