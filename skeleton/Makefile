@@ -1,4 +1,4 @@
-#CROSS_COMPILE=arm_v5t_le-
+#CROSS_COMPILE=mips-linux-uclibc-gnu-
 # ~/.vim/skeleton/Makefile
 # include ~/bin/.m1doc/make_var_debug
 
@@ -10,10 +10,14 @@ EXEC := $(SRCS:%.c=%)
 COBJS := $(SRCS:%.c=%.o)
 
 CPPSRCS := $(wildcard *.cpp)
-EXECPP := $(CPPSRCS:%.cpp=%)
+EXECPP 	:= $(CPPSRCS:%.cpp=%)
 CPPOBJS := $(CPPSRCS:%.cpp=%.oo)
+INCLUDE := -I.
 
-INCLUDE := -I. -I/usr/local/include/
+ifeq ($(CC), gcc)
+INCLUDE += -I/usr/local/include/
+endif
+
 CFLAGS 	:= -g -Wall $(INCLUDE)
 CPPFLAGS:= $(CFLAGS)
 

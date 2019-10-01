@@ -388,6 +388,10 @@ vmap    <C-X>u  c[]()<ESC>hhPl
 imap    <C-X>u   []()<ESC>i
 nmap    <C-X>u  a[]()<ESC>i
 
+vmap    <C-X>l  c[][]<ESC>hhPl
+imap    <C-X>l   [][]<ESC>i
+nmap    <C-X>l  i[]:<Left><Left>
+
 " 注意不完全初始化时，末尾追加`,`
 nmap    <C-X>a  0[{jv0]}k<C-X>a
 vmap    <C-X>a  :<C-U>AlignCtrl p0P0 {<CR>:'<,'>Align {<CR>:AlignCtrl p0P1 ,<CR>:'<,'>Align ,<CR>:AlignCtrl p0P0 }<CR>:'<,'>Align }<CR>
