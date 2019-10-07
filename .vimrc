@@ -155,6 +155,9 @@ nn          ffw :copen<CR>gg/^\%(.*obsolescent\)\@!.*\zs.arning:<CR>|   " Warnin
 nn          ffr :copen<CR>gg/undefined reference<CR>|                   " Reference
 nn          ff; n?>:$<CR>|                                              " Valgrind search <function>:
 
+" TDX code-name to Markdow-Table Key
+nn          ffk BdWpbeldwll
+
 let mapleader=','
 let maplocalleader='\'
 
