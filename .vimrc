@@ -610,7 +610,7 @@ if has("autocmd")
  autocmd  BufEnter,BufRead             *.inc setlocal ft=sh
  autocmd  BufEnter,BufRead             *.i   setlocal ft=cpp ai | call Update_snip_syntax()
  autocmd  BufEnter,BufRead             *sql* setlocal ft=mysql
- autocmd  BufEnter,BufRead             *.md  lcd %:p:h
+ "utocmd  BufEnter,BufRead             *.md  lcd %:p:h
  autocmd  BufEnter,BufNewFile,BufRead  *.bsp setlocal ft=make
 
  " end
