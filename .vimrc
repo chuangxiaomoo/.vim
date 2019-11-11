@@ -444,7 +444,8 @@ imap <C-V>l <Esc>"lgpko
 " [c        Jump backwards to the previous start of a change.
 " ]c        Jump forwards to the next start of a change.
 nn  ffi :se diffopt+=iwhite diffexpr=""<CR>:call Diff_enter()<CR>
-nn  ffd :!Svn dc <C-R><C-W><CR>
+nn  ffd :!Svn dc <C-R><C-W><CR><CR>
+nn  ffo ?^r<CR>viwy<C-O>:!Svn dC <C-R>" <C-R>=expand("<cWORD>")<CR><CR><CR>
 set diffopt=context:1
 function! Diff_enter()
     windo set wrap
